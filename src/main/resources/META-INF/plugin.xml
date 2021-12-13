@@ -7,12 +7,19 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.dlzhangteng.baselibrarytemplateplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.dlzhangteng.baselibrarytemplateplugin.services.MyProjectService"/>
+        <applicationService
+            serviceImplementation="com.github.dlzhangteng.baselibrarytemplateplugin.services.MyApplicationService" />
+        <projectService
+            serviceImplementation="com.github.dlzhangteng.baselibrarytemplateplugin.services.MyProjectService" />
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.dlzhangteng.baselibrarytemplateplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+        <listener
+            class="com.github.dlzhangteng.baselibrarytemplateplugin.listeners.MyProjectManagerListener"
+            topic="com.intellij.openapi.project.ProjectManagerListener" />
     </applicationListeners>
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider
+            implementation="com.github.dlzhangteng.baselibrarytemplateplugin.template.SamplePluginTemplateProviderImpl" />
+    </extensions>
 </idea-plugin>
