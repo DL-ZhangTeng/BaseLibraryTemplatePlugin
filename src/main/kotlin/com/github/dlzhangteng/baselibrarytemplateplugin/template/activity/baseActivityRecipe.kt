@@ -16,8 +16,7 @@ fun RecipeExecutor.baseActivityRecipe(
     mActivityPackageName: String,
 
     ) {
-    val (projectData, srcOut, resOut) = moduleTemplateData
-    val ktOrJavaExt = projectData.language.extension
+    val (_, srcOut, resOut) = moduleTemplateData
 
     generateManifest(
         moduleData = moduleTemplateData,
@@ -32,7 +31,7 @@ fun RecipeExecutor.baseActivityRecipe(
     // 保存Activity
     save(
         baseActivity,
-        srcOut.resolve("${mActivityPackageName}/${mPageName}Activity.${ktOrJavaExt}")
+        srcOut.resolve("${mActivityPackageName}/${mPageName}Activity.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml

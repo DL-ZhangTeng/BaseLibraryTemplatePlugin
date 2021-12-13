@@ -36,17 +36,18 @@ val baseActivityTemplate
             help = "需要生成页面的名字,不需要再写 名字后缀:如Activity、Fragment,会自动生成,以及对应文件名后缀"
         }
 
-        val mActivityLayoutName = stringParameter {
-            name = "Activity Layout Name"
-            default = "activity_main"
-            constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { activityToLayout(mPageName.value.toLowerCase()) }
-        }
-
         val mIsGenerateActivityLayout = booleanParameter {
             name = "Generate Activity Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
+        }
+
+        val mActivityLayoutName = stringParameter {
+            name = "Activity Layout Name"
+            default = "activity_main"
+            visible = { mIsGenerateActivityLayout.value }
+            constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
+            suggest = { activityToLayout(mPageName.value.toLowerCase()) }
         }
 
         val mActivityPackageName = stringParameter {
