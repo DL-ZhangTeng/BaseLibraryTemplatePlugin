@@ -13,14 +13,13 @@ fun RecipeExecutor.baseActivityRecipe(
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
-
-    ) {
+) {
     val (_, srcOut, resOut) = moduleTemplateData
 
     generateManifest(
         moduleData = moduleTemplateData,
         activityClass = "${mPageName}Activity",
-        packageName = ".ui.$mActivityPackageName",
+        packageName = ".$mActivityPackageName",
         isLauncher = false,
         hasNoActionBar = false,
         generateActivityTitle = false

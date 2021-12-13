@@ -23,7 +23,7 @@ fun RecipeExecutor.listActivityRecipe(
     generateManifest(
         moduleData = moduleTemplateData,
         activityClass = "${mPageName}Activity",
-        packageName = ".ui.$mActivityPackageName",
+        packageName = ".$mActivityPackageName",
         isLauncher = false,
         hasNoActionBar = false,
         generateActivityTitle = false
