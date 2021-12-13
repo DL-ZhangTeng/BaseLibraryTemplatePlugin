@@ -1,6 +1,4 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.src.app_package.ui
-
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.getLayoutName
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base
 
 
 fun baseActivityKt(
