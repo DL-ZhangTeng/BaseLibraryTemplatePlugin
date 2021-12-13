@@ -8,7 +8,7 @@ fun listActivityKt(
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
-package ${mRootPackageName}.${mActivityPackageName}
+package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ${mRootPackageName}.R
 import com.zhangteng.base.base.BaseListActivity
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import ${mRootPackageName}.bean.${mBeanClass}
+import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ActivityCenterActivity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>() {
+class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          setContentView(R.layout.activity${getLayoutName(mPageName)})

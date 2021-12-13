@@ -8,31 +8,40 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 
 fun RecipeExecutor.baseActivityRecipe(
     moduleTemplateData: ModuleTemplateData,
-    mRootPackageName: String,
     mPageName: String,
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    val (_, srcOut, resOut) = moduleTemplateData
-
     generateManifest(
         moduleData = moduleTemplateData,
         activityClass = "${mPageName}Activity",
-        packageName = ".$mActivityPackageName",
+        packageName = mActivityPackageName,
         isLauncher = false,
         hasNoActionBar = false,
         generateActivityTitle = false
     )
-
-    val baseActivity = baseActivityKt(mRootPackageName, mActivityPackageName, mPageName)
+    val packageNameStr =
+        if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
+        else mActivityPackageName
+            .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
+            .replace(".", "")
+    val rootPath =
+        if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
+        else mActivityPackageName
+    val baseActivity = baseActivityKt(
+        rootPath,
+        packageNameStr,
+        mPageName
+    )
     // 保存Activity
+
     save(
         baseActivity,
-        srcOut.resolve("${mActivityPackageName}/${mPageName}Activity.kt")
+        moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), resOut.resolve("layout/${mActivityLayoutName}.xml"))
+        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
 }

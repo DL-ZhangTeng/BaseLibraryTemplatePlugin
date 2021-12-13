@@ -14,12 +14,12 @@ import android.view.ViewGroup
 import com.zhangteng.base.base.BaseAdapter
 import ${mRootPackageName}.R
 
-import ${mRootPackageName}.bean
+import ${mRootPackageName}.bean.${mBeanClass}
 
 class ${mAdapterClass} : BaseAdapter<${mBeanClass}, BaseAdapter.DefaultViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefaultViewHolder {
         return DefaultViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_${getLayoutName(mPageName)}, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item${getLayoutName(mPageName)}, parent, false)
         )
     }
 }

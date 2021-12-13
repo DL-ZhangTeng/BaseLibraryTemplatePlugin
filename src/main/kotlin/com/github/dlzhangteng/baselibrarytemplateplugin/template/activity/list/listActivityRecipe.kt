@@ -4,62 +4,78 @@ import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import java.io.File
 
 
 fun RecipeExecutor.listActivityRecipe(
     moduleTemplateData: ModuleTemplateData,
-    mRootPackageName: String,
     mPageName: String,
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mBeanClass: String,
-    mIsBean: Boolean,
     mAdapterClass: String,
-    mIsAdapter: Boolean,
     mActivityPackageName: String,
 ) {
-    val (_, srcOut, resOut) = moduleTemplateData
-
     generateManifest(
         moduleData = moduleTemplateData,
         activityClass = "${mPageName}Activity",
-        packageName = ".$mActivityPackageName",
+        packageName = mActivityPackageName,
         isLauncher = false,
         hasNoActionBar = false,
         generateActivityTitle = false
     )
+    val packageNameStr =
+        if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
+        else mActivityPackageName
+            .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
+            .replace(".", "")
+    val rootPath =
+        if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
+        else mActivityPackageName
 
     val listActivity =
-        listActivityKt(mRootPackageName, mActivityPackageName, mPageName, mBeanClass, mAdapterClass)
+        listActivityKt(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
     val listBean =
-        listBean(mRootPackageName, mBeanClass)
+        listBean(rootPath, mBeanClass)
     val listAdapter =
-        listAdapter(mRootPackageName, mPageName, mBeanClass, mAdapterClass)
+        listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
     // 保存Activity
     save(
         listActivity,
-        srcOut.resolve("${mActivityPackageName}/${mPageName}Activity.kt")
+        moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), resOut.resolve("layout/${mActivityLayoutName}.xml"))
+        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
 
-    if (mIsBean) {
-        save(
-            listBean,
-            srcOut.resolve("bean/${mBeanClass}.kt")
-        )
-    }
-    if (mIsAdapter) {
-        save(
-            listAdapter,
-            srcOut.resolve("adapter/${mAdapterClass}.kt")
-        )
+    save(
+        listBean,
+        if (moduleTemplateData.projectTemplateData.applicationPackage == null)
+            moduleTemplateData.srcDir
+        else
+            File(
+                moduleTemplateData.rootDir.absolutePath
+                        + "/src/main/java/"
+                        + rootPath.replace(".", "/")
+            )
+                .resolve("bean/${mBeanClass}.kt")
+    )
+    save(
+        listAdapter,
+        if (moduleTemplateData.projectTemplateData.applicationPackage == null)
+            moduleTemplateData.srcDir
+        else
+            File(
+                moduleTemplateData.rootDir.absolutePath
+                        + "/src/main/java/"
+                        + rootPath.replace(".", "/")
+            )
+                .resolve("adapter/${mAdapterClass}.kt")
+    )
 
-        save(
-            baseXml(),
-            resOut.resolve("layout/item_${getLayoutName(mPageName)}.xml")
-        )
-    }
+    save(
+        baseXml(),
+        moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
+    )
 }

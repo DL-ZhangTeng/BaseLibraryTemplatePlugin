@@ -6,7 +6,7 @@ fun baseActivityKt(
     mActivityPackageName: String,
     mPageName: String
 ) = """
-package ${mRootPackageName}.${mActivityPackageName}
+package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
 import android.os.Bundle
 

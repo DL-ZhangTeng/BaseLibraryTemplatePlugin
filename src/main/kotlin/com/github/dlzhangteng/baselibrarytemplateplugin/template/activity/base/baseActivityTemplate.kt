@@ -20,13 +20,12 @@ val baseActivityTemplate
             WizardUiContext.NewModule
         )
 
-
-        val mRootPackageName = stringParameter {
+        val mActivityPackageName = stringParameter {
             name = "Root Package Name"
-            constraints = listOf(Constraint.PACKAGE)
+            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
             visible = { !isNewModule }
-            help = "此 PluginTemplate 是针对 `Android` 项目编写,默认包名为项目的包名,可根据自己需要填写"
+            help = "Activity 包名"
         }
 
         val mPageName = stringParameter {
@@ -50,25 +49,16 @@ val baseActivityTemplate
             suggest = { activityToLayout(mPageName.value.toLowerCase()) }
         }
 
-        val mActivityPackageName = stringParameter {
-            name = "Activity Package Name"
-            constraints = listOf(Constraint.NONEMPTY)
-            default = "activity"
-            help = "Activity 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名 (基于 Root Package Name )"
-        }
-
         widgets(
-            PackageNameWidget(mRootPackageName),
             TextFieldWidget(mPageName),
             TextFieldWidget(mActivityLayoutName),
             CheckBoxWidget(mIsGenerateActivityLayout),
-            TextFieldWidget(mActivityPackageName),
+            PackageNameWidget(mActivityPackageName),
         )
 
         recipe = { data: TemplateData ->
             baseActivityRecipe(
                 data as ModuleTemplateData,
-                mRootPackageName.value,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
