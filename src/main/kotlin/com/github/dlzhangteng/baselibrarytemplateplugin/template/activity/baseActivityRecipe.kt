@@ -4,7 +4,7 @@ import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.src.app_package.ui.baseActivityKt
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.common.res.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 
 
 fun RecipeExecutor.baseActivityRecipe(
