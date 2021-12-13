@@ -8,6 +8,16 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.services.MyProjectServic
 internal class MyProjectManagerListener : ProjectManagerListener {
 
     override fun projectOpened(project: Project) {
-        project.service<MyProjectService>()
+        projectInstance = project
+        project.getService(MyProjectService::class.java)
+    }
+
+    override fun projectClosing(project: Project) {
+        projectInstance = null
+        super.projectClosing(project)
+    }
+
+    companion object {
+        var projectInstance: Project? = null
     }
 }

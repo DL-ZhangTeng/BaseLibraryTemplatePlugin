@@ -4,6 +4,8 @@
     <name>BaseLibraryTemplatePlugin</name>
     <vendor>dl-zhangteng</vendor>
 
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
