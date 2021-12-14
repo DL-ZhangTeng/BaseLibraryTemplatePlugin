@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val mvpActivityTemplate
+val mvvmActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMVPActivity"
-        description = "一键创建 BaseMVPActivity "
+        name = "ZTBaseMvvmActivity"
+        description = "一键创建 BaseMvvmActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -19,6 +19,14 @@ val mvpActivityTemplate
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
         )
+
+        val mActivityPackageName = stringParameter {
+            name = "Root Package Name"
+            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
+            default = "com.zhangteng.baselibrary"
+            visible = { !isNewModule }
+            help = "Activity 包名"
+        }
 
         val mPageName = stringParameter {
             name = "Create Page Name"
@@ -41,14 +49,6 @@ val mvpActivityTemplate
             suggest = { activityToLayout(mPageName.value) }
         }
 
-        val mActivityPackageName = stringParameter {
-            name = "Root Package Name"
-            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
-            default = "com.zhangteng.baselibrary"
-            visible = { !isNewModule }
-            help = "Activity 包名"
-        }
-
         thumb { File("template_empty_activity.png") }
 
         widgets(
@@ -59,12 +59,12 @@ val mvpActivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvpActivityRecipe(
+            mvvmActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
-                mActivityPackageName.value,
+                mActivityPackageName.value
             )
         }
 

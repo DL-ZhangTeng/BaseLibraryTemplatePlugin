@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val mvpActivityTemplate
+val mvvmDbActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMVPActivity"
-        description = "一键创建 BaseMVPActivity "
+        name = "ZTBaseMvvmDbActivity"
+        description = "一键创建 BaseMvvmDbActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -19,6 +19,14 @@ val mvpActivityTemplate
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
         )
+
+        val mActivityPackageName = stringParameter {
+            name = "Root Package Name"
+            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
+            default = "com.zhangteng.baselibrary"
+            visible = { !isNewModule }
+            help = "Activity 包名"
+        }
 
         val mPageName = stringParameter {
             name = "Create Page Name"
@@ -38,15 +46,7 @@ val mvpActivityTemplate
             default = "activity_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { activityToLayout(mPageName.value) }
-        }
-
-        val mActivityPackageName = stringParameter {
-            name = "Root Package Name"
-            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
-            default = "com.zhangteng.baselibrary"
-            visible = { !isNewModule }
-            help = "Activity 包名"
+            suggest = { "${activityToLayout(mPageName.value)}_db" }
         }
 
         thumb { File("template_empty_activity.png") }
@@ -59,12 +59,12 @@ val mvpActivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvpActivityRecipe(
+            mvvmDbActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
-                mActivityPackageName.value,
+                mActivityPackageName.value
             )
         }
 

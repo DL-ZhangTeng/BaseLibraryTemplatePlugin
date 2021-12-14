@@ -38,7 +38,7 @@ val listActivityTemplate
             default = "activity_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { activityToLayout(mPageName.value.toLowerCase()) }
+            suggest = { activityToLayout(mPageName.value) }
         }
 
         val mActivityPackageName = stringParameter {
