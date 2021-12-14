@@ -16,7 +16,7 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
 ) {
     generateManifest(
         moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
+        activityClass = "${mPageName}DbActivity",
         packageName = mActivityPackageName,
         isLauncher = false,
         hasNoActionBar = false,
