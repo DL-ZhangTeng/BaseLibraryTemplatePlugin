@@ -17,6 +17,10 @@ import ${mRootPackageName}.R
 
 class ${mPageName}Fragment : BaseFragment() {
 
+    companion object {
+        fun newInstance() = ${mPageName}Fragment()
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -32,14 +36,6 @@ class ${mPageName}Fragment : BaseFragment() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
 
-    }
-
-    companion object {
-        fun newInstance(): ${mPageName}Fragment {
-            return BlankFragment().apply {
-                arguments = Bundle()
-            }
-        }
     }
 }
 """

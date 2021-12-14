@@ -40,7 +40,7 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
         // 保存xml
         save(
             mvvmDbFragmentXml(rootPath, packageNameStr, mPageName),
-            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}_db.xml")
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }
     save(

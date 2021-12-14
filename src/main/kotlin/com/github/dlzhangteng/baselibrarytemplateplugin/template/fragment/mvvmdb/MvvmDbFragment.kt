@@ -14,7 +14,8 @@ import android.view.View
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.base.base.BaseMvvmDbFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.MvvmDbFragmentBinding
+import ${mRootPackageName}.databinding.${mPageName}DbFragmentBinding
+import ${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel
 
 class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewModel, ${mPageName}DbFragmentBinding>() {
 

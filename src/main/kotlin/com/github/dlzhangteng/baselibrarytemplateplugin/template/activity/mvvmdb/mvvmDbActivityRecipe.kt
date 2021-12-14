@@ -48,7 +48,7 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
         // 保存xml
         save(
             mvvmDbXml(rootPath, packageNameStr, mPageName),
-            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}_db.xml")
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }
     save(

@@ -22,7 +22,11 @@ import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 import ${mRootPackageName}.R
 
 class ${mPageName}Fragment : BaseMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
-
+    
+    companion object {
+        fun newInstance() = ${mPageName}Fragment()
+    }
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

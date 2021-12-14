@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.base.base.BaseMvvmFragment
 import ${mRootPackageName}.R
+import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 
 class ${mPageName}Fragment : BaseMvvmFragment<${mPageName}FragmentViewModel>() {
 

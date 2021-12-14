@@ -21,6 +21,10 @@ import ${mRootPackageName}.adapter.${mAdapterClass}
 
 class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>() {
 
+    companion object {
+        fun newInstance() = ${mPageName}Fragment()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -57,14 +61,6 @@ class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>()
     override fun loadData(i: Int) {}
     override fun setLayoutManager() {
         setLinearLayoutManager(LinearLayoutManager.VERTICAL)
-    }
-    
-    companion object {
-        fun newInstance(): ${mPageName}Fragment {
-            return BlankFragment().apply {
-                arguments = Bundle()
-            }
-        }
     }
 }
 """
