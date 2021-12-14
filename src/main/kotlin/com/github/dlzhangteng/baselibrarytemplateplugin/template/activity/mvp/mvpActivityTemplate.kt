@@ -8,7 +8,7 @@ import java.util.*
 val mvpActivityTemplate
     get() = template {
 //        revision = 1
-        name = "BaseMVPActivity"
+        name = "ZTBaseMVPActivity"
         description = "一键创建 BaseMVPActivity "
         minApi = MIN_API
         category = Category.Activity

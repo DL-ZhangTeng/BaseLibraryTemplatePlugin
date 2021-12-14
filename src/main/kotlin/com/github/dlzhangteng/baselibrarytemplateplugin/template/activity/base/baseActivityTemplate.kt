@@ -8,7 +8,7 @@ import java.util.*
 val baseActivityTemplate
     get() = template {
 //        revision = 1
-        name = "BaseActivity"
+        name = "ZTBaseActivity"
         description = "一键创建 BaseActivity "
         minApi = MIN_API
         category = Category.Activity

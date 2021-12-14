@@ -8,7 +8,7 @@ import java.util.*
 val titlebarAcitivityTemplate
     get() = template {
 //        revision = 1
-        name = "BaseTitlebarActivity"
+        name = "ZTBaseTitlebarActivity"
         description = "一键创建 BaseTitlebarActivity "
         minApi = MIN_API
         category = Category.Activity
