@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
+import java.io.File
 import java.util.*
 
 val baseActivityTemplate
@@ -9,7 +10,6 @@ val baseActivityTemplate
 //        revision = 1
         name = "BaseActivity"
         description = "一键创建 BaseActivity "
-        minApi = MIN_API
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -48,6 +48,8 @@ val baseActivityTemplate
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
             suggest = { activityToLayout(mPageName.value.toLowerCase()) }
         }
+
+        thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),

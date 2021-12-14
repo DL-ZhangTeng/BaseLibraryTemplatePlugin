@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
+import java.io.File
 import java.util.*
 
 val listActivityTemplate
@@ -9,7 +10,6 @@ val listActivityTemplate
 //        revision = 1
         name = "BaseListActivity"
         description = "一键创建 BaseListActivity "
-        minApi = MIN_API
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -64,6 +64,8 @@ val listActivityTemplate
             suggest = { "${mPageName.value}Adapter" }
             help = "ListActivity 的Adapter"
         }
+
+        thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),
