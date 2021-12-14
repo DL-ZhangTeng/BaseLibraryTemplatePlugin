@@ -1,13 +1,13 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbFragmentXml
-import java.io.File
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base.baseActivityKt
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 
 
-fun RecipeExecutor.mvvmDbActivityRecipe(
+fun RecipeExecutor.baseFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
@@ -22,35 +22,19 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
     val rootPath =
         if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
         else mActivityPackageName
-    val mvvmDbFragment = mvvmDbFragment(
+    val baseFragment = baseFragment(
         rootPath,
         packageNameStr,
         mPageName
     )
-    val mvvmDbFragmentViewModel = mvvmDbFragmentViewModel(
-        rootPath,
-        mPageName
-    )
     // 保存Activity
+
     save(
-        mvvmDbFragment,
-        moduleTemplateData.srcDir.resolve("${mPageName}DbFragment.kt")
+        baseFragment,
+        moduleTemplateData.srcDir.resolve("${mPageName}Fragment.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(
-            mvvmDbFragmentXml(rootPath, packageNameStr, mPageName),
-            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}_db.xml")
-        )
+        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
-    save(
-        mvvmDbFragmentViewModel,
-        File(
-            moduleTemplateData.rootDir.absolutePath
-                    + "/src/main/java/"
-                    + rootPath.replace(".", "/")
-                    + "/mvvm/vm/"
-        ).apply { mkdirs() }
-            .resolve("${mPageName}DbViewModel.kt")
-    )
 }

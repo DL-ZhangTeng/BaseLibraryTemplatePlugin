@@ -14,14 +14,6 @@ fun RecipeExecutor.mvvmActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -42,7 +34,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     // 保存Activity
     save(
         mvvmFragment,
-        moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
+        moduleTemplateData.srcDir.resolve("${mPageName}Fragment.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml

@@ -8,6 +8,9 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.mv
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.titlebar.titlebarAcitivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.baseFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.listFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mvpFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.mvvmFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentTemplate
 
@@ -19,6 +22,10 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         mvpActivityTemplate,
         mvvmActivityTemplate,
         mvvmDbActivityTemplate,
+
+        baseFragmentTemplate,
+        listFragmentTemplate,
+        mvpFragmentTemplate,
         mvvmFragmentTemplate,
         mvvmDbFragmentTemplate,
     )

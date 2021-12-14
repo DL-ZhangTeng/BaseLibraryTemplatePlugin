@@ -1,15 +1,16 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listActivityRecipe
 import java.io.File
 import java.util.*
 
-val mvvmFragmentTemplate
+val listFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMvvmFragment"
-        description = "一键创建 BaseMvvmFragment "
+        name = "ZTBaseListFragment"
+        description = "一键创建 BaseListFragment "
         minApi = MIN_API
         category = Category.Fragment
         formFactor = FormFactor.Mobile
@@ -19,14 +20,6 @@ val mvvmFragmentTemplate
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
         )
-
-        val mActivityPackageName = stringParameter {
-            name = "Root Package Name"
-            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
-            default = "com.zhangteng.baselibrary"
-            visible = { !isNewModule }
-            help = "Fragment 包名"
-        }
 
         val mPageName = stringParameter {
             name = "Create Page Name"
@@ -49,22 +42,50 @@ val mvvmFragmentTemplate
             suggest = { activityToLayout(mPageName.value) }
         }
 
-        thumb { File("template_blank_fragment.png") }
+        val mActivityPackageName = stringParameter {
+            name = "Root Package Name"
+            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
+            default = "com.zhangteng.baselibrary"
+            visible = { !isNewModule }
+            help = "Fragment 包名"
+        }
+
+        val mBeanName = stringParameter {
+            name = "Fragment Bean Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Bean"
+            suggest = { "${mPageName.value}Bean" }
+            help = "ListFragment 的数据类"
+        }
+
+        val mAdapterName = stringParameter {
+            name = "Fragment Adapter Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Adapter"
+            suggest = { "${mPageName.value}Adapter" }
+            help = "ListFragment 的Adapter"
+        }
+
+        thumb { File("template_list_fragment.png.png") }
 
         widgets(
             TextFieldWidget(mPageName),
             TextFieldWidget(mActivityLayoutName),
             CheckBoxWidget(mIsGenerateActivityLayout),
+            TextFieldWidget(mBeanName),
+            TextFieldWidget(mAdapterName),
             PackageNameWidget(mActivityPackageName),
         )
 
         recipe = { data: TemplateData ->
-            mvvmActivityRecipe(
+            listFragmentRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
-                mActivityPackageName.value
+                mBeanName.value,
+                mAdapterName.value,
+                mActivityPackageName.value,
             )
         }
 

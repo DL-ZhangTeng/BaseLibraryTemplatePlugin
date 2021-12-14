@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val baseActivityTemplate
+val listActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseActivity"
-        description = "一键创建 BaseActivity "
+        name = "ZTBaseListActivity"
+        description = "一键创建 BaseListActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -19,14 +19,6 @@ val baseActivityTemplate
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
         )
-
-        val mActivityPackageName = stringParameter {
-            name = "Root Package Name"
-            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
-            default = "com.zhangteng.baselibrary"
-            visible = { !isNewModule }
-            help = "Activity 包名"
-        }
 
         val mPageName = stringParameter {
             name = "Create Page Name"
@@ -49,22 +41,50 @@ val baseActivityTemplate
             suggest = { activityToLayout(mPageName.value) }
         }
 
+        val mActivityPackageName = stringParameter {
+            name = "Root Package Name"
+            constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
+            default = "com.zhangteng.baselibrary"
+            visible = { !isNewModule }
+            help = "Activity 包名"
+        }
+
+        val mBeanName = stringParameter {
+            name = "Activity Bean Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Bean"
+            suggest = { "${mPageName.value}Bean" }
+            help = "ListActivity 的数据类"
+        }
+
+        val mAdapterName = stringParameter {
+            name = "Activity Adapter Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Adapter"
+            suggest = { "${mPageName.value}Adapter" }
+            help = "ListActivity 的Adapter"
+        }
+
         thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),
             TextFieldWidget(mActivityLayoutName),
             CheckBoxWidget(mIsGenerateActivityLayout),
+            TextFieldWidget(mBeanName),
+            TextFieldWidget(mAdapterName),
             PackageNameWidget(mActivityPackageName),
         )
 
         recipe = { data: TemplateData ->
-            baseActivityRecipe(
+            listActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
-                mActivityPackageName.value
+                mBeanName.value,
+                mAdapterName.value,
+                mActivityPackageName.value,
             )
         }
 
@@ -75,7 +95,10 @@ val baseActivityTemplate
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> = splitByUpperCase(pageName)
+    val activityChildNames: ArrayList<String> =
+        com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.splitByUpperCase(
+            pageName
+        )
     activityChildNames.forEach {
         stringBuilder.append("_").append(it.toLowerCase())
     }

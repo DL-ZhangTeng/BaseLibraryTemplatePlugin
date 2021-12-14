@@ -1,20 +1,20 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val mvvmFragmentTemplate
+val baseActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMvvmFragment"
-        description = "一键创建 BaseMvvmFragment "
+        name = "ZTBaseActivity"
+        description = "一键创建 BaseActivity "
         minApi = MIN_API
-        category = Category.Fragment
+        category = Category.Activity
         formFactor = FormFactor.Mobile
         screens = listOf(
-            WizardUiContext.FragmentGallery,
+            WizardUiContext.ActivityGallery,
             WizardUiContext.MenuEntry,
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
@@ -25,7 +25,7 @@ val mvvmFragmentTemplate
             constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
             visible = { !isNewModule }
-            help = "Fragment 包名"
+            help = "Activity 包名"
         }
 
         val mPageName = stringParameter {
@@ -36,20 +36,20 @@ val mvvmFragmentTemplate
         }
 
         val mIsGenerateActivityLayout = booleanParameter {
-            name = "Generate Fragment Layout"
+            name = "Generate Activity Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
         }
 
         val mActivityLayoutName = stringParameter {
-            name = "Fragment Layout Name"
-            default = "fragment_main"
+            name = "Activity Layout Name"
+            default = "activity_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
             suggest = { activityToLayout(mPageName.value) }
         }
 
-        thumb { File("template_blank_fragment.png") }
+        thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),
@@ -59,7 +59,7 @@ val mvvmFragmentTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvvmActivityRecipe(
+            baseActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
@@ -75,7 +75,10 @@ val mvvmFragmentTemplate
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> = splitByUpperCase(pageName)
+    val activityChildNames: ArrayList<String> =
+        com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.splitByUpperCase(
+            pageName
+        )
     activityChildNames.forEach {
         stringBuilder.append("_").append(it.toLowerCase())
     }

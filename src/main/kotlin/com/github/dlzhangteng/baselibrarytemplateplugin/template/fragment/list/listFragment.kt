@@ -1,7 +1,7 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
 
-fun listActivityKt(
+fun listFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
@@ -14,23 +14,33 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ${mRootPackageName}.R
-import com.zhangteng.base.base.BaseListActivity
+import com.zhangteng.base.base.BaseListFragment
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>() {
+class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         setContentView(R.layout.activity${getLayoutName(mPageName)})
+        if (arguments != null) {
+        }
     }
 
-    override fun initView() {
-        super.initView()
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment${getLayoutName(mPageName)}, container, false)
     }
 
-    override fun initData() {}
+    override fun initView(view: View, savedInstanceState: Bundle?) {
+        super.initView(view, savedInstanceState)
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+        super.initData(savedInstanceState)
+    }
     
     override fun createAdapter(): ${mAdapterClass} {
         return ${mAdapterClass}()
@@ -47,6 +57,14 @@ class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>()
     override fun loadData(i: Int) {}
     override fun setLayoutManager() {
         setLinearLayoutManager(LinearLayoutManager.VERTICAL)
+    }
+    
+    companion object {
+        fun newInstance(): ${mPageName}Fragment {
+            return BlankFragment().apply {
+                arguments = Bundle()
+            }
+        }
     }
 }
 """

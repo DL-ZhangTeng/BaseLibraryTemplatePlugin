@@ -1,20 +1,20 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val mvpActivityTemplate
+val mvpFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMVPActivity"
-        description = "一键创建 BaseMVPActivity "
+        name = "ZTBaseMVPFragment"
+        description = "一键创建 BaseMVPFragment "
         minApi = MIN_API
-        category = Category.Activity
+        category = Category.Fragment
         formFactor = FormFactor.Mobile
         screens = listOf(
-            WizardUiContext.ActivityGallery,
+            WizardUiContext.FragmentGallery,
             WizardUiContext.MenuEntry,
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
@@ -28,14 +28,14 @@ val mvpActivityTemplate
         }
 
         val mIsGenerateActivityLayout = booleanParameter {
-            name = "Generate Activity Layout"
+            name = "Generate Fragment Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
         }
 
         val mActivityLayoutName = stringParameter {
-            name = "Activity Layout Name"
-            default = "activity_main"
+            name = "fragment Layout Name"
+            default = "ragment_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
             suggest = { activityToLayout(mPageName.value) }
@@ -46,10 +46,10 @@ val mvpActivityTemplate
             constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
             visible = { !isNewModule }
-            help = "Activity 包名"
+            help = "Fragment 包名"
         }
 
-        thumb { File("template_empty_activity.png") }
+        thumb { File("template_blank_fragment.png") }
 
         widgets(
             TextFieldWidget(mPageName),
@@ -59,7 +59,7 @@ val mvpActivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvpActivityRecipe(
+            mvpFragmentRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,

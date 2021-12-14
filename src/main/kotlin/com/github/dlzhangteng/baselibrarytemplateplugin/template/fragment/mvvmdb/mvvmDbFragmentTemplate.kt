@@ -14,7 +14,7 @@ val mvvmDbFragmentTemplate
         category = Category.Fragment
         formFactor = FormFactor.Mobile
         screens = listOf(
-            WizardUiContext.ActivityGallery,
+            WizardUiContext.FragmentGallery,
             WizardUiContext.MenuEntry,
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
@@ -49,7 +49,7 @@ val mvvmDbFragmentTemplate
             suggest = { "${activityToLayout(mPageName.value)}_db" }
         }
 
-        thumb { File("template_empty_activity.png") }
+        thumb { File("template_blank_fragment.png") }
 
         widgets(
             TextFieldWidget(mPageName),

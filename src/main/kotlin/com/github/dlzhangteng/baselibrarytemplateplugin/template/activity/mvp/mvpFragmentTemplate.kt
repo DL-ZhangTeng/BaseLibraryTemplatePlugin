@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val listActivityTemplate
+val mvpActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseListActivity"
-        description = "一键创建 BaseListActivity "
+        name = "ZTBaseMVPActivity"
+        description = "一键创建 BaseMVPActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -49,41 +49,21 @@ val listActivityTemplate
             help = "Activity 包名"
         }
 
-        val mBeanName = stringParameter {
-            name = "Activity Bean Name"
-            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
-            default = "Bean"
-            suggest = { "${mPageName.value}Bean" }
-            help = "ListActivity 的数据类"
-        }
-
-        val mAdapterName = stringParameter {
-            name = "Activity Adapter Name"
-            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
-            default = "Adapter"
-            suggest = { "${mPageName.value}Adapter" }
-            help = "ListActivity 的Adapter"
-        }
-
         thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),
             TextFieldWidget(mActivityLayoutName),
             CheckBoxWidget(mIsGenerateActivityLayout),
-            TextFieldWidget(mBeanName),
-            TextFieldWidget(mAdapterName),
             PackageNameWidget(mActivityPackageName),
         )
 
         recipe = { data: TemplateData ->
-            listActivityRecipe(
+            mvpActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
-                mBeanName.value,
-                mAdapterName.value,
                 mActivityPackageName.value,
             )
         }
@@ -95,7 +75,10 @@ val listActivityTemplate
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> = splitByUpperCase(pageName)
+    val activityChildNames: ArrayList<String> =
+        com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.splitByUpperCase(
+            pageName
+        )
     activityChildNames.forEach {
         stringBuilder.append("_").append(it.toLowerCase())
     }

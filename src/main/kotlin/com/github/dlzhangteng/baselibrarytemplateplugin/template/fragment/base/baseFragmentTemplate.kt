@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val mvvmFragmentTemplate
+val baseFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMvvmFragment"
-        description = "一键创建 BaseMvvmFragment "
+        name = "ZTBaseFragment"
+        description = "一键创建 BaseFragment "
         minApi = MIN_API
         category = Category.Fragment
         formFactor = FormFactor.Mobile
@@ -59,7 +59,7 @@ val mvvmFragmentTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvvmActivityRecipe(
+            baseFragmentRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,

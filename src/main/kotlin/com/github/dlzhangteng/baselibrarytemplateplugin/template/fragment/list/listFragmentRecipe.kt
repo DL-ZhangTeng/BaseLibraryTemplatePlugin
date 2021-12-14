@@ -1,13 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listBean
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import java.io.File
 
 
-fun RecipeExecutor.listActivityRecipe(
+fun RecipeExecutor.listFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
@@ -16,14 +18,6 @@ fun RecipeExecutor.listActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -33,16 +27,16 @@ fun RecipeExecutor.listActivityRecipe(
         if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
         else mActivityPackageName
 
-    val listActivity =
-        listActivityKt(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
+    val listFragment =
+        listFragment(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
     val listBean =
         listBean(rootPath, mBeanClass)
     val listAdapter =
         listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
     // 保存Activity
     save(
-        listActivity,
-        moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
+        listFragment,
+        moduleTemplateData.srcDir.resolve("${mPageName}Fragment.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
@@ -72,6 +66,10 @@ fun RecipeExecutor.listActivityRecipe(
 
     save(
         baseXml(),
-        moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
+        moduleTemplateData.resDir.resolve("layout/item${
+            getLayoutName(
+                mPageName
+            )
+        }.xml")
     )
 }
