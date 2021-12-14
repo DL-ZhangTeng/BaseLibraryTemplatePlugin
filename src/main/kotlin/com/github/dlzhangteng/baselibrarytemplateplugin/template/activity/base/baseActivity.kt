@@ -1,7 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base
 
 
-fun baseActivityKt(
+fun baseActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String

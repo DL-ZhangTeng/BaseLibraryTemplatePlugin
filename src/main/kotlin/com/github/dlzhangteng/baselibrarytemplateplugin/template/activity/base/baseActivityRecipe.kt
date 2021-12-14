@@ -29,7 +29,7 @@ fun RecipeExecutor.baseActivityRecipe(
     val rootPath =
         if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
         else mActivityPackageName
-    val baseActivity = baseActivityKt(
+    val baseActivity = baseActivity(
         rootPath,
         packageNameStr,
         mPageName
