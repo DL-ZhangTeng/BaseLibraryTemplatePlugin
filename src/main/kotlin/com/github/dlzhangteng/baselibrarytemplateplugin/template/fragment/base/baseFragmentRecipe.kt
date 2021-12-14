@@ -2,8 +2,6 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base.baseActivityKt
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 
 
