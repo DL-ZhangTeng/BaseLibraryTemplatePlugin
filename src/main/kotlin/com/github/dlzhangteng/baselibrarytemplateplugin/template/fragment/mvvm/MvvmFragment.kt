@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.base.base.BaseMvvmFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel

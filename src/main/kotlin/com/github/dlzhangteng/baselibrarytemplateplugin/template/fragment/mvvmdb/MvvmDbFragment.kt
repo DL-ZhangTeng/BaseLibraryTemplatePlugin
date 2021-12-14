@@ -11,7 +11,6 @@ package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else "
 
 import android.os.Bundle
 import android.view.View
-import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.base.base.BaseMvvmDbFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Fragment${mPageName}DbBinding
