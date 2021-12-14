@@ -27,21 +27,21 @@ val mvpFragmentTemplate
             help = "需要生成页面的名字,不需要再写 名字后缀:如Activity、Fragment,会自动生成,以及对应文件名后缀"
         }
 
-        val mIsGenerateActivityLayout = booleanParameter {
+        val mIsGenerateFragmentLayout = booleanParameter {
             name = "Generate Fragment Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
         }
 
-        val mActivityLayoutName = stringParameter {
+        val mFragmentLayoutName = stringParameter {
             name = "fragment Layout Name"
             default = "ragment_main"
-            visible = { mIsGenerateActivityLayout.value }
+            visible = { mIsGenerateFragmentLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { activityToLayout(mPageName.value) }
+            suggest = { fragmentToLayout(mPageName.value) }
         }
 
-        val mActivityPackageName = stringParameter {
+        val mFragmentPackageName = stringParameter {
             name = "Root Package Name"
             constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
@@ -53,18 +53,18 @@ val mvpFragmentTemplate
 
         widgets(
             TextFieldWidget(mPageName),
-            TextFieldWidget(mActivityLayoutName),
-            CheckBoxWidget(mIsGenerateActivityLayout),
-            PackageNameWidget(mActivityPackageName),
+            TextFieldWidget(mFragmentLayoutName),
+            CheckBoxWidget(mIsGenerateFragmentLayout),
+            PackageNameWidget(mFragmentPackageName),
         )
 
         recipe = { data: TemplateData ->
             mvpFragmentRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
-                mActivityLayoutName.value,
-                mIsGenerateActivityLayout.value,
-                mActivityPackageName.value,
+                mFragmentLayoutName.value,
+                mIsGenerateFragmentLayout.value,
+                mFragmentPackageName.value,
             )
         }
 
@@ -75,8 +75,8 @@ val mvpFragmentTemplate
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> = splitByUpperCase(pageName)
-    activityChildNames.forEach {
+    val fragmentChildNames: ArrayList<String> = splitByUpperCase(pageName)
+    fragmentChildNames.forEach {
         stringBuilder.append("_").append(it.toLowerCase())
     }
     return stringBuilder.toString()

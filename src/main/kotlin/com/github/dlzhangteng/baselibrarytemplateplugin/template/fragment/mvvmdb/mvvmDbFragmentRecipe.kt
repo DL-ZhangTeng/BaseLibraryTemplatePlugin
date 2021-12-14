@@ -7,7 +7,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbFr
 import java.io.File
 
 
-fun RecipeExecutor.mvvmDbActivityRecipe(
+fun RecipeExecutor.mvvmDbFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
