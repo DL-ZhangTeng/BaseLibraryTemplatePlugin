@@ -49,12 +49,30 @@ val mvpListActivityTemplate
             help = "Activity 包名"
         }
 
+        val mBeanName = stringParameter {
+            name = "Activity Bean Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Bean"
+            suggest = { "${mPageName.value}Bean" }
+            help = "ListActivity 的数据类"
+        }
+
+        val mAdapterName = stringParameter {
+            name = "Activity Adapter Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Adapter"
+            suggest = { "${mPageName.value}Adapter" }
+            help = "ListActivity 的Adapter"
+        }
+
         thumb { File("template_empty_activity.png") }
 
         widgets(
             TextFieldWidget(mPageName),
             TextFieldWidget(mActivityLayoutName),
             CheckBoxWidget(mIsGenerateActivityLayout),
+            TextFieldWidget(mBeanName),
+            TextFieldWidget(mAdapterName),
             PackageNameWidget(mActivityPackageName),
         )
 
@@ -64,6 +82,8 @@ val mvpListActivityTemplate
                 mPageName.value,
                 mActivityLayoutName.value,
                 mIsGenerateActivityLayout.value,
+                mBeanName.value,
+                mAdapterName.value,
                 mActivityPackageName.value,
             )
         }

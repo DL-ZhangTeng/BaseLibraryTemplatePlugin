@@ -3,6 +3,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpLi
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listBean
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.imodel.mvpIModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.mvpModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
@@ -17,6 +19,8 @@ fun RecipeExecutor.mvpListActivityRecipe(
     mPageName: String,
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
+    mBeanClass: String,
+    mAdapterClass: String,
     mActivityPackageName: String,
 ) {
     generateManifest(
@@ -47,6 +51,8 @@ fun RecipeExecutor.mvpListActivityRecipe(
     val mvpModel = mvpModel(rootPath, mPageName)
     val mvpIPresenter = mvpIPresenter(rootPath, mPageName)
     val mvpPresenter = mvpPresenter(rootPath, mPageName)
+    val listBean = listBean(rootPath, mBeanClass)
+    val listAdapter = listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
     // 保存Activity
     save(
         listActivity,
@@ -110,5 +116,31 @@ fun RecipeExecutor.mvpListActivityRecipe(
                     + "/mvp/presenter/"
         ).apply { mkdirs() }
             .resolve("${mPageName}Presenter.kt")
+    )
+
+    save(
+        listBean,
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/bean/"
+        ).apply { mkdirs() }
+            .resolve("${mBeanClass}.kt")
+    )
+    save(
+        listAdapter,
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/adapter/"
+        ).apply { mkdirs() }
+            .resolve("${mAdapterClass}.kt")
+    )
+
+    save(
+        baseXml(),
+        moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
     )
 }

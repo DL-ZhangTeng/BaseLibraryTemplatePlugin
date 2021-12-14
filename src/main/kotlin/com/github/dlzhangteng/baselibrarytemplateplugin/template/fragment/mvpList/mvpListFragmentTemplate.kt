@@ -50,12 +50,30 @@ val mvpListFragmentTemplate
             help = "Fragment 包名"
         }
 
+        val mBeanName = stringParameter {
+            name = "Fragment Bean Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Bean"
+            suggest = { "${mPageName.value}Bean" }
+            help = "ListFragment 的数据类"
+        }
+
+        val mAdapterName = stringParameter {
+            name = "Fragment Adapter Name"
+            constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
+            default = "Adapter"
+            suggest = { "${mPageName.value}Adapter" }
+            help = "ListFragment 的Adapter"
+        }
+
         thumb { File("template_blank_fragment.png") }
 
         widgets(
             TextFieldWidget(mPageName),
             TextFieldWidget(mFragmentLayoutName),
             CheckBoxWidget(mIsGenerateFragmentLayout),
+            TextFieldWidget(mBeanName),
+            TextFieldWidget(mAdapterName),
             PackageNameWidget(mFragmentPackageName),
         )
 
@@ -65,6 +83,8 @@ val mvpListFragmentTemplate
                 mPageName.value,
                 mFragmentLayoutName.value,
                 mIsGenerateFragmentLayout.value,
+                mBeanName.value,
+                mAdapterName.value,
                 mFragmentPackageName.value,
             )
         }
