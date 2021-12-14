@@ -3,6 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import java.io.File
 
@@ -71,11 +72,13 @@ fun RecipeExecutor.listActivityRecipe(
     )
 
     save(
-        baseXml(),
-        moduleTemplateData.resDir.resolve("layout/item${
-            com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(
-                mPageName
-            )
-        }.xml")
+        baseListXml(),
+        moduleTemplateData.resDir.resolve(
+            "layout/item${
+                com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(
+                    mPageName
+                )
+            }.xml"
+        )
     )
 }

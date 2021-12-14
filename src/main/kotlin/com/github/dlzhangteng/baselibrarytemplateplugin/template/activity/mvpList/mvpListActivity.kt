@@ -49,14 +49,15 @@ class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName
     }
 
     override fun getRecyclerView(): RecyclerView {
-        return
+        return findViewById(R.id.recyclerView)
     }
 
     override fun getSmartRefreshLayout(): SmartRefreshLayout {
-        return
+        return findViewById(R.id.smartRefreshLayout)
     }
 
     override fun loadData(i: Int) {}
+    
     override fun setLayoutManager() {
         setLinearLayoutManager(LinearLayoutManager.VERTICAL)
     }

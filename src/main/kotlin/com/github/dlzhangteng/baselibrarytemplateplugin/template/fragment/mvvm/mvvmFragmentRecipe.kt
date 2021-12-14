@@ -48,6 +48,6 @@ fun RecipeExecutor.mvvmFragmentRecipe(
                     + rootPath.replace(".", "/")
                     + "/mvvm/vm/"
         ).apply { mkdirs() }
-            .resolve("${mPageName}ViewModel.kt")
+            .resolve("${mPageName}FragmentViewModel.kt")
     )
 }

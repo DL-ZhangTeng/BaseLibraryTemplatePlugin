@@ -51,6 +51,6 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
                     + rootPath.replace(".", "/")
                     + "/mvvm/vm/"
         ).apply { mkdirs() }
-            .resolve("${mPageName}DbViewModel.kt")
+            .resolve("${mPageName}DbFragmentViewModel.kt")
     )
 }

@@ -59,15 +59,16 @@ class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${m
         return ${mPageName}Adapter()
     }
 
-    override fun getRecyclerView(): RecyclerView {
-        return
+    override fun getRecyclerView(): RecyclerView? {
+        return view?.findViewById(R.id.recyclerView)
     }
 
-    override fun getSmartRefreshLayout(): SmartRefreshLayout {
-        return
+    override fun getSmartRefreshLayout(): SmartRefreshLayout? {
+        return view?.findViewById(R.id.smartRefreshLayout)
     }
 
     override fun loadData(i: Int) {}
+    
     override fun setLayoutManager() {
         setLinearLayoutManager(LinearLayoutManager.VERTICAL)
     }

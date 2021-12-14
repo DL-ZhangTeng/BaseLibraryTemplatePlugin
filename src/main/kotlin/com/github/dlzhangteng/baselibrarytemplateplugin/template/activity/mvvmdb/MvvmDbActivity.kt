@@ -12,10 +12,10 @@ package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else "
 import android.os.Bundle
 import com.zhangteng.base.base.BaseMvvmDbActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.${mPageName}DbActivityBinding
+import ${mRootPackageName}.databinding.Activity${mPageName}DbBinding
 import ${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel
 
-class ${mPageName}DbActivity : BaseMvvmDbActivity<${mPageName}DbViewModel, ${mPageName}DbActivityBinding>() {
+class ${mPageName}DbActivity : BaseMvvmDbActivity<${mPageName}DbViewModel, Activity${mPageName}DbBinding>() {
 
     override fun initView() {
 

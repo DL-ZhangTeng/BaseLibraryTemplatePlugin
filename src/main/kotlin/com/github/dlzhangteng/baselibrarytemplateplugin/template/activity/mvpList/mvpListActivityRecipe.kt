@@ -10,6 +10,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.mo
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.mvpPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.view.mvpView
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import java.io.File
 
@@ -140,7 +141,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
     )
 
     save(
-        baseXml(),
+        baseListXml(),
         moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
     )
 }

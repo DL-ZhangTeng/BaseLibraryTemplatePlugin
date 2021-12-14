@@ -14,10 +14,10 @@ import android.view.View
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.base.base.BaseMvvmDbFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.${mPageName}DbFragmentBinding
+import ${mRootPackageName}.databinding.Fragment${mPageName}DbBinding
 import ${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel
 
-class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewModel, ${mPageName}DbFragmentBinding>() {
+class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewModel, Fragment${mPageName}DbBinding>() {
 
     companion object {
         fun newInstance() = ${mPageName}DbFragment()

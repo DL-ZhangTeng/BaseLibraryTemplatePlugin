@@ -9,6 +9,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mo
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter.ipresenter.mvpIFragmentPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter.mvpFragmentPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.view.mvpFragmentView
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import java.io.File
 
@@ -126,7 +127,7 @@ fun RecipeExecutor.mvpListFragmentRecipe(
     )
 
     save(
-        baseXml(),
+        baseListXml(),
         moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
     )
 }
