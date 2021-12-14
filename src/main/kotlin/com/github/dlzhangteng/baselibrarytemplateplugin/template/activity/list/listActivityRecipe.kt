@@ -51,27 +51,23 @@ fun RecipeExecutor.listActivityRecipe(
 
     save(
         listBean,
-        if (moduleTemplateData.projectTemplateData.applicationPackage == null)
-            moduleTemplateData.srcDir
-        else
-            File(
-                moduleTemplateData.rootDir.absolutePath
-                        + "/src/main/java/"
-                        + rootPath.replace(".", "/")
-            )
-                .resolve("bean/${mBeanClass}.kt")
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/bean/"
+        ).apply { mkdirs() }
+            .resolve("${mBeanClass}.kt")
     )
     save(
         listAdapter,
-        if (moduleTemplateData.projectTemplateData.applicationPackage == null)
-            moduleTemplateData.srcDir
-        else
-            File(
-                moduleTemplateData.rootDir.absolutePath
-                        + "/src/main/java/"
-                        + rootPath.replace(".", "/")
-            )
-                .resolve("adapter/${mAdapterClass}.kt")
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/adapter/"
+        ).apply { mkdirs() }
+            .resolve("${mAdapterClass}.kt")
     )
 
     save(
