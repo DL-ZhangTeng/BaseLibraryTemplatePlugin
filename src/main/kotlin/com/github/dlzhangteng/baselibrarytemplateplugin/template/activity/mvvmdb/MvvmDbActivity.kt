@@ -9,7 +9,6 @@ fun mvvmDbActivity(
 ) = """
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
-import android.os.Bundle
 import com.zhangteng.base.base.BaseMvvmDbActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Activity${mPageName}DbBinding

@@ -11,9 +11,6 @@ package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else "
 
 import android.os.Bundle
 import com.zhangteng.base.base.BaseMvpActivity
-import com.zhangteng.base.mvp.utils.LoadingPresenterHandler
-import com.zhangteng.base.utils.LoadViewHelper
-import com.zhangteng.base.utils.jumpToActivity
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
