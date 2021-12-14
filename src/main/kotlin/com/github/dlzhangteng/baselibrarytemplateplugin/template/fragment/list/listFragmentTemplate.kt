@@ -65,7 +65,7 @@ val listFragmentTemplate
             help = "ListFragment 的Adapter"
         }
 
-        thumb { File("template_list_fragment.png.png") }
+        thumb { File("template_list_fragment.png") }
 
         widgets(
             TextFieldWidget(mPageName),
