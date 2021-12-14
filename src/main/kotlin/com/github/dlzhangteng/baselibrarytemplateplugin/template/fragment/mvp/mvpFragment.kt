@@ -32,7 +32,7 @@ class ${mPageName}Fragment : BaseMvpFragment<I${mPageName}FragmentView, I${mPage
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.fragment_test, container, false)
+        return LayoutInflater.from(context).inflate(R.layout.fragment${getLayoutName(mPageName)}, container, false)
     }
 
     /**

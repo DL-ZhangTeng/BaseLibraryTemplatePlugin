@@ -33,7 +33,7 @@ class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewMode
     }
 
     override fun layoutId(): Int {
-        return R.layout.fragment_db${getLayoutName(mPageName)}
+        return R.layout.fragment${getLayoutName(mPageName)}_db
     }
 }
 """
