@@ -39,6 +39,10 @@ fun RecipeExecutor.mvvmActivityRecipe(
         rootPath,
         mPageName
     )
+    val mvvmActivityRepository = mvvmActivityRepository(
+        rootPath,
+        mPageName
+    )
     // 保存Activity
     save(
         mvvmActivity,
@@ -57,5 +61,15 @@ fun RecipeExecutor.mvvmActivityRecipe(
                     + "/mvvm/vm/"
         ).apply { mkdirs() }
             .resolve("${mPageName}ViewModel.kt")
+    )
+    save(
+        mvvmActivityRepository,
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/mvvm/repository/"
+        ).apply { mkdirs() }
+            .resolve("${mPageName}Repository.kt")
     )
 }

@@ -7,6 +7,9 @@ fun mvvmDbActivityViewModel(
 package ${mRootPackageName}.mvvm.vm
 
 import com.zhangteng.base.mvvm.base.BaseViewModel
+import ${mRootPackageName}.mvvm.repository.${mPageName}DbRepository
 
-class ${mPageName}DbViewModel : BaseViewModel()
+class ${mPageName}DbViewModel : BaseViewModel() {
+    private val mRepository by lazy { ${mPageName}DbRepository() }
+}
 """

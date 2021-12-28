@@ -7,8 +7,9 @@ fun mvvmDbFragmentViewModel(
 package ${mRootPackageName}.mvvm.vm
 
 import com.zhangteng.base.mvvm.base.BaseViewModel
+import ${mRootPackageName}.mvvm.repository.${mPageName}DbFragmentRepository
 
 class ${mPageName}DbFragmentViewModel : BaseViewModel() {
-   
+    private val mRepository by lazy { ${mPageName}DbFragmentRepository() }
 }
 """

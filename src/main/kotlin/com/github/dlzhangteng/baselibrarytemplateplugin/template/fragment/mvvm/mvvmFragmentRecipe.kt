@@ -31,6 +31,10 @@ fun RecipeExecutor.mvvmFragmentRecipe(
         rootPath,
         mPageName
     )
+    val mvvmFragmentRepository = mvvmFragmentRepository(
+        rootPath,
+        mPageName
+    )
     // 保存Activity
     save(
         mvvmFragment,
@@ -49,5 +53,15 @@ fun RecipeExecutor.mvvmFragmentRecipe(
                     + "/mvvm/vm/"
         ).apply { mkdirs() }
             .resolve("${mPageName}FragmentViewModel.kt")
+    )
+    save(
+        mvvmFragmentRepository,
+        File(
+            moduleTemplateData.rootDir.absolutePath
+                    + "/src/main/java/"
+                    + rootPath.replace(".", "/")
+                    + "/mvvm/repository/"
+        ).apply { mkdirs() }
+            .resolve("${mPageName}FragmentRepository.kt")
     )
 }
