@@ -17,6 +17,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.m
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.widget.dialog.baseDialogTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.widget.popup.basePopupWindowTemplate
 
 class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
     override fun getTemplates(): List<Template> = listOf(
@@ -38,5 +39,6 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         baseAdapterTemplate,
 
         baseDialogTemplate,
+        basePopupWindowTemplate,
     )
 }
