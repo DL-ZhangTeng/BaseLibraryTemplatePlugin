@@ -2,10 +2,10 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listAdapter
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listBean
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
@@ -30,9 +30,9 @@ fun RecipeExecutor.listFragmentRecipe(
     val listFragment =
         listFragment(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
     val listBean =
-        listBean(rootPath, mBeanClass)
+        baseBean(rootPath, mBeanClass)
     val listAdapter =
-        listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
+        baseAdapter(rootPath, "item${getLayoutName(mPageName)}", mBeanClass, mAdapterClass)
     // 保存Activity
     save(
         listFragment,
@@ -40,7 +40,7 @@ fun RecipeExecutor.listFragmentRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(baseListXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
 
     save(
@@ -65,7 +65,7 @@ fun RecipeExecutor.listFragmentRecipe(
     )
 
     save(
-        baseListXml(),
+        baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
                 getLayoutName(

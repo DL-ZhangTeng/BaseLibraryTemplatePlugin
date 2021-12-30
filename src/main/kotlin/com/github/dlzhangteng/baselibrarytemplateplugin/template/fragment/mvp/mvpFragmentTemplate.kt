@@ -15,9 +15,7 @@ val mvpFragmentTemplate
         formFactor = FormFactor.Mobile
         screens = listOf(
             WizardUiContext.FragmentGallery,
-            WizardUiContext.MenuEntry,
-            WizardUiContext.NewProject,
-            WizardUiContext.NewModule
+            WizardUiContext.MenuEntry
         )
 
         val mPageName = stringParameter {

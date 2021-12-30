@@ -3,8 +3,6 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpLi
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listAdapter
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listBean
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.imodel.mvpIModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.mvpModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
@@ -12,6 +10,8 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.pr
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.view.mvpView
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
@@ -52,8 +52,9 @@ fun RecipeExecutor.mvpListActivityRecipe(
     val mvpModel = mvpModel(rootPath, mPageName)
     val mvpIPresenter = mvpIPresenter(rootPath, mPageName)
     val mvpPresenter = mvpPresenter(rootPath, mPageName)
-    val listBean = listBean(rootPath, mBeanClass)
-    val listAdapter = listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
+    val listBean = baseBean(rootPath, mBeanClass)
+    val listAdapter =
+        baseAdapter(rootPath, "item${getLayoutName(mPageName)}", mBeanClass, mAdapterClass)
     // 保存Activity
     save(
         listActivity,
@@ -61,7 +62,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(baseListXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
 
     save(
@@ -141,7 +142,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
     )
 
     save(
-        baseListXml(),
+        baseXml(),
         moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
     )
 }

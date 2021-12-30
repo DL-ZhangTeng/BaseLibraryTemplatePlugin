@@ -5,6 +5,8 @@ import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
@@ -37,9 +39,9 @@ fun RecipeExecutor.listActivityRecipe(
     val listActivity =
         listActivity(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
     val listBean =
-        listBean(rootPath, mBeanClass)
+        baseBean(rootPath, mBeanClass)
     val listAdapter =
-        listAdapter(rootPath, mPageName, mBeanClass, mAdapterClass)
+        baseAdapter(rootPath, "item${getLayoutName(mPageName)}", mBeanClass, mAdapterClass)
     // 保存Activity
     save(
         listActivity,
@@ -47,7 +49,7 @@ fun RecipeExecutor.listActivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(baseListXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
 
     save(
@@ -72,7 +74,7 @@ fun RecipeExecutor.listActivityRecipe(
     )
 
     save(
-        baseListXml(),
+        baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
                 com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(

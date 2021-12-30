@@ -1,9 +1,9 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter
 
 
-fun listAdapter(
+fun baseAdapter(
     mRootPackageName: String?,
-    mPageName: String,
+    mAdapterLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -19,12 +19,12 @@ import ${mRootPackageName}.bean.${mBeanClass}
 class ${mAdapterClass} : BaseAdapter<${mBeanClass}, BaseAdapter.DefaultViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefaultViewHolder {
         return DefaultViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item${
-    com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(
-        mPageName
-    )
-}, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.${mAdapterLayoutName}, parent, false)
         )
+    }
+    
+    override fun onBindViewHolder(holder: DefaultViewHolder, item: ${mBeanClass}?, position: Int) {
+        
     }
 }
 """

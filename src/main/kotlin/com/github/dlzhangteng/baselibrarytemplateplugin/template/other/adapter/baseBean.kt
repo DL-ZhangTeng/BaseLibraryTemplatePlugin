@@ -1,7 +1,7 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter
 
 
-fun listBean(
+fun baseBean(
     mRootPackageName: String?,
     mBeanClass: String,
 ) = """
