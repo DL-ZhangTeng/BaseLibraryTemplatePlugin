@@ -1,7 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.tree
 
 
-fun baseBean(
+fun treeBean(
     mRootPackageName: String?,
     mBeanClass: String,
 ) = """

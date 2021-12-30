@@ -1,15 +1,16 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.tree
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.header
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
-fun RecipeExecutor.treeAdapterRecipe(
+fun RecipeExecutor.headerOrFooterAdapterRecipe(
     moduleTemplateData: ModuleTemplateData,
-    mAdapterLayoutName: String,
-    mIsGenerateAdapterLayout: Boolean,
     mBeanClass: String,
     mAdapterClass: String,
     mAdapterPackageName: String,
@@ -24,13 +25,9 @@ fun RecipeExecutor.treeAdapterRecipe(
         else mAdapterPackageName
 
     val baseBean =
-        treeBean(rootPath, mBeanClass)
-    val treeAdapter =
-        treeAdapter(rootPath, mAdapterLayoutName, mBeanClass, mAdapterClass)
-    if (mIsGenerateAdapterLayout) {
-        // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mAdapterLayoutName}.xml"))
-    }
+        baseBean(rootPath, mBeanClass)
+    val headerOrFooterAdapter =
+        headerOrFooterAdapter(rootPath, mBeanClass, mAdapterClass)
 
     save(
         baseBean,
@@ -43,7 +40,7 @@ fun RecipeExecutor.treeAdapterRecipe(
             .resolve("${mBeanClass}.kt")
     )
     save(
-        treeAdapter,
+        headerOrFooterAdapter,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
