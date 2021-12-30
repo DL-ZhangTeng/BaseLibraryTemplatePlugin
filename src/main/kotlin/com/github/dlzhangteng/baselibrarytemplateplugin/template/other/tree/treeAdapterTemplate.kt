@@ -1,15 +1,15 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.tree
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import java.io.File
 import java.util.*
 
-val baseAdapterTemplate
+val treeAdapterTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseAdapter"
-        description = "一键创建 BaseAdapter "
+        name = "ZTTreeAdapter"
+        description = "一键创建 TreeAdapter "
         minApi = MIN_API
         category = Category.Other
         formFactor = FormFactor.Mobile
@@ -27,13 +27,13 @@ val baseAdapterTemplate
         }
 
         val mIsGenerateAdapterLayout = booleanParameter {
-            name = "Generate BaseAdapter Layout"
+            name = "Generate TreeAdapter Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
         }
 
         val mAdapterLayoutName = stringParameter {
-            name = "BaseAdapter Layout Name"
+            name = "TreeAdapter Layout Name"
             default = "item_main"
             visible = { mIsGenerateAdapterLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
@@ -45,23 +45,23 @@ val baseAdapterTemplate
             constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
             visible = { !isNewModule }
-            help = "BaseAdapter 包名"
+            help = "TreeAdapter 包名"
         }
 
         val mBeanName = stringParameter {
-            name = "BaseAdapter Bean Name"
+            name = "TreeAdapter Bean Name"
             constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
             default = "Bean"
             suggest = { "${mPageName.value}Bean" }
-            help = "BaseAdapter 的数据类"
+            help = "TreeAdapter 的数据类"
         }
 
         val mAdapterName = stringParameter {
-            name = "BaseAdapter Name"
+            name = "TreeAdapter Name"
             constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
             default = "Adapter"
             suggest = { "${mPageName.value}Adapter" }
-            help = "BaseAdapter 的Adapter"
+            help = "TreeAdapter 的Adapter"
         }
 
         thumb { File("template_empty_activity.png") }
@@ -76,7 +76,7 @@ val baseAdapterTemplate
         )
 
         recipe = { data: TemplateData ->
-            baseAdapterRecipe(
+            treeAdapterRecipe(
                 data as ModuleTemplateData,
                 mAdapterLayoutName.value,
                 mIsGenerateAdapterLayout.value,

@@ -1,4 +1,4 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.tree
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
@@ -8,7 +8,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import java.io.File
 
 
-fun RecipeExecutor.baseAdapterRecipe(
+fun RecipeExecutor.treeAdapterRecipe(
     moduleTemplateData: ModuleTemplateData,
     mAdapterLayoutName: String,
     mIsGenerateAdapterLayout: Boolean,
@@ -27,8 +27,8 @@ fun RecipeExecutor.baseAdapterRecipe(
 
     val baseBean =
         baseBean(rootPath, mBeanClass)
-    val baseAdapter =
-        baseAdapter(rootPath, mAdapterLayoutName, mBeanClass, mAdapterClass)
+    val treeAdapter =
+        treeAdapter(rootPath, mAdapterLayoutName, mBeanClass, mAdapterClass)
     if (mIsGenerateAdapterLayout) {
         // 保存xml
         save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mAdapterLayoutName}.xml"))
@@ -45,7 +45,7 @@ fun RecipeExecutor.baseAdapterRecipe(
             .resolve("${mBeanClass}.kt")
     )
     save(
-        baseAdapter,
+        treeAdapter,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
