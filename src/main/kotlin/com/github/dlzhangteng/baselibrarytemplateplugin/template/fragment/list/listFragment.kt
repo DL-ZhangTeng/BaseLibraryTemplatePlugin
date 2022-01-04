@@ -50,7 +50,7 @@ class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>()
     }
     
     override fun createAdapter(): ${mAdapterClass} {
-        return ${mAdapterClass}()
+        return ${mAdapterClass}(mList)
     }
 
     override fun getRecyclerView(): RecyclerView? {

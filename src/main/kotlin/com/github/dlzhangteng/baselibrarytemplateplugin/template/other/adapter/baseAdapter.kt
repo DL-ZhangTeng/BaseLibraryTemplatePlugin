@@ -16,7 +16,12 @@ import ${mRootPackageName}.R
 
 import ${mRootPackageName}.bean.${mBeanClass}
 
-class ${mAdapterClass} : BaseAdapter<${mBeanClass}, BaseAdapter.DefaultViewHolder>() {
+class ${mAdapterClass} : BaseAdapter<${mBeanClass}, BaseAdapter.DefaultViewHolder> {
+
+    constructor() : super()
+
+    constructor(data: MutableList<${mBeanClass}?>?) : super(data)
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefaultViewHolder {
         return DefaultViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.${mAdapterLayoutName}, parent, false)

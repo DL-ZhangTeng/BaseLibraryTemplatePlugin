@@ -45,7 +45,7 @@ class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName
     override fun initData() {}
 
     override fun createAdapter(): ${mPageName}Adapter {
-        return ${mPageName}Adapter()
+        return ${mPageName}Adapter(mList)
     }
 
     override fun getRecyclerView(): RecyclerView {

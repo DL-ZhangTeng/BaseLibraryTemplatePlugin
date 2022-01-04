@@ -18,10 +18,15 @@ fun baseListXml() = """
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        </LinearLayout>
 
         <com.scwang.smart.refresh.footer.ClassicsFooter
             android:layout_width="match_parent"

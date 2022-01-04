@@ -37,7 +37,7 @@ class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>()
     override fun initData() {}
     
     override fun createAdapter(): ${mAdapterClass} {
-        return ${mAdapterClass}()
+        return ${mAdapterClass}(mList)
     }
 
     override fun getRecyclerView(): RecyclerView {

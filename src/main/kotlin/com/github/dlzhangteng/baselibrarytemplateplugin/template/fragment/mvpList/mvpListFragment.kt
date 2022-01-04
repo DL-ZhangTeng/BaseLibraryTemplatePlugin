@@ -56,7 +56,7 @@ class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${m
     }
     
     override fun createAdapter(): ${mPageName}Adapter {
-        return ${mPageName}Adapter()
+        return ${mPageName}Adapter(mList)
     }
 
     override fun getRecyclerView(): RecyclerView? {
