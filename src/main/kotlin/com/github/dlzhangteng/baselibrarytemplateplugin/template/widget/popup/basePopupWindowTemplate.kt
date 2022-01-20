@@ -14,9 +14,7 @@ val basePopupWindowTemplate
         category = Category.Widget
         formFactor = FormFactor.Mobile
         screens = listOf(
-            WizardUiContext.MenuEntry,
-            WizardUiContext.NewProject,
-            WizardUiContext.NewModule
+            WizardUiContext.MenuEntry
         )
 
         val mPageName = stringParameter {
