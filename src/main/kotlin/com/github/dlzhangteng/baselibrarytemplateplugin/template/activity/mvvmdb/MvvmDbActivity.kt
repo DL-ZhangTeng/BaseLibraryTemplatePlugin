@@ -9,7 +9,7 @@ fun mvvmDbActivity(
 ) = """
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
-import com.zhangteng.base.base.BaseMvvmDbActivity
+import com.zhangteng.mvvm.mvvm.BaseMvvmDbActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Activity${mPageName}DbBinding
 import ${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel

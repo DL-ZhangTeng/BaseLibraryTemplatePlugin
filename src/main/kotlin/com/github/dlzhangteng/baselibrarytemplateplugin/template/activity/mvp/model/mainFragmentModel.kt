@@ -6,7 +6,7 @@ fun mvpModel(
 ) = """
 package ${mRootPackageName}.mvp.model
 
-import com.zhangteng.base.mvp.base.BaseModel
+import com.zhangteng.mvp.base.BaseModel
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 
 class ${mPageName}Model : BaseModel(), I${mPageName}Model

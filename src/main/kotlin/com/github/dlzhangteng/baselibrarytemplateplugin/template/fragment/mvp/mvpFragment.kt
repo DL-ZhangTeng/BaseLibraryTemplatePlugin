@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.zhangteng.base.base.BaseMvpFragment
+import com.zhangteng.mvp.mvp.BaseMvpFragment
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter

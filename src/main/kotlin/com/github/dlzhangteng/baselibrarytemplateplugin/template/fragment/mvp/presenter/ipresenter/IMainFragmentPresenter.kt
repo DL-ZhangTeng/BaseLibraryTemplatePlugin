@@ -6,7 +6,7 @@ fun mvpIFragmentPresenter(
 ) = """
 package ${mRootPackageName}.mvp.presenter.ipresenter
 
-import com.zhangteng.base.mvp.base.IPresenter
+import com.zhangteng.mvp.base.IPresenter
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 

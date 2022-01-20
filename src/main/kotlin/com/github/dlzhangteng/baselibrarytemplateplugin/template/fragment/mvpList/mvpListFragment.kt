@@ -16,7 +16,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.zhangteng.base.base.BaseListMvpFragment
+import com.zhangteng.mvp.mvp.BaseListMvpFragment
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel

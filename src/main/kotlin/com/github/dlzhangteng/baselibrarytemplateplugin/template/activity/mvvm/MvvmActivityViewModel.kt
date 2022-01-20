@@ -6,7 +6,7 @@ fun mvvmActivityViewModel(
 ) = """
 package ${mRootPackageName}.mvvm.vm
 
-import com.zhangteng.base.mvvm.base.BaseViewModel
+import com.zhangteng.mvvm.base.BaseViewModel
 import ${mRootPackageName}.mvvm.repository.${mPageName}Repository
 
 class ${mPageName}ViewModel : BaseViewModel() {

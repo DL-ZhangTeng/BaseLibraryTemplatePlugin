@@ -10,7 +10,7 @@ fun mvpActivity(
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
 import android.os.Bundle
-import com.zhangteng.base.base.BaseMvpActivity
+import com.zhangteng.mvp.mvp.BaseMvpActivity
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter

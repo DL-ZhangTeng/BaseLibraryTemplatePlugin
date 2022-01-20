@@ -6,7 +6,7 @@ fun mvvmActivityRepository(
 ) = """
 package ${mRootPackageName}.mvvm.repository
 
-import com.zhangteng.base.mvvm.base.BaseNetRepository
+import com.zhangteng.mvvm.base.BaseNetRepository
 
 class ${mPageName}Repository : BaseNetRepository() {
 

@@ -6,7 +6,7 @@ fun mvpPresenter(
 ) = """
 package ${mRootPackageName}.mvp.presenter
 
-import com.zhangteng.base.mvp.base.BasePresenter
+import com.zhangteng.mvp.base.BasePresenter
 import ${mRootPackageName}.mvp.model.${mPageName}Model
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter

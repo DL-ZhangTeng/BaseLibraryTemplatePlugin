@@ -6,7 +6,7 @@ fun mvpFragmentView(
 ) = """
 package ${mRootPackageName}.mvp.view
 
-import com.zhangteng.base.mvp.base.IView
+import com.zhangteng.mvp.base.IView
 
 interface I${mPageName}FragmentView : IView
 """

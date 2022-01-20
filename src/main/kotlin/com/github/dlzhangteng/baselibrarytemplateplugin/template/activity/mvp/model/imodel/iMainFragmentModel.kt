@@ -6,7 +6,7 @@ fun mvpIModel(
 ) = """
 package ${mRootPackageName}.mvp.model.imodel
 
-import com.zhangteng.base.mvp.base.IModel
+import com.zhangteng.mvp.base.IModel
 
 interface I${mPageName}Model : IModel
 """

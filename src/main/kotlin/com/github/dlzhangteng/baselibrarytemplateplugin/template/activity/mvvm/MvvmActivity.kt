@@ -11,8 +11,8 @@ package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else "
 
 import android.content.IntentFilter
 import android.os.Bundle
-import com.zhangteng.base.base.BaseMvvmActivity
-import com.zhangteng.base.mvvm.manager.NetworkStateReceive
+import com.zhangteng.mvvm.mvvm.BaseMvvmActivity
+import com.zhangteng.mvvm.manager.NetworkStateReceive
 import ${mRootPackageName}.R
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 
