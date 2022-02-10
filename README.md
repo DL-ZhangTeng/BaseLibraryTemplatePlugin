@@ -86,7 +86,7 @@ dependencies {
   * pluginVerifierIdeVersions: 4.X版本AS 使用模板会有此字段，Fox版本没有，文档也没有显示，个人还是添加上了
   * 关于最低 最高版本 就是AS 版本信息中build 信息，本人使用的是AndroidStudio Fox 2020.3.1 Patch 3 Build，build 信息为203.xxxx
 
-![picture1](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/tree/main/picture/1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
+![picture1](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/blob/main/picture/1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
 
 * `gradle.properties`文件内容如下：
 
@@ -132,7 +132,7 @@ kotlin.stdlib.default.dependency = false
   * 修改包名，个人修改结果如下
   * 具体为src - kotlin - 包名 com.github.dlzhangteng.baselibrarytemplateplugin - 三个文件夹，两个存放 项目原本文件 listeners services，一个存放自定义模板代码 template
 
-![picture2](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/tree/main/picture/2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
+![picture2](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/blob/main/picture/2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
 
 * 修改MyProjectManagerListener
 
@@ -405,7 +405,7 @@ class ${mPageName}Activity : BaseActivity() {
 
 可能你的Gradle 页面是这样的:
 
-![picture3](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/tree/main/picture/3.webp?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
+![picture3](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/blob/main/picture/3.webp?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1b2x1bzk=,size_16,color_FFFFFF,t_70#pic_center)
 
 点击`Task list not built..`
 
