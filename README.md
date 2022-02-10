@@ -413,7 +413,9 @@ class ${mPageName}Activity : BaseActivity() {
 
 拿着编译好的jar包，打开AS `Settings/Preferences` > `Plugins` > `⚙️` > `Install plugin from disk...` > `RESTART IDE`
 ### 鸣谢
+
 [JiaYang627](https://github.com/JiaYang627) : [TinMVVM](https://github.com/JiaYang627/TinMVVM/blob/main/README.md)
+
 [鸿洋](https://blog.csdn.net/lmj623565791?spm=1001.2014.3001.5509) : [Android Studio自定义模板 写页面竟然可以如此轻松](https://blog.csdn.net/lmj623565791/article/details/51635533)
 
 ![Build](https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/workflows/Build/badge.svg)
