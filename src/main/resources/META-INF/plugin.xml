@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.dlzhangteng.baselibrarytemplateplugin</id>
-    <name>BaseLibraryTemplatePlugin</name>
+    <name>BaseLibrary</name>
     <vendor email="763263311@qq.com">dl-zhangteng</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
@@ -19,9 +19,9 @@
         <p><a href='https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin'>Github</a> | <a
                 href='https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin'>Manual</a> | <a
                 href='https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/issues'>Issues</a></p>
-        <p>BaseLibraryTemplatePlugin This is a plugin you can generate Base Class.
+        <p>BaseLibrary This is a plugin you can generate Base Class.
             <strong>This Plugin is only for IntelliJ IDEA And Android Studio</strong>.
-            which is base on BaseLibraryTemplatePlugin and more flexible and convenient. Welcome to issue
+            which is base on BaseLibrary and more flexible and convenient. Welcome to issue
             and PR.</p>
         <h2>Install</h2>
         <ul>
@@ -29,14 +29,14 @@
                 <ul>
                     <li><kbd>File</kbd> &gt; <kbd>Settings</kbd> &gt; <kbd>Plugins</kbd> &gt; <kbd>Browse
                         repositories...</kbd> &gt; <kbd>Search for
-                        &quot;BaseLibraryTemplatePlugin&quot;</kbd> &gt; <kbd>Install Plugin</kbd></li>
+                        &quot;BaseLibrary&quot;</kbd> &gt; <kbd>Install Plugin</kbd></li>
                 </ul>
             </li>
             <li><p>Using IDE built-in plugin system on MacOs:</p>
                 <ul>
                     <li><kbd>Preferences</kbd> &gt; <kbd>Settings</kbd> &gt; <kbd>Plugins</kbd> &gt; <kbd>Browse
                         repositories...</kbd> &gt; <kbd>Search for
-                        &quot;BaseLibraryTemplatePlugin&quot;</kbd> &gt; <kbd>Install Plugin</kbd></li>
+                        &quot;BaseLibrary&quot;</kbd> &gt; <kbd>Install Plugin</kbd></li>
                 </ul>
             </li>
             <li><p>Manually:</p>
@@ -45,9 +45,6 @@
                             href='https://github.com/DL-ZhangTeng/BaseLibraryTemplatePlugin/releases'>latest
                         release</a> and install it manually using <kbd>Preferences</kbd> &gt;
                         <kbd>Plugins</kbd> &gt; <kbd>Install plugin from disk...</kbd></li>
-                    <li>From official jetbrains store from <a
-                            href='https://plugins.jetbrains.com/plugin/18589-baselibrarytemplateplugin/'>download</a>
-                    </li>
                 </ul>
             </li>
         </ul>
