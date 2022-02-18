@@ -1,11 +1,26 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32.0845 7.94025V4H24.0203V7.9896H16.029V4H7.91553V7.94025H4V36H16.0044V32.0045C16.0058 30.9457 16.4274 29.9308 17.1766 29.1826C17.9258 28.4345 18.9412 28.0143 20 28.0143C21.0588 28.0143 22.0743 28.4345 22.8234 29.1826C23.5726 29.9308 23.9942 30.9457 23.9956 32.0045V36H36V7.94025H32.0845Z"
-          fill="url(#paint0_linear)"/>
-    <defs>
-        <linearGradient id="paint0_linear" x1="2.94192" y1="4.89955" x2="37.7772" y2="39.7345" gradientUnits="userSpaceOnUse">
-            <stop offset="0.15937" stop-color="#3BEA62"/>
-            <stop offset="0.5404" stop-color="#3C99CC"/>
-            <stop offset="0.93739" stop-color="#6B57FF"/>
-        </linearGradient>
-    </defs>
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+    <g>
+        <title>background</title>
+        <rect x="-1" y="-1" width="40" height="40" id="canvas_background" fill="none" />
+    </g>
+    <g>
+        <title>Layer 1</title>
+        <defs>
+            <linearGradient id="svg_4" x1="-0.033065" y1="0.028111" x2="1.055538" y2="1.116703">
+                <stop offset="0.15937" stop-color="#6B57FF" />
+                <stop offset="0.5404" stop-color="#3C99CC" />
+                <stop offset="0.93739" stop-color="#3BEA62" />
+            </linearGradient>
+        </defs>
+        <g stroke="null" id="svg_7">
+            <path stroke="null"
+                d="m35.281155,4.949921l0,-4.949941l-10.130652,0l0,5.011937l-10.039072,0l0,-5.011937l-10.192548,0l0,4.949941l-4.918885,0l0,35.250073l15.080529,0l0,-5.019349c0.001759,-1.330118 0.531394,-2.605086 1.472576,-3.545013c0.941183,-0.939801 2.216779,-1.467677 3.546897,-1.467677c1.330118,0 2.60584,0.527876 3.546897,1.467677c0.941183,0.939927 1.470818,2.214895 1.472576,3.545013l0,5.019349l15.080529,0l0,-35.250073l-4.918847,0z"
+                fill="url(#svg_4)" id="svg_6" />
+        </g>
+        <text fill="#ffffff" stroke-width="0" x="78.747518" y="-63.182622" id="svg_8" font-size="24"
+            font-family="'Shadows Into Light', serif" text-anchor="start" xml:space="preserve"
+            transform="matrix(0.856346531500925,0,0,0.6444958994242855,-57.71242518075515,66.24862325140342) "
+            stroke="#000">BL</text>
+    </g>
 </svg>
