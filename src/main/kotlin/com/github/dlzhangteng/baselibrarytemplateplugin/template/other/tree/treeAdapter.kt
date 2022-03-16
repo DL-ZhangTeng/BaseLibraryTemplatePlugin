@@ -28,9 +28,8 @@ class ${mAdapterClass}(
     
     override fun onBindViewHolder(
         holder: DefaultViewHolder?,
-        item: ${mBeanClass}?,
-        position: Int,
-        node: Node?
+        node: Node<${mBeanClass}?>?,
+        position: Int
     ) {
 
     }

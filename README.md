@@ -97,7 +97,7 @@ dependencies {
 pluginGroup = com.github.dlzhangteng.baselibrarytemplateplugin
 pluginName = BaseLibraryTemplatePlugin
 # SemVer format -> https://semver.org
-pluginVersion = 1.3.0
+pluginVersion = 1.3.1
 
 # See https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html
 # for insight into build numbers and IntelliJ Platform versions.
