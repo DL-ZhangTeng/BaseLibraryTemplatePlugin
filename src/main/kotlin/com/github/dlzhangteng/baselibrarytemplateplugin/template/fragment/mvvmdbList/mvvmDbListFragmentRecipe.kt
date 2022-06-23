@@ -113,7 +113,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
-                com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmList.getLayoutName(
+                getLayoutName(
                     mPageName
                 )
             }.xml"

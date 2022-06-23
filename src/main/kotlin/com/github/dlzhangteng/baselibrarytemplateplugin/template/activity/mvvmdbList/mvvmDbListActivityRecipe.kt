@@ -40,7 +40,9 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     val mvvmDbActivity = mvvmDbListActivity(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mBeanClass,
+        mAdapterClass
     )
     val mvvmDbActivityViewModel = mvvmDbActivityViewModel(
         rootPath,
@@ -55,7 +57,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         baseAdapter(
             rootPath,
             "item${
-                com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList.getLayoutName(
+               getLayoutName(
                     mPageName
                 )
             }",

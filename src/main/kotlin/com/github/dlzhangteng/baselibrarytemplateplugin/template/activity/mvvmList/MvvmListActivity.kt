@@ -5,7 +5,9 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.g
 fun mvvmListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
-    mPageName: String
+    mPageName: String,
+    mBeanClass: String,
+    mAdapterClass: String,
 ) = """
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
@@ -22,7 +24,7 @@ import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 
 
-class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, ${mPageName}Bean, ${mPageName}Adapter>() {
+class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, ${mBeanClass}, ${mAdapterClass}>() {
 
     private var intentFilter: IntentFilter? = null
     private var netChangeReceiver: NetworkStateReceive? = null
@@ -44,8 +46,8 @@ class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, ${mPage
 
     override fun initData() {}
 
-    override fun createAdapter(): ${mPageName}Adapter {
-        return ${mPageName}Adapter(mList)
+    override fun createAdapter(): $mAdapterClass {
+        return ${mAdapterClass}(mList)
     }
 
     override fun getRecyclerView(): RecyclerView {

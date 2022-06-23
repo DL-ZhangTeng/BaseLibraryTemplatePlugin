@@ -3,7 +3,9 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpLi
 fun mvpListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
-    mPageName: String
+    mPageName: String,
+    mBeanClass: String,
+    mAdapterClass: String,
 ) = """
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
@@ -20,7 +22,7 @@ import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 
-class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter,${mPageName}Bean,${mPageName}Adapter>(), I${mPageName}View {
+class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, ${mAdapterClass}>(), I${mPageName}View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +45,8 @@ class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName
 
     override fun initData() {}
 
-    override fun createAdapter(): ${mPageName}Adapter {
-        return ${mPageName}Adapter(mList)
+    override fun createAdapter(): $mAdapterClass {
+        return ${mAdapterClass}(mList)
     }
 
     override fun getRecyclerView(): RecyclerView {

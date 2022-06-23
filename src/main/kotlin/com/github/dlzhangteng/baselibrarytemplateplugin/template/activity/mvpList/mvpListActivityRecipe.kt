@@ -45,7 +45,9 @@ fun RecipeExecutor.mvpListActivityRecipe(
         mvpListActivity(
             rootPath,
             packageNameStr,
-            mPageName
+            mPageName,
+            mBeanClass,
+            mAdapterClass
         )
     val mvpIView = mvpView(rootPath, mPageName)
     val mvpIModel = mvpIModel(rootPath, mPageName)
