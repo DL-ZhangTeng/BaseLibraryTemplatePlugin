@@ -16,9 +16,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import ${mRootPackageName}.R
 import com.zhangteng.base.base.BaseListFragment
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
@@ -49,7 +49,7 @@ class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>()
         super.initData(savedInstanceState)
     }
     
-    override fun createAdapter(): ${mAdapterClass} {
+    override fun createAdapter(): $mAdapterClass {
         return ${mAdapterClass}(mList)
     }
 

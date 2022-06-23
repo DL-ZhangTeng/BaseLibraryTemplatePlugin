@@ -1,8 +1,8 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.getLayoutName
 
-fun mvpListFragment(
+fun mvvmDbListFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
@@ -18,45 +18,34 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.zhangteng.mvvm.mvvm.BaseListMvvmDbFragment
 import ${mRootPackageName}.R
-import com.zhangteng.mvp.mvp.BaseListMvpFragment
-import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
-import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
-import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
-import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
+import ${mRootPackageName}.databinding.Fragment${mPageName}DbBinding
+import ${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, ${mAdapterClass}>() , I${mPageName}FragmentView {
-    
+class ${mPageName}DbFragment : BaseListMvvmDbFragment<${mPageName}DbFragmentViewModel, Fragment${mPageName}DbBinding, ${mBeanClass}, ${mAdapterClass}>(){
+
     companion object {
-        fun newInstance() = ${mPageName}Fragment()
+        fun newInstance() = ${mPageName}DbFragment()
     }
     
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.fragment${getLayoutName(mPageName)}, container, false)
-    }
-
-    /**
-    *return Proxy.newProxyInstance(${mPageName}FragmentPresenter::class.java.classLoader, arrayOf(I${mPageName}FragmentPresenter::class.java), LoadingPresenterHandler(${mPageName}FragmentPresenter())) as I${mPageName}FragmentPresenter
-    */
-	override fun createPresenter():I${mPageName}FragmentPresenter? {
-        return ${mPageName}FragmentPresenter()
-    }
-
-	override fun initView(view: View, savedInstanceState: Bundle?) {
-	    super.initView(view, savedInstanceState)
-
-	}
-
-    override fun initData(savedInstanceState: Bundle?) {
-        
+        return inflater.inflate(R.layout.fragment${getLayoutName(mPageName)}_db, container, false)
     }
     
+    override fun initView(view: View, savedInstanceState: Bundle?) {
+        super.initView(view, savedInstanceState)
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+        super.initData(savedInstanceState)
+    }
+
     override fun createAdapter(): $mAdapterClass {
         return ${mAdapterClass}(mList)
     }
