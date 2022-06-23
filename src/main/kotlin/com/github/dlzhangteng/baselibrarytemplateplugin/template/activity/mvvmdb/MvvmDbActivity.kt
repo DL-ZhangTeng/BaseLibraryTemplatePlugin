@@ -16,16 +16,17 @@ import ${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel
 
 class ${mPageName}DbActivity : BaseMvvmDbActivity<${mPageName}DbViewModel, Activity${mPageName}DbBinding>() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity${getLayoutName(mPageName)}_db)
+    }
+    
     override fun initView() {
 
     }
 
     override fun initData() {
 
-    }
-
-    override fun layoutId(): Int {
-        return R.layout.activity${getLayoutName(mPageName)}_db
     }
 }
 """

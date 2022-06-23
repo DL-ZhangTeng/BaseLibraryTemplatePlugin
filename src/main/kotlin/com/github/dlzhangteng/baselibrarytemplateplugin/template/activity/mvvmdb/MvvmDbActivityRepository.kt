@@ -1,6 +1,6 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
 
-fun mvvmActivityRepository(
+fun mvvmDbActivityRepository(
     mRootPackageName: String?,
     mPageName: String
 ) = """

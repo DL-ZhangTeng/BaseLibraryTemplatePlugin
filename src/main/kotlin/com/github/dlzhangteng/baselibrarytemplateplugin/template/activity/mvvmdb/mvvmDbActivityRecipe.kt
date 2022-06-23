@@ -39,7 +39,7 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
         rootPath,
         mPageName
     )
-    val mvvmActivityRepository = mvvmActivityRepository(
+    val mvvmActivityRepository = mvvmDbActivityRepository(
         rootPath,
         mPageName
     )

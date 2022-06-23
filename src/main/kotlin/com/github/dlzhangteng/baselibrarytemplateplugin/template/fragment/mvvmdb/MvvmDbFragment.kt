@@ -21,7 +21,14 @@ class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewMode
     companion object {
         fun newInstance() = ${mPageName}DbFragment()
     }
-
+    
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment${getLayoutName(mPageName)}_db, container, false)
+    }
+    
     override fun initView(view: View, savedInstanceState: Bundle?) {
        
     }
@@ -29,10 +36,6 @@ class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewMode
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
        
-    }
-
-    override fun layoutId(): Int {
-        return R.layout.fragment${getLayoutName(mPageName)}_db
     }
 }
 """
