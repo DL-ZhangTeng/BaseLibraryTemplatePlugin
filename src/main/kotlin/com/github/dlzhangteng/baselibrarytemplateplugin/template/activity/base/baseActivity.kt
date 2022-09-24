@@ -17,11 +17,7 @@ class ${mPageName}Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity${
-    com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.getLayoutName(
-        mPageName
-    )
-})
+        setContentView(R.layout.activity${getLayoutName(mPageName)})
     }
 
     override fun initView() {

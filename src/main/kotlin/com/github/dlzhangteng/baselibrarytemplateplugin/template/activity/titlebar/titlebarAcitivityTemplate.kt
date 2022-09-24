@@ -8,8 +8,8 @@ import java.util.*
 val titlebarAcitivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseTitlebarActivity"
-        description = "一键创建 BaseTitlebarActivity "
+        name = "ZTBaseTitleBarActivity"
+        description = "一键创建 BaseTitleBarActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile

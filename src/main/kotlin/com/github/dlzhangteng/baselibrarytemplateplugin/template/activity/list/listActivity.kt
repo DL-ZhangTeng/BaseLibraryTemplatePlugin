@@ -22,11 +22,7 @@ import ${mRootPackageName}.adapter.${mAdapterClass}
 class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         setContentView(R.layout.activity${
-    com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(
-        mPageName
-    )
-})
+         setContentView(R.layout.activity${getLayoutName(mPageName)})
     }
 
     override fun initView() {

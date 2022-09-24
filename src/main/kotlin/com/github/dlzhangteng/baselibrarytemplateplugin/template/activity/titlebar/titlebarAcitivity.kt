@@ -9,10 +9,10 @@ fun titlebarAcitivity(
 package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
 
 import android.os.Bundle
-import com.zhangteng.base.base.TitlebarActivity
+import com.zhangteng.base.base.TitleBarActivity
 import ${mRootPackageName}.R
 
-class ${mPageName}Activity : TitlebarActivity() {
+class ${mPageName}Activity : TitleBarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
