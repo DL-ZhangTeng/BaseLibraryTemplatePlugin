@@ -16,7 +16,7 @@
 
 * 添加wizard-template.jar
   * 项目根目录下创建`lib`文件夹
-  * 添加AndroidStudio目录下的`wizard-template.jar`,具体路径为:`/Applications/Android Studio.app/Contents/plugins/android/lib/`
+  * 添加AndroidStudio目录下的`wizard-template.jar`,具体路径为:`/Android Studio/plugins/android/lib/`
   * 打开项目`build.gradle.kts`文件，添加代码如下：
 ```
 dependencies {
