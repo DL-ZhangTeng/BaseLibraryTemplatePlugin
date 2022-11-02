@@ -35,14 +35,15 @@ fun splitByUpperCase(str: String): ArrayList<String> {
     return rs
 }
 
-fun RecipeExecutor.addActivityToManifest(
+fun addActivityToManifest(
+    recipeExecutor: RecipeExecutor,
     moduleTemplateData: ModuleTemplateData,
-    activityName: String,
+    activityClass: String,
     mActivityPackageName: String,
 ) {
-    generateManifest(
+    recipeExecutor.generateManifest(
         moduleData = moduleTemplateData,
-        activityClass = activityName,
+        activityClass = activityClass,
         packageName = mActivityPackageName,
         isLauncher = false,
         hasNoActionBar = false,

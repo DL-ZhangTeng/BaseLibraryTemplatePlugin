@@ -15,6 +15,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     mActivityPackageName: String,
 ) {
     addActivityToManifest(
+        this,
         moduleTemplateData,
         "${mPageName}Activity",
         mActivityPackageName,

@@ -14,6 +14,7 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
     mActivityPackageName: String,
 ) {
     addActivityToManifest(
+        this,
         moduleTemplateData,
         "${mPageName}Activity",
         mActivityPackageName,

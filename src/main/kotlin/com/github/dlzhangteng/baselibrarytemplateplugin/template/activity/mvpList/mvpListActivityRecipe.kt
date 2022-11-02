@@ -26,6 +26,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
     mActivityPackageName: String,
 ) {
     addActivityToManifest(
+        this,
         moduleTemplateData,
         "${mPageName}Activity",
         mActivityPackageName,

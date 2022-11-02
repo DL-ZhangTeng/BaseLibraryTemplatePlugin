@@ -23,6 +23,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     mActivityPackageName: String,
 ) {
     addActivityToManifest(
+        this,
         moduleTemplateData,
         "${mPageName}DbActivity",
         mActivityPackageName,
