@@ -8,6 +8,8 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.mo
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.mvpPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.view.mvpView
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
@@ -24,13 +26,10 @@ fun RecipeExecutor.mvpListActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
+    addActivityToManifest(
+        moduleTemplateData,
+        "${mPageName}Activity",
+        mActivityPackageName,
     )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
+
 
 fun baseFragment(
     mRootPackageName: String?,

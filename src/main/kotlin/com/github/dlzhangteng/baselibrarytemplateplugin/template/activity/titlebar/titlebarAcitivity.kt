@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.titlebar
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
+
 
 fun titlebarAcitivity(
     mRootPackageName: String?,

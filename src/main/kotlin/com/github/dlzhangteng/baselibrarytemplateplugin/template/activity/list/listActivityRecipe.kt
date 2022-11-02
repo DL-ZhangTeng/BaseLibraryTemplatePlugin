@@ -2,7 +2,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
@@ -19,13 +20,10 @@ fun RecipeExecutor.listActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
+    addActivityToManifest(
+        moduleTemplateData,
+        "${mPageName}Activity",
+        mActivityPackageName,
     )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
@@ -76,7 +74,7 @@ fun RecipeExecutor.listActivityRecipe(
         baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
-                com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.getLayoutName(
+                getLayoutName(
                     mPageName
                 )
             }.xml"

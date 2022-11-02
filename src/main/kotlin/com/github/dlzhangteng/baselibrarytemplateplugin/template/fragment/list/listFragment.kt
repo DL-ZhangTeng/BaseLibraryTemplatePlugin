@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
+
 
 fun listFragment(
     mRootPackageName: String?,

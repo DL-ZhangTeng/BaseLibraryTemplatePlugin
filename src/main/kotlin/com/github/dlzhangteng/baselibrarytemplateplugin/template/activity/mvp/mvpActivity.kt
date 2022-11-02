@@ -1,6 +1,6 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.getLayoutName
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 
 fun mvpActivity(
     mRootPackageName: String?,

@@ -2,7 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmd
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbXml
 import java.io.File
 
@@ -14,13 +14,10 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}DbActivity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
+    addActivityToManifest(
+        moduleTemplateData,
+        "${mPageName}DbActivity",
+        mActivityPackageName,
     )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

@@ -266,7 +266,7 @@ val baseActivityTemplate
             default = "activity_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { activityToLayout(mPageName.value) }
+            suggest = { "activity${getLayoutName(mPageName.value)}" }
         }
 
         thumb { File("template_empty_activity.png") }
@@ -296,7 +296,7 @@ val baseActivityTemplate
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
     val activityChildNames: ArrayList<String> =
-        com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.splitByUpperCase(
+        splitByUpperCase(
             pageName
         )
     activityChildNames.forEach {
@@ -331,13 +331,10 @@ fun RecipeExecutor.baseActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    generateManifest(
-        moduleData = moduleTemplateData,
-        activityClass = "${mPageName}Activity",
-        packageName = mActivityPackageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
+        addActivityToManifest(
+        moduleTemplateData,
+        "${mPageName}Activity",
+        mActivityPackageName,
     )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
@@ -382,7 +379,7 @@ class ${mPageName}Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity${
-    com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.getLayoutName(
+    getLayoutName(
         mPageName
     )
 })

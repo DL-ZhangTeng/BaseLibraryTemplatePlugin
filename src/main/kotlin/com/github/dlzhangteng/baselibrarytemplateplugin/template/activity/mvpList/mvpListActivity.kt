@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
+
 fun mvpListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,

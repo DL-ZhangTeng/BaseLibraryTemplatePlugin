@@ -1,6 +1,6 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.getLayoutName
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 
 fun mvvmDbListFragment(
     mRootPackageName: String?,

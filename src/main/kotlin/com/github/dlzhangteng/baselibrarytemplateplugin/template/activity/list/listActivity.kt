@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
+
 
 fun listActivity(
     mRootPackageName: String?,

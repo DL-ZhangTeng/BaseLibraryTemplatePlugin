@@ -3,6 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpLi
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mvpFragmentRecipe
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
 import java.util.*
 
@@ -37,7 +38,7 @@ val mvpListFragmentTemplate
             default = "ragment_main"
             visible = { mIsGenerateFragmentLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { fragmentToLayout(mPageName.value) }
+            suggest = { "fragment${getLayoutName(mPageName.value)}" }
         }
 
         val mFragmentPackageName = stringParameter {
@@ -88,32 +89,3 @@ val mvpListFragmentTemplate
         }
 
     }
-
-/**
- * 获取layoutName
- */
-fun getLayoutName(pageName: String): String {
-    val stringBuilder: StringBuilder = StringBuilder()
-    val fragmentChildNames: ArrayList<String> = splitByUpperCase(pageName)
-    fragmentChildNames.forEach {
-        stringBuilder.append("_").append(it.toLowerCase())
-    }
-    return stringBuilder.toString()
-}
-
-/**
- * 根据大写字母拆分数组
- */
-fun splitByUpperCase(str: String): ArrayList<String> {
-    val rs = ArrayList<String>()
-    var index = 0
-    val len = str.length
-    for (i in 1 until len) {
-        if (Character.isUpperCase(str[i])) {
-            rs.add(str.substring(index, i))
-            index = i
-        }
-    }
-    rs.add(str.substring(index, len))
-    return rs
-}
