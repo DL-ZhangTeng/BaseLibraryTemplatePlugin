@@ -48,13 +48,13 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.6.0"
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
+    // Gradle IntelliJ Plugin
+    id("org.jetbrains.intellij") version "1.8.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.13"
-    // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.3.0"
     // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
     id("io.gitlab.arturbosch.detekt") version "1.16.0"
     // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
@@ -97,16 +97,16 @@ dependencies {
 pluginGroup = com.github.dlzhangteng.baselibrarytemplateplugin
 pluginName = BaseLibraryTemplatePlugin
 # SemVer format -> https://semver.org
-pluginVersion = 2.0.0
+pluginVersion = 2.0.1
 
 # See https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html
 # for insight into build numbers and IntelliJ Platform versions.
-pluginSinceBuild = 203
-pluginUntilBuild = 221.*
+pluginSinceBuild = 213
+pluginUntilBuild = 222.*
 
 # IntelliJ Platform Properties -> https://github.com/JetBrains/gradle-intellij-plugin#intellij-platform-properties
 platformType = IC
-platformVersion = 2020.3.4
+platformVersion = 2021.3.3
 
 # Plugin Dependencies -> https://plugins.jetbrains.com/docs/intellij/plugin-dependencies.html
 # Example: platformPlugins = com.intellij.java, com.jetbrains.php:203.4449.22

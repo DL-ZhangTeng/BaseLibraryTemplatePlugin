@@ -58,9 +58,9 @@
          Displayed on the Plugin Page and IDE Plugin Manager. Simple HTML elements can be included between <![CDATA[  ]]> tags. -->
     <change-notes>
         <![CDATA[
-        <p>2.0.0</p>
+        <p>2.0.1</p>
         <ul>
-          <li>基于BaseLibrary、MVP、MVVM库2.0.0版重新构建</li>
+          <li>基于BaseLibrary、MVP、MVVM库2.0.1版重新构建</li>
         </ul>
         ]]>
     </change-notes>
