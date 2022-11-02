@@ -331,7 +331,7 @@ fun RecipeExecutor.baseActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-        addActivityToManifest(
+    addActivityToManifest(
         moduleTemplateData,
         "${mPageName}Activity",
         mActivityPackageName,
