@@ -13,13 +13,6 @@ fun RecipeExecutor.baseActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
-    )
-
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -43,4 +36,10 @@ fun RecipeExecutor.baseActivityRecipe(
         // 保存xml
         save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
+    )
 }

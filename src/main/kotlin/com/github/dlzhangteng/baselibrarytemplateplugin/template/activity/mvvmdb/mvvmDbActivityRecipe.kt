@@ -14,12 +14,6 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}DbActivity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -71,5 +65,11 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
                     + "/mvvm/repository/"
         ).apply { mkdirs() }
             .resolve("${mPageName}DbRepository.kt")
+    )
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}DbActivity".substring(1)
     )
 }

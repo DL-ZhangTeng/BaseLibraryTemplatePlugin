@@ -13,12 +13,6 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -41,4 +35,10 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
         // 保存xml
         save(titleXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
     }
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
+    )
 }

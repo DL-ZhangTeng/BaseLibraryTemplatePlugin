@@ -334,8 +334,7 @@ fun RecipeExecutor.baseActivityRecipe(
     addActivityToManifest(
         this,
         moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
     )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

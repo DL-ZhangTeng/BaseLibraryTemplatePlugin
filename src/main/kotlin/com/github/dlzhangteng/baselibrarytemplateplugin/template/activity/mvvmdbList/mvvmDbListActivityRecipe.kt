@@ -22,12 +22,6 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}DbActivity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -125,5 +119,11 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
                 )
             }.xml"
         )
+    )
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}DbActivity".substring(1)
     )
 }

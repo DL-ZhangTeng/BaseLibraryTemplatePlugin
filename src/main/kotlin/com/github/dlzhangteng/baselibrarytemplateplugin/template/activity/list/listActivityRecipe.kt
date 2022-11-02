@@ -20,12 +20,6 @@ fun RecipeExecutor.listActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -80,5 +74,11 @@ fun RecipeExecutor.listActivityRecipe(
                 )
             }.xml"
         )
+    )
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
     )
 }

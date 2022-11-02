@@ -19,12 +19,6 @@ fun RecipeExecutor.mvpActivityRecipe(
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -102,5 +96,11 @@ fun RecipeExecutor.mvpActivityRecipe(
                     + "/mvp/presenter/"
         ).apply { mkdirs() }
             .resolve("${mPageName}Presenter.kt")
+    )
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
     )
 }

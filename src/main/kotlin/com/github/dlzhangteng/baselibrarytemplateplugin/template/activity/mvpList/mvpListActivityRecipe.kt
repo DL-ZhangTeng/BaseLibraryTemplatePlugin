@@ -25,12 +25,6 @@ fun RecipeExecutor.mvpListActivityRecipe(
     mAdapterClass: String,
     mActivityPackageName: String,
 ) {
-    addActivityToManifest(
-        this,
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
-    )
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
@@ -144,5 +138,11 @@ fun RecipeExecutor.mvpListActivityRecipe(
     save(
         baseXml(),
         moduleTemplateData.resDir.resolve("layout/item${getLayoutName(mPageName)}.xml")
+    )
+
+    addActivityToManifest(
+        this,
+        moduleTemplateData,
+        "${packageNameStr}.${mPageName}Activity".substring(1)
     )
 }

@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 
 /**
  * 获取layoutName
@@ -35,20 +36,20 @@ fun splitByUpperCase(str: String): ArrayList<String> {
 }
 
 /**
- * description 新版无法准确添加，待实现
+ * description 添加activity到Manifest
+ * @param activityClass activity相对路径如：.activity.BaseActivity
  */
 fun addActivityToManifest(
     recipeExecutor: RecipeExecutor,
     moduleTemplateData: ModuleTemplateData,
-    activityClass: String,
-    mActivityPackageName: String,
+    activityClass: String
 ) {
-//    recipeExecutor.generateManifest(
-//        moduleData = moduleTemplateData,
-//        activityClass = activityClass,
-//        packageName = mActivityPackageName,
-//        isLauncher = false,
-//        hasNoActionBar = false,
-//        generateActivityTitle = false
-//    )
+    recipeExecutor.generateManifest(
+        moduleData = moduleTemplateData,
+        activityClass = activityClass,
+        packageName = "",
+        isLauncher = false,
+        hasNoActionBar = false,
+        generateActivityTitle = false
+    )
 }
