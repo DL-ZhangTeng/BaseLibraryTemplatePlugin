@@ -7,7 +7,7 @@ fun mvvmDbActivity(
     mActivityPackageName: String,
     mPageName: String
 ) = """
-package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
+package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import com.zhangteng.mvvm.mvvm.BaseMvvmDbActivity

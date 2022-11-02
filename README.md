@@ -343,9 +343,8 @@ fun RecipeExecutor.baseActivityRecipe(
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
-            .replace(".", "")
     val rootPath =
-        if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
+        if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
     val baseActivity = baseActivity(
         rootPath,
@@ -371,7 +370,7 @@ fun baseActivity(
     mActivityPackageName: String,
     mPageName: String
 ) = """
-package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
+package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 

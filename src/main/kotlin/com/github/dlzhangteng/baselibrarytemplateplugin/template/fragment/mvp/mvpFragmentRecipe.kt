@@ -29,9 +29,8 @@ fun RecipeExecutor.mvpFragmentRecipe(
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mActivityPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
-            .replace(".", "")
     val rootPath =
-        if (!packageNameStr.isNullOrEmpty()) mActivityPackageName.replace(".$packageNameStr", "")
+        if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
 
     val listActivity = mvpFragment(rootPath, packageNameStr, mPageName)

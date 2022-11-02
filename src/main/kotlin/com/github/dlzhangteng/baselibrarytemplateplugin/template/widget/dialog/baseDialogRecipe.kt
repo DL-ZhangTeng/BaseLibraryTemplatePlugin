@@ -17,9 +17,8 @@ fun RecipeExecutor.baseDialogRecipe(
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mDialogPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
-            .replace(".", "")
     val rootPath =
-        if (!packageNameStr.isNullOrEmpty()) mDialogPackageName.replace(".$packageNameStr", "")
+        if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mDialogPackageName
 
     val baseDialog =

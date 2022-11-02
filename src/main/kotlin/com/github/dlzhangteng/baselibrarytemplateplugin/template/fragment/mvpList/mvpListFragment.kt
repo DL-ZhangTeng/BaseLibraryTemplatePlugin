@@ -9,7 +9,7 @@ fun mvpListFragment(
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
-package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
+package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import android.view.LayoutInflater

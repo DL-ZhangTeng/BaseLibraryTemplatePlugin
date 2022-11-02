@@ -16,9 +16,8 @@ fun RecipeExecutor.basePopupWindowRecipe(
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mPopupWindowPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
-            .replace(".", "")
     val rootPath =
-        if (!packageNameStr.isNullOrEmpty()) mPopupWindowPackageName.replace(".$packageNameStr", "")
+        if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mPopupWindowPackageName
 
     val basePopupWindow =

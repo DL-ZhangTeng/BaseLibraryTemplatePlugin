@@ -16,9 +16,8 @@ fun RecipeExecutor.headerOrFooterAdapterRecipe(
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
         else mAdapterPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
-            .replace(".", "")
     val rootPath =
-        if (!packageNameStr.isNullOrEmpty()) mAdapterPackageName.replace(".$packageNameStr", "")
+        if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mAdapterPackageName
 
     val baseBean =

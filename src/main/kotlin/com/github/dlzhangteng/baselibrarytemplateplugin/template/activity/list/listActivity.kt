@@ -8,7 +8,7 @@ fun listActivity(
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
-package ${mRootPackageName}${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}
+package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
