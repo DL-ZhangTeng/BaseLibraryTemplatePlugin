@@ -9,10 +9,9 @@ import com.android.tools.idea.wizard.template.impl.activities.common.generateMan
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> =
-        splitByUpperCase(
-            pageName
-        )
+    val activityChildNames: ArrayList<String> = splitByUpperCase(
+        pageName
+    )
     activityChildNames.forEach {
         stringBuilder.append("_").append(it.toLowerCase())
     }
@@ -36,14 +35,17 @@ fun splitByUpperCase(str: String): ArrayList<String> {
     return rs
 }
 
-fun addActivityToManifest(
+fun RecipeExecutor.addActivityToManifest(
     moduleTemplateData: ModuleTemplateData,
-    mPageName: String,
+    activityName: String,
     mActivityPackageName: String,
 ) {
-        addActivityToManifest(
-        moduleTemplateData,
-        "${mPageName}Activity",
-        mActivityPackageName,
+    generateManifest(
+        moduleData = moduleTemplateData,
+        activityClass = activityName,
+        packageName = mActivityPackageName,
+        isLauncher = false,
+        hasNoActionBar = false,
+        generateActivityTitle = false
     )
 }

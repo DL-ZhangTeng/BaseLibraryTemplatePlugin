@@ -2,7 +2,6 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpLi
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.imodel.mvpIModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.mvpModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
