@@ -2,7 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.layout
 
 fun mvvmDbFragmentXml(
     mRootPackageName: String?,
-    mActivityPackageName: String,
+    mPagePackageName: String,
     mPageName: String
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
@@ -21,7 +21,7 @@ fun mvvmDbFragmentXml(
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${mActivityPackageName.ifEmpty { "" }}.${mPageName}DbFragment">
+        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}DbFragment">
 
     </LinearLayout>
 </layout>

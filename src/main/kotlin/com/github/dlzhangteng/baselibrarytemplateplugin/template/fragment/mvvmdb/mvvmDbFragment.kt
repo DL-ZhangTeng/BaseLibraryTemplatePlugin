@@ -2,11 +2,11 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmd
 
 fun mvvmDbFragment(
     mRootPackageName: String?,
-    mActivityPackageName: String,
+    mFragmentPackageName: String,
     mPageName: String,
     mFragmentLayoutName: String
 ) = """
-package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
+package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import android.view.View

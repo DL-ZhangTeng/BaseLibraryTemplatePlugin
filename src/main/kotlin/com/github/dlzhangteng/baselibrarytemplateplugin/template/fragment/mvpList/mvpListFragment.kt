@@ -2,13 +2,13 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpLi
 
 fun mvpListFragment(
     mRootPackageName: String?,
-    mActivityPackageName: String,
+    mFragmentPackageName: String,
     mPageName: String,
     mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
-package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
+package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -16,15 +16,15 @@ fun RecipeExecutor.mvpFragmentRecipe(
     mPageName: String,
     mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
-    mActivityPackageName: String,
+    mFragmentPackageName: String,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
-        else mActivityPackageName
+        else mFragmentPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
-        else mActivityPackageName
+        else mFragmentPackageName
 
     val listActivity = mvpFragment(rootPath, packageNameStr, mPageName, mFragmentLayoutName)
     val mvpIView = mvpFragmentView(rootPath, mPageName)

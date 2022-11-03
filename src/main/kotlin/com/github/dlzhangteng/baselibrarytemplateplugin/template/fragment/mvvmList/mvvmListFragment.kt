@@ -1,14 +1,14 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmList
 
-fun mvvmDbListFragment(
+fun mvvmListFragment(
     mRootPackageName: String?,
-    mActivityPackageName: String,
+    mFragmentPackageName: String,
     mPageName: String,
     mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
-package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
+package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,23 +17,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.zhangteng.mvvm.mvvm.BaseListMvvmDbFragment
+import com.zhangteng.mvvm.mvvm.BaseListMvvmFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}DbBinding
-import ${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel
+import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}DbFragment : BaseListMvvmDbFragment<${mPageName}DbFragmentViewModel, Fragment${mPageName}DbBinding, ${mBeanClass}, ${mAdapterClass}>(){
+class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel, ${mBeanClass}, ${mAdapterClass}>() {
 
     companion object {
-        fun newInstance() = ${mPageName}DbFragment()
+        fun newInstance() = ${mPageName}Fragment()
     }
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
     
@@ -48,7 +47,7 @@ class ${mPageName}DbFragment : BaseListMvvmDbFragment<${mPageName}DbFragmentView
     override fun createAdapter(): $mAdapterClass {
         return ${mAdapterClass}(mList)
     }
-
+    
     override fun getRecyclerView(): RecyclerView? {
         return view?.findViewById(R.id.recyclerView)
     }

@@ -22,15 +22,15 @@ fun RecipeExecutor.mvpListFragmentRecipe(
     mIsGenerateActivityLayout: Boolean,
     mBeanClass: String,
     mAdapterClass: String,
-    mActivityPackageName: String,
+    mFragmentPackageName: String,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
-        else mActivityPackageName
+        else mFragmentPackageName
             .replace(moduleTemplateData.projectTemplateData.applicationPackage.toString(), "")
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
-        else mActivityPackageName
+        else mFragmentPackageName
 
     val listActivity = mvpListFragment(
         rootPath,
