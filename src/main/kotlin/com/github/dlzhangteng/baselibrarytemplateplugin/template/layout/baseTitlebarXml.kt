@@ -12,7 +12,7 @@ fun titleXml(
     tools:context="$mPageClassName">
 
     <com.zhangteng.base.widget.CommonTitleBar
-        android:id="@+id/titlebar"
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />

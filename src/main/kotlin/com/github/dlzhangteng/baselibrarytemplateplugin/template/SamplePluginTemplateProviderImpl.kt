@@ -10,7 +10,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.m
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmList.mvvmListActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList.mvvmDbListActivityTemplate
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.titlebar.titlebarAcitivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.titlebar.titleBarActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.baseFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.listFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mvpFragmentTemplate
@@ -29,7 +29,7 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
     override fun getTemplates(): List<Template> = listOf(
         baseActivityTemplate,
         listActivityTemplate,
-        titlebarAcitivityTemplate,
+        titleBarActivityTemplate,
         mvpActivityTemplate,
         mvpListActivityTemplate,
         mvvmActivityTemplate,

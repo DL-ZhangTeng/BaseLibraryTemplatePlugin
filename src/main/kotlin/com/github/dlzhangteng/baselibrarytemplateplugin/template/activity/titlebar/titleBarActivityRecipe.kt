@@ -6,7 +6,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToMa
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.titleXml
 
 
-fun RecipeExecutor.titlebarAcitivityRecipe(
+fun RecipeExecutor.titleBarActivityRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
@@ -20,7 +20,7 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
-    val baseActivity = titlebarAcitivity(
+    val baseActivity = titleBarActivity(
         rootPath,
         packageNameStr,
         mPageName,

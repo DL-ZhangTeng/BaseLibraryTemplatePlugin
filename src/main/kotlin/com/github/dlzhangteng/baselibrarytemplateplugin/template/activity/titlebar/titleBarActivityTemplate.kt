@@ -4,9 +4,8 @@ import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
-import java.util.*
 
-val titlebarAcitivityTemplate
+val titleBarActivityTemplate
     get() = template {
 //        revision = 1
         name = "ZTBaseTitleBarActivity"
@@ -60,7 +59,7 @@ val titlebarAcitivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            titlebarAcitivityRecipe(
+            titleBarActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,
