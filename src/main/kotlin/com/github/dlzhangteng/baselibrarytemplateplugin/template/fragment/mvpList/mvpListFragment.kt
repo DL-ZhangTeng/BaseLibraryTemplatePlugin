@@ -1,11 +1,10 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpList
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 fun mvpListFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
+    mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -38,7 +37,7 @@ class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${m
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.fragment${getLayoutName(mPageName)}, container, false)
+        return LayoutInflater.from(context).inflate(R.layout.${mActivityLayoutName}, container, false)
     }
 
     /**

@@ -22,7 +22,8 @@ fun RecipeExecutor.baseFragmentRecipe(
     val baseFragment = baseFragment(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mActivityLayoutName
     )
     // 保存Activity
 

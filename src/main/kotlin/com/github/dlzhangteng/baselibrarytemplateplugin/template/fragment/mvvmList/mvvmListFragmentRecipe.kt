@@ -32,6 +32,7 @@ fun RecipeExecutor.mvvmListFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
+        mActivityLayoutName,
         mBeanClass,
         mAdapterClass
     )

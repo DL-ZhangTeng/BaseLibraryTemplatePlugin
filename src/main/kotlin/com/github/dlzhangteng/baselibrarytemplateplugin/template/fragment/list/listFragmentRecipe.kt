@@ -27,8 +27,14 @@ fun RecipeExecutor.listFragmentRecipe(
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
 
-    val listFragment =
-        listFragment(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
+    val listFragment = listFragment(
+        rootPath,
+        packageNameStr,
+        mPageName,
+        mActivityLayoutName,
+        mBeanClass,
+        mAdapterClass
+    )
     val listBean =
         baseBean(rootPath, mBeanClass)
     val listAdapter =

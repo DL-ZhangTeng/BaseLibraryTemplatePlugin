@@ -23,7 +23,8 @@ fun RecipeExecutor.mvvmFragmentRecipe(
     val mvvmFragment = mvvmFragment(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mActivityLayoutName
     )
     val mvvmFragmentViewModel = mvvmFragmentViewModel(
         rootPath,

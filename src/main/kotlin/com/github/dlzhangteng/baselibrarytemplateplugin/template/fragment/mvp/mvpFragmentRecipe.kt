@@ -26,7 +26,7 @@ fun RecipeExecutor.mvpFragmentRecipe(
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
 
-    val listActivity = mvpFragment(rootPath, packageNameStr, mPageName)
+    val listActivity = mvpFragment(rootPath, packageNameStr, mPageName, mActivityLayoutName)
     val mvpIView = mvpFragmentView(rootPath, mPageName)
     val mvpIModel = mvpIFragmentModel(rootPath, mPageName)
     val mvpModel = mvpFragmentModel(rootPath, mPageName)

@@ -1,11 +1,10 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 fun mvvmDbFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
-    mPageName: String
+    mPageName: String,
+    mActivityLayoutName: String
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -26,7 +25,7 @@ class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewMode
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment${getLayoutName(mPageName)}_db, container, false)
+        return inflater.inflate(R.layout.${mActivityLayoutName}, container, false)
     }
     
     override fun initView(view: View, savedInstanceState: Bundle?) {
