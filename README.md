@@ -346,7 +346,8 @@ fun RecipeExecutor.baseActivityRecipe(
     val baseActivity = baseActivity(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mActivityLayoutName
     )
     // 保存Activity
 
@@ -365,7 +366,8 @@ baseActivity.kt:
 fun baseActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
-    mPageName: String
+    mPageName: String,
+    mActivityLayoutName: String
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -378,10 +380,7 @@ class ${mPageName}Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity${
-    getLayoutName(
-        mPageName
-    )
+        setContentView(R.layout.${mActivityLayoutName})
 })
     }
 

@@ -1,11 +1,10 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 fun mvvmActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
-    mPageName: String
+    mPageName: String,
+    mActivityLayoutName: String
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -19,7 +18,7 @@ class ${mPageName}Activity : BaseMvvmActivity<${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity${getLayoutName(mPageName)})
+        setContentView(R.layout.${mActivityLayoutName})
     }
 
     override fun initView() {

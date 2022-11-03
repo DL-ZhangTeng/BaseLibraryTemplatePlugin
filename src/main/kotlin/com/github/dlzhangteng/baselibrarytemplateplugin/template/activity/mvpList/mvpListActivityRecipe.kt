@@ -38,6 +38,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
             rootPath,
             packageNameStr,
             mPageName,
+            mActivityLayoutName,
             mBeanClass,
             mAdapterClass
         )

@@ -24,7 +24,8 @@ fun RecipeExecutor.mvvmActivityRecipe(
     val mvvmActivity = mvvmActivity(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mActivityLayoutName
     )
     val mvvmActivityViewModel = mvvmActivityViewModel(
         rootPath,

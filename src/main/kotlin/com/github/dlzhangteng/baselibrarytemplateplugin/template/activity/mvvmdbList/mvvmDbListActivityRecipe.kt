@@ -33,6 +33,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         rootPath,
         packageNameStr,
         mPageName,
+        mActivityLayoutName,
         mBeanClass,
         mAdapterClass
     )

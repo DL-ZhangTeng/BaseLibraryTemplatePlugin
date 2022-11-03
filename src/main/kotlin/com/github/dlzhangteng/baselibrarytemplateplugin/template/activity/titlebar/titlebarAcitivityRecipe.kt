@@ -23,7 +23,8 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
     val baseActivity = titlebarAcitivity(
         rootPath,
         packageNameStr,
-        mPageName
+        mPageName,
+        mActivityLayoutName
     )
     // 保存Activity
 

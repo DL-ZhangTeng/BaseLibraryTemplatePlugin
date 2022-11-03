@@ -1,12 +1,11 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 
 fun listActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
+    mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -24,7 +23,7 @@ import ${mRootPackageName}.adapter.${mAdapterClass}
 class ${mPageName}Activity : BaseListActivity<${mBeanClass}, ${mAdapterClass}>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         setContentView(R.layout.activity${getLayoutName(mPageName)})
+         setContentView(R.layout.${mActivityLayoutName})
     }
 
     override fun initView() {

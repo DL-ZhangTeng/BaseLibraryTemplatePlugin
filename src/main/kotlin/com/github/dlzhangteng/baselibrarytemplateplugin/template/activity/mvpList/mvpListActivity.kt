@@ -1,11 +1,10 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 fun mvpListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
+    mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -28,7 +27,7 @@ class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity${getLayoutName(mPageName)})
+        setContentView(R.layout.${mActivityLayoutName})
     }
 
     override fun createPresenter(): I${mPageName}Presenter? {

@@ -27,7 +27,12 @@ fun RecipeExecutor.mvpActivityRecipe(
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
 
-    val listActivity = mvpActivity(rootPath, packageNameStr, mPageName)
+    val listActivity = mvpActivity(
+        rootPath,
+        packageNameStr,
+        mPageName,
+        mActivityLayoutName
+    )
     val mvpIView = mvpView(rootPath, mPageName)
     val mvpIModel = mvpIModel(rootPath, mPageName)
     val mvpModel = mvpModel(rootPath, mPageName)

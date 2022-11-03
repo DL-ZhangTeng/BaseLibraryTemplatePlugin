@@ -1,11 +1,10 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
 
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-
 fun mvvmDbListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
+    mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -26,7 +25,7 @@ class ${mPageName}DbActivity : BaseListMvvmDbActivity<${mPageName}DbViewModel, A
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity${getLayoutName(mPageName)}_db)
+        setContentView(R.layout.${mActivityLayoutName})
     }
 
     override fun initView() {

@@ -29,7 +29,14 @@ fun RecipeExecutor.listActivityRecipe(
         else mActivityPackageName
 
     val listActivity =
-        listActivity(rootPath, packageNameStr, mPageName, mBeanClass, mAdapterClass)
+        listActivity(
+            rootPath,
+            packageNameStr,
+            mPageName,
+            mActivityLayoutName,
+            mBeanClass,
+            mAdapterClass
+        )
     val listBean =
         baseBean(rootPath, mBeanClass)
     val listAdapter =
