@@ -8,7 +8,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.pr
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.mvpPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.view.mvpView
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
@@ -45,7 +45,10 @@ fun RecipeExecutor.mvpActivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            basePageXml("${packageNameStr}.${mPageName}Activity"),
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+        )
     }
 
     save(

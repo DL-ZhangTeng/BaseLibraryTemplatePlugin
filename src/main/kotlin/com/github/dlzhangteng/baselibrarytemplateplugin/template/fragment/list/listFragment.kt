@@ -5,7 +5,7 @@ fun listFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -39,7 +39,7 @@ class ${mPageName}Fragment : BaseListFragment<${mBeanClass}, ${mAdapterClass}>()
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.${mActivityLayoutName}, container, false)
+        return inflater.inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {

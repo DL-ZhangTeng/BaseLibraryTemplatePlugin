@@ -21,7 +21,8 @@ fun mvvmDbListFragmentXml(
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${if (mActivityPackageName.isNullOrEmpty()) "" else ".${mActivityPackageName}"}.${mPageName}DbFragment">
+        tools:context="${mActivityPackageName.ifEmpty { "" }}.${mPageName}DbFragment">
+        
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"
             android:layout_width="match_parent"

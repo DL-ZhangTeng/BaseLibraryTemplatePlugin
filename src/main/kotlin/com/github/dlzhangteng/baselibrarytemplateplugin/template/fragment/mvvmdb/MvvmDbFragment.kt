@@ -4,7 +4,7 @@ fun mvvmDbFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
-    mActivityLayoutName: String
+    mFragmentLayoutName: String
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -25,7 +25,7 @@ class ${mPageName}DbFragment : BaseMvvmDbFragment<${mPageName}DbFragmentViewMode
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.${mActivityLayoutName}, container, false)
+        return inflater.inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
     
     override fun initView(view: View, savedInstanceState: Bundle?) {

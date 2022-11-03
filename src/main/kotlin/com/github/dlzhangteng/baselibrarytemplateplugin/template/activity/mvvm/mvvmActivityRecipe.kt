@@ -3,7 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
@@ -42,7 +42,10 @@ fun RecipeExecutor.mvvmActivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            basePageXml("${packageNameStr}.${mPageName}Activity"),
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+        )
     }
     save(
         mvvmActivityViewModel,

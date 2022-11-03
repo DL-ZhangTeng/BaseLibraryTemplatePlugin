@@ -7,14 +7,14 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mo
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter.ipresenter.mvpIFragmentPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter.mvpFragmentPresenter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.view.mvpFragmentView
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
 fun RecipeExecutor.mvpFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
@@ -26,7 +26,7 @@ fun RecipeExecutor.mvpFragmentRecipe(
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
 
-    val listActivity = mvpFragment(rootPath, packageNameStr, mPageName, mActivityLayoutName)
+    val listActivity = mvpFragment(rootPath, packageNameStr, mPageName, mFragmentLayoutName)
     val mvpIView = mvpFragmentView(rootPath, mPageName)
     val mvpIModel = mvpIFragmentModel(rootPath, mPageName)
     val mvpModel = mvpFragmentModel(rootPath, mPageName)
@@ -39,7 +39,10 @@ fun RecipeExecutor.mvpFragmentRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            basePageXml("${packageNameStr}.${mPageName}Fragment"),
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
+        )
     }
 
     save(

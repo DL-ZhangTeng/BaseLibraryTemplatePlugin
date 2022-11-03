@@ -34,7 +34,10 @@ fun RecipeExecutor.titlebarAcitivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(titleXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            titleXml("${packageNameStr}.${mPageName}Activity"),
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+        )
     }
 
     addActivityToManifest(

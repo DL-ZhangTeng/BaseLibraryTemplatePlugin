@@ -13,7 +13,7 @@ import java.io.File
 fun RecipeExecutor.listFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mBeanClass: String,
     mAdapterClass: String,
@@ -31,7 +31,7 @@ fun RecipeExecutor.listFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName,
+        mFragmentLayoutName,
         mBeanClass,
         mAdapterClass
     )
@@ -46,7 +46,10 @@ fun RecipeExecutor.listFragmentRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseListXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            baseListXml("${packageNameStr}.${mPageName}Fragment"),
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
+        )
     }
 
     save(

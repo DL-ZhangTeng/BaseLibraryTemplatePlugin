@@ -15,7 +15,7 @@ import java.io.File
 fun RecipeExecutor.mvvmDbListFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mBeanClass: String,
     mAdapterClass: String,
@@ -32,7 +32,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName,
+        mFragmentLayoutName,
         mBeanClass,
         mAdapterClass
     )
@@ -65,7 +65,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         // 保存xml
         save(
             mvvmDbListFragmentXml(rootPath, packageNameStr, mPageName),
-            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }
     save(

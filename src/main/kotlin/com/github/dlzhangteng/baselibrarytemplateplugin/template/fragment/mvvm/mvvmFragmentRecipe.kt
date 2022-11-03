@@ -2,14 +2,14 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
 fun RecipeExecutor.mvvmFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
@@ -24,7 +24,7 @@ fun RecipeExecutor.mvvmFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mFragmentLayoutName
     )
     val mvvmFragmentViewModel = mvvmFragmentViewModel(
         rootPath,
@@ -41,7 +41,10 @@ fun RecipeExecutor.mvvmFragmentRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            basePageXml("${packageNameStr}.${mPageName}Fragment"),
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
+        )
     }
     save(
         mvvmFragmentViewModel,

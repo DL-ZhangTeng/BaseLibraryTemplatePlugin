@@ -4,7 +4,7 @@ fun mvpListFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
 ) = """
@@ -37,7 +37,7 @@ class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${m
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.${mActivityLayoutName}, container, false)
+        return LayoutInflater.from(context).inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
 
     /**

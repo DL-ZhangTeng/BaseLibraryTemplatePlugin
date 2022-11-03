@@ -4,7 +4,7 @@ fun mvpFragment(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
-    mActivityLayoutName: String
+    mFragmentLayoutName: String
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -31,7 +31,7 @@ class ${mPageName}Fragment : BaseMvpFragment<I${mPageName}FragmentView, I${mPage
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.${mActivityLayoutName}, container, false)
+        return LayoutInflater.from(context).inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
 
     /**

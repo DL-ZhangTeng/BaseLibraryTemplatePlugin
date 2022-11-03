@@ -2,13 +2,13 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 
 
 fun RecipeExecutor.baseFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
@@ -23,7 +23,7 @@ fun RecipeExecutor.baseFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mFragmentLayoutName
     )
     // 保存Activity
 
@@ -33,6 +33,9 @@ fun RecipeExecutor.baseFragmentRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            basePageXml("${packageNameStr}.${mPageName}Fragment"),
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
+        )
     }
 }

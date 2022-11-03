@@ -9,7 +9,7 @@ import java.io.File
 fun RecipeExecutor.mvvmDbFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
-    mActivityLayoutName: String,
+    mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
 ) {
@@ -24,7 +24,7 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mFragmentLayoutName
     )
     val mvvmDbFragmentViewModel = mvvmDbFragmentViewModel(
         rootPath,
@@ -43,7 +43,7 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
         // 保存xml
         save(
             mvvmDbFragmentXml(rootPath, packageNameStr, mPageName),
-            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+            moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }
     save(

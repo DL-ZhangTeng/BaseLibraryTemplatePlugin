@@ -64,7 +64,10 @@ fun RecipeExecutor.mvvmListActivityRecipe(
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
-        save(baseListXml(), moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml"))
+        save(
+            baseListXml("${packageNameStr}.${mPageName}Activity"),
+            moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
+        )
     }
     save(
         mvvmActivityViewModel,
