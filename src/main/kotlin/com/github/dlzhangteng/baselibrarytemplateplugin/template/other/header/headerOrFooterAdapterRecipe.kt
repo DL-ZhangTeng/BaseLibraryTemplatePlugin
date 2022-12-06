@@ -2,7 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.other.header
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.baseBean
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
