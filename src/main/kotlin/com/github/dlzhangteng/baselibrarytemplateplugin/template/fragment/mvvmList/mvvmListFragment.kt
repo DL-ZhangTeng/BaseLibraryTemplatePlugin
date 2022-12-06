@@ -17,13 +17,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvvm.mvvm.BaseListMvvmFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel, ${mBeanClass}, ${mAdapterClass}>() {
+class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

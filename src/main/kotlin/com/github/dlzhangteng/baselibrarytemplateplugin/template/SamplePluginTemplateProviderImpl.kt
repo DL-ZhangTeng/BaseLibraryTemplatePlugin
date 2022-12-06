@@ -20,6 +20,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmLi
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList.mvvmDbListFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapterTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.header.headerOrFooterAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.tree.treeAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.widget.dialog.baseDialogTemplate
@@ -47,6 +48,7 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         mvvmDbListFragmentTemplate,
 
         baseAdapterTemplate,
+        bindingAdapterTemplate,
         headerOrFooterAdapterTemplate,
         treeAdapterTemplate,
 

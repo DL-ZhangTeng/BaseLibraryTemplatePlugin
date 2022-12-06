@@ -6,10 +6,10 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingBean
 import java.io.File
 
 
@@ -45,9 +45,9 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         rootPath,
         mPageName
     )
-    val listBean = baseBean(rootPath, mBeanClass)
+    val listBean = bindingBean(rootPath, mBeanClass)
     val listAdapter =
-        baseAdapter(
+        bindingAdapter(
             rootPath,
             "item${
                 getLayoutName(
@@ -112,7 +112,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     )
 
     save(
-        baseXml(),
+        baseDbXml(rootPath, mBeanClass),
         moduleTemplateData.resDir.resolve(
             "layout/item${
                 getLayoutName(

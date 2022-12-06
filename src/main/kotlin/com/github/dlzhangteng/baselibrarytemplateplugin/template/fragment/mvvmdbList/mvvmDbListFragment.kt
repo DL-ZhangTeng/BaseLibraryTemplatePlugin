@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.zhangteng.mvvm.adapter.BindingAdapter
 import com.zhangteng.mvvm.mvvm.BaseListMvvmDbFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Fragment${mPageName}DbBinding
@@ -24,7 +25,7 @@ import ${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}DbFragment : BaseListMvvmDbFragment<${mPageName}DbFragmentViewModel, Fragment${mPageName}DbBinding, ${mBeanClass}, ${mAdapterClass}>(){
+class ${mPageName}DbFragment : BaseListMvvmDbFragment<${mPageName}DbFragmentViewModel, Fragment${mPageName}DbBinding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>(){
 
     companion object {
         fun newInstance() = ${mPageName}DbFragment()

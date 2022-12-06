@@ -14,6 +14,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.zhangteng.mvvm.adapter.BindingAdapter
 import com.zhangteng.mvvm.mvvm.BaseListMvvmDbActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
@@ -21,7 +22,7 @@ import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.databinding.Activity${mPageName}DbBinding
 import ${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel
 
-class ${mPageName}DbActivity : BaseListMvvmDbActivity<${mPageName}DbViewModel, Activity${mPageName}DbBinding, ${mBeanClass}, ${mAdapterClass}>() {
+class ${mPageName}DbActivity : BaseListMvvmDbActivity<${mPageName}DbViewModel, Activity${mPageName}DbBinding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
