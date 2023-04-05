@@ -31,13 +31,15 @@ class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName
         setContentView(R.layout.${mActivityLayoutName})
     }
 
+    /**
+     * return Proxy.newProxyInstance(
+     *      MainPresenter::class.java.classLoader,
+     *      arrayOf(IMainPresenter::class.java),
+     *      LoadingPresenterHandler(MainPresenter())
+     * ) as IMainPresenter
+     */
     override fun createPresenter(): I${mPageName}Presenter? {
         return ${mPageName}Presenter()
-//        return Proxy.newProxyInstance(
-//            ${mPageName}Presenter::class.java.classLoader,
-//            arrayOf(I${mPageName}Presenter::class.java),
-//            LoadingPresenterHandler(${mPageName}Presenter())
-//        ) as I${mPageName}Presenter
     }
 
     override fun initView() {
