@@ -9,8 +9,8 @@ import java.util.*
 val mvpFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMVPFragment"
-        description = "一键创建 BaseMVPFragment "
+        name = "ZTBaseMvpFragment"
+        description = "一键创建 BaseMvpFragment "
         minApi = MIN_API
         category = Category.Fragment
         formFactor = FormFactor.Mobile

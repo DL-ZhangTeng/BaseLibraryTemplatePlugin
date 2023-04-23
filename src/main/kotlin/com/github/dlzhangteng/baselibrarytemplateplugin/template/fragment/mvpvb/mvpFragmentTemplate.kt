@@ -1,4 +1,4 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpvb
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
@@ -6,19 +6,17 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
 import java.util.*
 
-val mvpVbActivityTemplate
+val mvpVbFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseMvpVbActivity"
-        description = "一键创建 BaseMvpActivity "
+        name = "ZTBaseMvpVbFragment"
+        description = "一键创建 BaseMvpVbFragment "
         minApi = MIN_API
-        category = Category.Activity
+        category = Category.Fragment
         formFactor = FormFactor.Mobile
         screens = listOf(
-            WizardUiContext.ActivityGallery,
-            WizardUiContext.MenuEntry,
-            WizardUiContext.NewProject,
-            WizardUiContext.NewModule
+            WizardUiContext.FragmentGallery,
+            WizardUiContext.MenuEntry
         )
 
         val mPageName = stringParameter {
@@ -28,44 +26,44 @@ val mvpVbActivityTemplate
             help = "需要生成页面的名字,不需要再写 名字后缀:如Activity、Fragment,会自动生成,以及对应文件名后缀"
         }
 
-        val mIsGenerateActivityLayout = booleanParameter {
-            name = "Generate Activity Layout"
+        val mIsGenerateFragmentLayout = booleanParameter {
+            name = "Generate Fragment Layout"
             default = true
             help = "默认勾选,如果使用已存在布局 则无需勾选,若不勾选,创建后记得修改Act或 Fragment 绑定的视图文件！！！"
         }
 
-        val mActivityLayoutName = stringParameter {
-            name = "Activity Layout Name"
-            default = "activity_main"
-            visible = { mIsGenerateActivityLayout.value }
+        val mFragmentLayoutName = stringParameter {
+            name = "fragment Layout Name"
+            default = "ragment_main"
+            visible = { mIsGenerateFragmentLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { "activity${getLayoutName(mPageName.value)}" }
+            suggest = { "fragment${getLayoutName(mPageName.value)}" }
         }
 
-        val mActivityPackageName = stringParameter {
+        val mFragmentPackageName = stringParameter {
             name = "Root Package Name"
             constraints = listOf(Constraint.PACKAGE, Constraint.NONEMPTY)
             default = "com.zhangteng.baselibrary"
             visible = { !isNewModule }
-            help = "Activity 包名"
+            help = "Fragment 包名"
         }
 
-        thumb { File("template_empty_activity.png") }
+        thumb { File("template_blank_fragment.png") }
 
         widgets(
             TextFieldWidget(mPageName),
-            TextFieldWidget(mActivityLayoutName),
-            CheckBoxWidget(mIsGenerateActivityLayout),
-            PackageNameWidget(mActivityPackageName),
+            TextFieldWidget(mFragmentLayoutName),
+            CheckBoxWidget(mIsGenerateFragmentLayout),
+            PackageNameWidget(mFragmentPackageName),
         )
 
         recipe = { data: TemplateData ->
-            mvpVbActivityRecipe(
+            mvpVbFragmentRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
-                mActivityLayoutName.value,
-                mIsGenerateActivityLayout.value,
-                mActivityPackageName.value,
+                mFragmentLayoutName.value,
+                mIsGenerateFragmentLayout.value,
+                mFragmentPackageName.value,
             )
         }
 

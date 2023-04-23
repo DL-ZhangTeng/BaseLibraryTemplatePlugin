@@ -2,7 +2,6 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpLi
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mvpFragmentRecipe
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
 import java.util.*
@@ -10,8 +9,8 @@ import java.util.*
 val mvpListFragmentTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseListMVPFragment"
-        description = "一键创建 BaseListMVPFragment "
+        name = "ZTBaseListMvpFragment"
+        description = "一键创建 BaseListMvpFragment "
         minApi = MIN_API
         category = Category.Fragment
         formFactor = FormFactor.Mobile
