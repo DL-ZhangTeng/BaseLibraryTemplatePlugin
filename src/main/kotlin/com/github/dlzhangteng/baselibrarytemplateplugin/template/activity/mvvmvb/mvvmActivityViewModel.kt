@@ -1,6 +1,6 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb
 
-fun mvvmDbActivityViewModel(
+fun mvvmVbActivityViewModel(
     mRootPackageName: String?,
     mPageName: String
 ) = """

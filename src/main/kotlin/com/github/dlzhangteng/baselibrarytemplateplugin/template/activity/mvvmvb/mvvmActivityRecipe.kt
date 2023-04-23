@@ -1,13 +1,13 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
-fun RecipeExecutor.mvvmDbActivityRecipe(
+fun RecipeExecutor.mvvmVbActivityRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
@@ -21,34 +21,34 @@ fun RecipeExecutor.mvvmDbActivityRecipe(
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
-    val mvvmDbActivity = mvvmDbActivity(
+    val mvvmActivity = mvvmVbActivity(
         rootPath,
         packageNameStr,
         mPageName,
         mActivityLayoutName
     )
-    val mvvmDbActivityViewModel = mvvmDbActivityViewModel(
+    val mvvmActivityViewModel = mvvmVbActivityViewModel(
         rootPath,
         mPageName
     )
-    val mvvmActivityRepository = mvvmDbActivityRepository(
+    val mvvmActivityRepository = mvvmVbActivityRepository(
         rootPath,
         mPageName
     )
     // 保存Activity
     save(
-        mvvmDbActivity,
+        mvvmActivity,
         moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbXml(rootPath, packageNameStr, mPageName),
+            basePageXml("${packageNameStr}.${mPageName}Activity"),
             moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }
     save(
-        mvvmDbActivityViewModel,
+        mvvmActivityViewModel,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"

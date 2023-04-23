@@ -1,19 +1,19 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvbList
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityRepository
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityViewModel
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb.mvvmVbActivityRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb.mvvmVbActivityViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapter
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingBean
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
-fun RecipeExecutor.mvvmDbListActivityRecipe(
+fun RecipeExecutor.mvvmVbListActivityRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mActivityLayoutName: String,
@@ -29,7 +29,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mActivityPackageName
-    val mvvmDbActivity = mvvmDbListActivity(
+    val mvvmActivity = mvvmVbListActivity(
         rootPath,
         packageNameStr,
         mPageName,
@@ -37,17 +37,17 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         mBeanClass,
         mAdapterClass
     )
-    val mvvmDbActivityViewModel = mvvmDbActivityViewModel(
+    val mvvmActivityViewModel = mvvmVbActivityViewModel(
         rootPath,
         mPageName
     )
-    val mvvmActivityRepository = mvvmDbActivityRepository(
+    val mvvmActivityRepository = mvvmVbActivityRepository(
         rootPath,
         mPageName
     )
-    val listBean = bindingBean(rootPath, mBeanClass)
+    val listBean = baseBean(rootPath, mBeanClass)
     val listAdapter =
-        bindingAdapter(
+        baseAdapter(
             rootPath,
             "item${
                 getLayoutName(
@@ -59,18 +59,18 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         )
     // 保存Activity
     save(
-        mvvmDbActivity,
+        mvvmActivity,
         moduleTemplateData.srcDir.resolve("${mPageName}Activity.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbListXml(rootPath, packageNameStr, mPageName),
+            baseListXml("${packageNameStr}.${mPageName}Activity"),
             moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }
     save(
-        mvvmDbActivityViewModel,
+        mvvmActivityViewModel,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
@@ -112,7 +112,7 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
     )
 
     save(
-        baseDbXml(rootPath, mBeanClass),
+        baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
                 getLayoutName(

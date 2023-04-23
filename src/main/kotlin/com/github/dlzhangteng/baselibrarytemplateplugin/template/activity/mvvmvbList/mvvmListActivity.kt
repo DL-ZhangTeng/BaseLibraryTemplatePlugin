@@ -1,6 +1,6 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvbList
 
-fun mvvmDbListActivity(
+fun mvvmVbListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
@@ -14,15 +14,15 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.zhangteng.mvvm.adapter.BindingAdapter
-import com.zhangteng.mvvm.mvvm.db.BaseListMvvmActivity
+import com.zhangteng.base.base.BaseAdapter
+import com.zhangteng.mvvm.mvvm.BaseListMvvmActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 
-class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, Activity${mPageName}Binding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
+
+class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, Activit
 
     override fun initView() {
         super.initView()
-
+       
     }
 
     override fun initData() {}
@@ -41,11 +41,11 @@ class ${mPageName}Activity : BaseListMvvmActivity<${mPageName}ViewModel, Activit
     }
 
     override fun getRecyclerView(): RecyclerView {
-        return mDatabind.recyclerView
+        return findViewById(R.id.recyclerView)
     }
 
     override fun getSmartRefreshLayout(): SmartRefreshLayout {
-        return mDatabind.smartRefreshLayout
+        return findViewById(R.id.smartRefreshLayout)
     }
 
     override fun loadData(i: Int) {}

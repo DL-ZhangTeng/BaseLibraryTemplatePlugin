@@ -1,15 +1,16 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvbList
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
+import java.util.*
 
-val mvvmDbListActivityTemplate
+val mvvmVbListActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseListMvvmDbActivity"
-        description = "一键创建 ZTBaseListMvvmDbActivity "
+        name = "ZTBaseListMvvmVbActivity"
+        description = "一键创建 BaseListMvvmVbActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -77,7 +78,7 @@ val mvvmDbListActivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvvmDbListActivityRecipe(
+            mvvmVbListActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,

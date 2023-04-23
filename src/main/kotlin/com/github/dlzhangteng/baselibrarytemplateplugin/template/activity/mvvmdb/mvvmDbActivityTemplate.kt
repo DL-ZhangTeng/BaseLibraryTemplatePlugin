@@ -46,7 +46,7 @@ val mvvmDbActivityTemplate
             default = "activity_main"
             visible = { mIsGenerateActivityLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { "activity${getLayoutName(mPageName.value)}_db" }
+            suggest = { "activity${getLayoutName(mPageName.value)}" }
         }
 
         thumb { File("template_empty_activity.png") }
