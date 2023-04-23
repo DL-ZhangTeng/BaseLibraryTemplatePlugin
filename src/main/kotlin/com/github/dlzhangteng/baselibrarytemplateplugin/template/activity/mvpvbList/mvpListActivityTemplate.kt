@@ -1,4 +1,4 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvbList
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
@@ -6,11 +6,11 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import java.io.File
 import java.util.*
 
-val mvpListActivityTemplate
+val mvpVbListActivityTemplate
     get() = template {
 //        revision = 1
-        name = "ZTBaseListMvpActivity"
-        description = "一键创建 BaseListMvpActivity "
+        name = "ZTBaseListMvpVbActivity"
+        description = "一键创建 BaseListMVPActivity "
         minApi = MIN_API
         category = Category.Activity
         formFactor = FormFactor.Mobile
@@ -78,7 +78,7 @@ val mvpListActivityTemplate
         )
 
         recipe = { data: TemplateData ->
-            mvpListActivityRecipe(
+            mvpVbListActivityRecipe(
                 data as ModuleTemplateData,
                 mPageName.value,
                 mActivityLayoutName.value,

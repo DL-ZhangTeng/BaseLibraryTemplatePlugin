@@ -6,6 +6,8 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base.b
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.mvpActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList.mvpListActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvb.mvpVbActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvbList.mvpVbListActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmList.mvvmListActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityTemplate
@@ -32,7 +34,9 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         listActivityTemplate,
         titleBarActivityTemplate,
         mvpActivityTemplate,
+        mvpVbActivityTemplate,
         mvpListActivityTemplate,
+        mvpVbListActivityTemplate,
         mvvmActivityTemplate,
         mvvmDbActivityTemplate,
         mvvmListActivityTemplate,
