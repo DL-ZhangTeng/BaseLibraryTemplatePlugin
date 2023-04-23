@@ -1,6 +1,6 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvbList
 
-fun mvvmDbListFragment(
+fun mvvmVbListFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
     mPageName: String,
@@ -17,24 +17,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.zhangteng.mvvm.adapter.BindingAdapter
-import com.zhangteng.mvvm.mvvm.db.BaseListMvvmFragment
+import com.zhangteng.base.base.BaseAdapter
+import com.zhangteng.mvvm.mvvm.BaseListMvvmFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel, Fragment${mPageName}Binding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>(){
+class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()
     }
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.${mFragmentLayoutName}, container, false)
     }
     
@@ -49,7 +48,7 @@ class ${mPageName}Fragment : BaseListMvvmFragment<${mPageName}FragmentViewModel,
     override fun createAdapter(): $mAdapterClass {
         return ${mAdapterClass}(mList)
     }
-
+    
     override fun getRecyclerView(): RecyclerView? {
         return view?.findViewById(R.id.recyclerView)
     }

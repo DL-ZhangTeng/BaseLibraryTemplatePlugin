@@ -1,6 +1,6 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvb
 
-fun mvvmDbFragmentRepository(
+fun mvvmVbFragmentRepository(
     mRootPackageName: String?,
     mPageName: String
 ) = """

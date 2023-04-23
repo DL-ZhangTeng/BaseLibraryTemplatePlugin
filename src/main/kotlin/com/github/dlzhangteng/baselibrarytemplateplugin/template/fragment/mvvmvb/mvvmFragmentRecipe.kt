@@ -1,12 +1,12 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvb
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbFragmentXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
 
-fun RecipeExecutor.mvvmDbFragmentRecipe(
+fun RecipeExecutor.mvvmVbFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mFragmentLayoutName: String,
@@ -20,34 +20,34 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mFragmentPackageName
-    val mvvmDbFragment = mvvmDbFragment(
+    val mvvmFragment = mvvmVbFragment(
         rootPath,
         packageNameStr,
         mPageName,
         mFragmentLayoutName
     )
-    val mvvmDbFragmentViewModel = mvvmDbFragmentViewModel(
+    val mvvmFragmentViewModel = mvvmVbFragmentViewModel(
         rootPath,
         mPageName
     )
-    val mvvmDbFragmentRepository = mvvmDbFragmentRepository(
+    val mvvmFragmentRepository = mvvmVbFragmentRepository(
         rootPath,
         mPageName
     )
     // 保存Activity
     save(
-        mvvmDbFragment,
+        mvvmFragment,
         moduleTemplateData.srcDir.resolve("${mPageName}Fragment.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbFragmentXml(rootPath, packageNameStr, mPageName),
+            basePageXml("${packageNameStr}.${mPageName}Fragment"),
             moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }
     save(
-        mvvmDbFragmentViewModel,
+        mvvmFragmentViewModel,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
@@ -57,7 +57,7 @@ fun RecipeExecutor.mvvmDbFragmentRecipe(
             .resolve("${mPageName}FragmentViewModel.kt")
     )
     save(
-        mvvmDbFragmentRepository,
+        mvvmFragmentRepository,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"

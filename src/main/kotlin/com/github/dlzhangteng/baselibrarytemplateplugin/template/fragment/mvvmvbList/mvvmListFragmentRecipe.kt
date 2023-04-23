@@ -1,18 +1,18 @@
-package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList
+package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvbList
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentRepository
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentViewModel
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.mvvmFragmentRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.mvvmFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListFragmentXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapter
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingBean
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapter
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseBean
 import java.io.File
 
 
-fun RecipeExecutor.mvvmDbListFragmentRecipe(
+fun RecipeExecutor.mvvmVbListFragmentRecipe(
     moduleTemplateData: ModuleTemplateData,
     mPageName: String,
     mFragmentLayoutName: String,
@@ -28,7 +28,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
     val rootPath =
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mFragmentPackageName
-    val mvvmDbFragment = mvvmDbListFragment(
+    val mvvmFragment = mvvmVbListFragment(
         rootPath,
         packageNameStr,
         mPageName,
@@ -36,17 +36,17 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         mBeanClass,
         mAdapterClass
     )
-    val mvvmDbFragmentViewModel = mvvmDbFragmentViewModel(
+    val mvvmFragmentViewModel = mvvmFragmentViewModel(
         rootPath,
         mPageName
     )
-    val mvvmDbFragmentRepository = mvvmDbFragmentRepository(
+    val mvvmFragmentRepository = mvvmFragmentRepository(
         rootPath,
         mPageName
     )
-    val listBean = bindingBean(rootPath, mBeanClass)
+    val listBean = baseBean(rootPath, mBeanClass)
     val listAdapter =
-        bindingAdapter(
+        baseAdapter(
             rootPath,
             "item${
                 getLayoutName(
@@ -58,18 +58,18 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         )
     // 保存Activity
     save(
-        mvvmDbFragment,
+        mvvmFragment,
         moduleTemplateData.srcDir.resolve("${mPageName}Fragment.kt")
     )
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbListFragmentXml(rootPath, packageNameStr, mPageName),
+            baseListXml("${packageNameStr}.${mPageName}Fragment"),
             moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }
     save(
-        mvvmDbFragmentViewModel,
+        mvvmFragmentViewModel,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
@@ -79,7 +79,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
             .resolve("${mPageName}FragmentViewModel.kt")
     )
     save(
-        mvvmDbFragmentRepository,
+        mvvmFragmentRepository,
         File(
             moduleTemplateData.rootDir.absolutePath
                     + "/src/main/java/"
@@ -111,7 +111,7 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
     )
 
     save(
-        baseDbXml(rootPath, mBeanClass),
+        baseXml(),
         moduleTemplateData.resDir.resolve(
             "layout/item${
                 getLayoutName(

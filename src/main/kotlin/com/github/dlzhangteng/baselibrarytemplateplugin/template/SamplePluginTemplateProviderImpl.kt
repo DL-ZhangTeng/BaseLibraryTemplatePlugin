@@ -25,6 +25,8 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.m
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmList.mvvmListFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdbList.mvvmDbListFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvb.mvvmVbFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvbList.mvvmVbListFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.adapter.baseAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapterTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.header.headerOrFooterAdapterTemplate
@@ -55,8 +57,10 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         mvpListFragmentTemplate,
         mvpVbListFragmentTemplate,
         mvvmFragmentTemplate,
+        mvvmVbFragmentTemplate,
         mvvmDbFragmentTemplate,
         mvvmListFragmentTemplate,
+        mvvmVbListFragmentTemplate,
         mvvmDbListFragmentTemplate,
 
         baseAdapterTemplate,
