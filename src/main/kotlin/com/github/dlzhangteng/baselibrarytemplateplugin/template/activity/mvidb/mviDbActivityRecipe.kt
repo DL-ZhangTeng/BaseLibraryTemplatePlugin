@@ -3,7 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvidb
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mviDbXml
 import java.io.File
 
 
@@ -43,7 +43,7 @@ fun RecipeExecutor.mviDbActivityRecipe(
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbXml(rootPath, packageNameStr, mPageName),
+            mviDbXml(rootPath, packageNameStr, mPageName),
             moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }

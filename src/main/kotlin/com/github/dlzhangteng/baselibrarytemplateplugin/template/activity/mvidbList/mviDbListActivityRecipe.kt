@@ -7,7 +7,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvidb.
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mviDbListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingBean
 import java.io.File
@@ -65,7 +65,7 @@ fun RecipeExecutor.mviDbListActivityRecipe(
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbListXml(rootPath, packageNameStr, mPageName),
+            mviDbListXml(rootPath, packageNameStr, mPageName),
             moduleTemplateData.resDir.resolve("layout/${mActivityLayoutName}.xml")
         )
     }

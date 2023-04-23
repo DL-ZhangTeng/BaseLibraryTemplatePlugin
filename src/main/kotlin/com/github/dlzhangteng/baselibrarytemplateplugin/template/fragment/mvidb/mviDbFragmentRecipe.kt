@@ -2,7 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbFragmentXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mviDbFragmentXml
 import java.io.File
 
 
@@ -42,7 +42,7 @@ fun RecipeExecutor.mviDbFragmentRecipe(
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbFragmentXml(rootPath, packageNameStr, mPageName),
+            mviDbFragmentXml(rootPath, packageNameStr, mPageName),
             moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }

@@ -6,7 +6,7 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb.
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb.mviDbFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListFragmentXml
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mviDbListFragmentXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingAdapter
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.other.bindingadapter.bindingBean
 import java.io.File
@@ -64,7 +64,7 @@ fun RecipeExecutor.mviDbListFragmentRecipe(
     if (mIsGenerateActivityLayout) {
         // 保存xml
         save(
-            mvvmDbListFragmentXml(rootPath, packageNameStr, mPageName),
+            mviDbListFragmentXml(rootPath, packageNameStr, mPageName),
             moduleTemplateData.resDir.resolve("layout/${mFragmentLayoutName}.xml")
         )
     }
