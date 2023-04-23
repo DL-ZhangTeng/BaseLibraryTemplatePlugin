@@ -44,7 +44,7 @@ val mviDbFragmentTemplate
             default = "fragment_main"
             visible = { mIsGenerateFragmentLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { "fragment${getLayoutName(mPageName.value)}_db" }
+            suggest = { "fragment${getLayoutName(mPageName.value)}" }
         }
 
         thumb { File("template_blank_fragment.png") }

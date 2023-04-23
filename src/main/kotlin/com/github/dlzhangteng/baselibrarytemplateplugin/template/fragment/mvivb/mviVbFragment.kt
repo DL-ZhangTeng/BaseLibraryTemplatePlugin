@@ -12,11 +12,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zhangteng.mvvm.mvi.BaseMviFragment
+import com.zhangteng.mvvm.mvi.vb.BaseMviFragment
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
 
-class ${mPageName}Fragment : BaseMviFragment<${mPageName}FragmentViewModel>() {
+class ${mPageName}Fragment : BaseMviFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

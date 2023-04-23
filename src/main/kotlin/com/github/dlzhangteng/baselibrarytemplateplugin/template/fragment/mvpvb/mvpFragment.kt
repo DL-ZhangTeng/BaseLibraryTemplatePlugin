@@ -13,14 +13,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.zhangteng.mvp.mvp.BaseMvpFragment
+import com.zhangteng.mvp.mvp.vb.BaseMvpFragment
+import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
-import ${mRootPackageName}.R
 
-class ${mPageName}Fragment : BaseMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
+class ${mPageName}Fragment : BaseMvpFragment<Fragment${mPageName}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
     
     companion object {
         fun newInstance() = ${mPageName}Fragment()

@@ -18,8 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
-import com.zhangteng.mvp.mvp.BaseListMvpFragment
+import com.zhangteng.mvp.mvp.vb.BaseListMvpFragment
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
@@ -27,7 +28,7 @@ import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
+class ${mPageName}Fragment : BaseListMvpFragment<Fragment${mPageName}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
     
     companion object {
         fun newInstance() = ${mPageName}Fragment()

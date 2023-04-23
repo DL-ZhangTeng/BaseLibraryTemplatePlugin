@@ -10,13 +10,14 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
 import com.zhangteng.mvp.mvp.vb.BaseMvpActivity
+import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
-import ${mRootPackageName}.R
 
-class ${mPageName}Activity : BaseMvpActivity<I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter>(), I${mPageName}View {
+class ${mPageName}Activity : BaseMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter>(), I${mPageName}View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

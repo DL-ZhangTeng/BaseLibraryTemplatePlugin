@@ -25,7 +25,7 @@ import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMviFragment<${mPageName}FragmentViewModel, Fragment${mPageName}Binding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>(){
+class ${mPageName}Fragment : BaseListMviFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>(){
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

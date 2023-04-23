@@ -15,14 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
-import com.zhangteng.mvvm.mvi.BaseListMviActivity
+import com.zhangteng.mvvm.mvi.vb.BaseListMviActivity
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.mvi.vm.${mPageName}ViewModel
 
 
-class ${mPageName}Activity : BaseListMviActivity<${mPageName}ViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
+class ${mPageName}Activity : BaseListMviActivity<Activity${mPageName}Binding, ${mPageName}ViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

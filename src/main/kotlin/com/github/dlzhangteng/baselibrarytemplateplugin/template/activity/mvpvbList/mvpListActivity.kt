@@ -17,6 +17,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvp.mvp.vb.BaseListMvpActivity
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
@@ -24,7 +25,7 @@ import ${mRootPackageName}.mvp.view.I${mPageName}View
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 
-class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
+class ${mPageName}Activity : BaseListMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -44,7 +44,7 @@ val mviDbListFragmentTemplate
             default = "fragment_main"
             visible = { mIsGenerateFragmentLayout.value }
             constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-            suggest = { "fragment${getLayoutName(mPageName.value)}_db" }
+            suggest = { "fragment${getLayoutName(mPageName.value)}" }
         }
 
         val mBeanName = stringParameter {

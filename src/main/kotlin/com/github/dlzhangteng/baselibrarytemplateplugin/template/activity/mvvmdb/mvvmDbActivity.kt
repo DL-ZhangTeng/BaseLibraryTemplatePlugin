@@ -11,10 +11,10 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 import android.os.Bundle
 import com.zhangteng.mvvm.mvvm.db.BaseMvvmActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Activity${mPageName}DbBinding
-import ${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel
+import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 
-class ${mPageName}Activity : BaseMvvmActivity<${mPageName}ViewModel, Activity${mPageName}Binding>() {
+class ${mPageName}Activity : BaseMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

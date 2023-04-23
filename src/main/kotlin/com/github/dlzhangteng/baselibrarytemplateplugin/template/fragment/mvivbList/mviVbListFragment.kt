@@ -18,13 +18,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
-import com.zhangteng.mvvm.mvi.BaseListMviFragment
+import com.zhangteng.mvvm.mvi.vb.BaseListMviFragment
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 
-class ${mPageName}Fragment : BaseListMviFragment<${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
+class ${mPageName}Fragment : BaseListMviFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

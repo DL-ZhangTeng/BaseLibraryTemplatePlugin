@@ -14,14 +14,14 @@ fun mvvmDbListXml(
 
         <variable
             name="viewModel"
-            type="${mRootPackageName}.mvvm.vm.${mPageName}DbViewModel" />
+            type="${mRootPackageName}.mvvm.vm.${mPageName}ViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}DbActivity">
+        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}Activity">
         
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"

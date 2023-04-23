@@ -14,14 +14,14 @@ fun mviDbXml(
 
         <variable
             name="viewModel"
-            type="${mRootPackageName}.mvi.vm.${mPageName}DbViewModel" />
+            type="${mRootPackageName}.mvi.vm.${mPageName}ViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}DbActivity">
+        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}Activity">
 
     </LinearLayout>
 </layout>

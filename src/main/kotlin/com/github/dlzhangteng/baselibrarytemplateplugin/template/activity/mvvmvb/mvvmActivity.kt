@@ -9,12 +9,13 @@ fun mvvmVbActivity(
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
 import android.os.Bundle
-import com.zhangteng.mvvm.mvvm.BaseMvvmActivity
+import com.zhangteng.mvvm.mvvm.vb.BaseMvvmActivity
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 
 
-class ${mPageName}Activity : BaseMvvmActivity<${mPageName}ViewModel>() {
+class ${mPageName}Activity : BaseMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

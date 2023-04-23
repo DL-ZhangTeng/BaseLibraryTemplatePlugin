@@ -14,14 +14,14 @@ fun mvvmDbListFragmentXml(
 
         <variable
             name="viewModel"
-            type="${mRootPackageName}.mvvm.vm.${mPageName}DbFragmentViewModel" />
+            type="${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}DbFragment">
+        tools:context="${mPagePackageName.ifEmpty { "" }}.${mPageName}Fragment">
         
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"

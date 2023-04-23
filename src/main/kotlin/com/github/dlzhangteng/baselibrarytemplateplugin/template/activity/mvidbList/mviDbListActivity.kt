@@ -22,7 +22,7 @@ import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}ViewModel
 
-class ${mPageName}Activity : BaseListMviActivity<${mPageName}ViewModel, Activity${mPageName}Binding, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
+class ${mPageName}Activity : BaseListMviActivity<Activity${mPageName}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

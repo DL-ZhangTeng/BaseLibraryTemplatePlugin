@@ -12,11 +12,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zhangteng.mvvm.mvvm.BaseMvvmFragment
+import com.zhangteng.mvvm.mvvm.vb.BaseMvvmFragment
 import ${mRootPackageName}.R
+import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 
-class ${mPageName}Fragment : BaseMvvmFragment<${mPageName}FragmentViewModel>() {
+class ${mPageName}Fragment : BaseMvvmFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()
