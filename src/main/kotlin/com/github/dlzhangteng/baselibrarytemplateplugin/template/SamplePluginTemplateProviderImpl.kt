@@ -4,6 +4,12 @@ import com.android.tools.idea.wizard.template.Template
 import com.android.tools.idea.wizard.template.WizardTemplateProvider
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.base.baseActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.list.listActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvi.mviActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mviList.mviListActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvidb.mviDbActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvidbList.mviDbListActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvivb.mviVbActivityTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvivbList.mviVbListActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.mvpActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList.mvpListActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvb.mvpVbActivityTemplate
@@ -17,6 +23,12 @@ import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.titlebar.titleBarActivityTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.base.baseFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list.listFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mviList.mviListFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb.mviDbFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidbList.mviDbListFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvivb.mviVbFragmentTemplate
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvivbList.mviVbListFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.mvpFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpList.mvpListFragmentTemplate
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpvb.mvpVbFragmentTemplate
@@ -49,6 +61,12 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         mvvmListActivityTemplate,
         mvvmVbListActivityTemplate,
         mvvmDbListActivityTemplate,
+        mviActivityTemplate,
+        mviVbActivityTemplate,
+        mviDbActivityTemplate,
+        mviListActivityTemplate,
+        mviVbListActivityTemplate,
+        mviDbListActivityTemplate,
 
         baseFragmentTemplate,
         listFragmentTemplate,
@@ -62,6 +80,12 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
         mvvmListFragmentTemplate,
         mvvmVbListFragmentTemplate,
         mvvmDbListFragmentTemplate,
+        mviFragmentTemplate,
+        mviVbFragmentTemplate,
+        mviDbFragmentTemplate,
+        mviListFragmentTemplate,
+        mviVbListFragmentTemplate,
+        mviDbListFragmentTemplate,
 
         baseAdapterTemplate,
         bindingAdapterTemplate,
