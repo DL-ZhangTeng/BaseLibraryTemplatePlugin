@@ -14,7 +14,7 @@ import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 
 class ${mPageName}FragmentPresenter : BasePresenter<I${mPageName}FragmentView, I${mPageName}FragmentModel>(), I${mPageName}FragmentPresenter {
 
-    override var mModel: I${mPageName}Model = ${mPageName}Model()
+    override var mModel: I${mPageName}FragmentModel = ${mPageName}FragmentModel()
     
 }
 """
