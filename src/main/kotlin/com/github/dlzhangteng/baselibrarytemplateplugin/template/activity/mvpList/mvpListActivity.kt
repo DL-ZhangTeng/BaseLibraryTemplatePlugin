@@ -20,9 +20,11 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvp.mvp.BaseListMvpActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
-${
-    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter""" else ""
+import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
+        """
+import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter"""
+    else """"""
 }
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View

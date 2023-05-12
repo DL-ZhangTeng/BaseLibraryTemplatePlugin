@@ -120,7 +120,7 @@ fun RecipeExecutor.mvpFragmentRecipe(
                         + rootPath.replace(".", "/")
                         + "/mvp/di/"
             ).apply { mkdirs() }
-                .resolve("${mPageName}Module.kt")
+                .resolve("${mPageName}FragmentModule.kt")
         )
     }
 }

@@ -24,9 +24,11 @@ import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvp.mvp.vb.BaseListMvpFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
-import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
-${
-    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter""" else ""
+import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
+        """
+import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter""" 
+    else """"""
 }
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
