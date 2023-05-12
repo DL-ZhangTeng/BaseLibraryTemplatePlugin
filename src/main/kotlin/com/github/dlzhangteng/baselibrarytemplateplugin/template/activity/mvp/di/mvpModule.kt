@@ -14,15 +14,14 @@ import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-import dagger.Binds
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) 
+"""import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 
 @Module
-@InstallIn(ActivityComponent::class)
-""" else """
+@InstallIn(ActivityComponent::class)""" else """
     
 """
 }

@@ -22,18 +22,20 @@ import com.zhangteng.mvp.mvp.vb.BaseListMvpActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
-import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
+${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter""" else ""
+}
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import dagger.hilt.android.AndroidEntryPoint
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-    @AndroidEntryPoint
-""" else """
+@AndroidEntryPoint""" else
+        """
     
 """
 }

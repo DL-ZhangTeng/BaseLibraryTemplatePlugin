@@ -18,17 +18,19 @@ import android.view.ViewGroup
 
 import com.zhangteng.mvp.mvp.BaseMvpFragment
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
-import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
+${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter""" else ""
+}
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 import ${mRootPackageName}.R
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import dagger.hilt.android.AndroidEntryPoint
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-    @AndroidEntryPoint
-""" else """
+@AndroidEntryPoint""" else
+        """
     
 """
 }

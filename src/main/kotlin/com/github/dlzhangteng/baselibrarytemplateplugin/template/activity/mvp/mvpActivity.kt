@@ -14,17 +14,19 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 import android.os.Bundle
 import com.zhangteng.mvp.mvp.BaseMvpActivity
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
-import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter
+${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}Presenter""" else ""
+}
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
 import ${mRootPackageName}.R
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import dagger.hilt.android.AndroidEntryPoint
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) 
+"""import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-    @AndroidEntryPoint
-""" else """
+@AndroidEntryPoint""" else 
+"""
     
 """
 }

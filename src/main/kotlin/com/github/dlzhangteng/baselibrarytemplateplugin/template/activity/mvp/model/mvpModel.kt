@@ -12,8 +12,8 @@ package ${mRootPackageName}.mvp.model
 import com.zhangteng.mvp.base.BaseModel
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) 
+"""import javax.inject.Inject
     
 """ else """
     

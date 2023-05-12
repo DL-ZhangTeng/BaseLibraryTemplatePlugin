@@ -10,13 +10,15 @@ fun mvpPresenter(
 package ${mRootPackageName}.mvp.presenter
 
 import com.zhangteng.mvp.base.BasePresenter
-import ${mRootPackageName}.mvp.model.${mPageName}Model
+${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.model.${mPageName}Model""" else ""
+}
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) 
+"""import javax.inject.Inject
     
 """ else """
     

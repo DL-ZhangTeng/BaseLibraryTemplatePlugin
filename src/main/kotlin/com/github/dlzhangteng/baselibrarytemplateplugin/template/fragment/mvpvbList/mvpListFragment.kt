@@ -25,18 +25,20 @@ import com.zhangteng.mvp.mvp.vb.BaseListMvpFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
-import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
+${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT) """import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter""" else ""
+}
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
 ${
-    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
-    import dagger.hilt.android.AndroidEntryPoint
-    import javax.inject.Inject
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-    @AndroidEntryPoint
-""" else """
+@AndroidEntryPoint""" else
+        """
     
 """
 }
