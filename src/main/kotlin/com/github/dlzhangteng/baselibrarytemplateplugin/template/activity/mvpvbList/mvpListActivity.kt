@@ -27,20 +27,11 @@ import ${mRootPackageName}.bean.${mPageName}Bean
 
 class ${mPageName}Activity : BaseListMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
 
+    override var mPresenter: I${mPageName}Presenter = ${mPageName}Presenter()
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.${mActivityLayoutName})
-    }
-
-    /**
-     * return Proxy.newProxyInstance(
-     *      MainPresenter::class.java.classLoader,
-     *      arrayOf(IMainPresenter::class.java),
-     *      LoadingPresenterHandler(MainPresenter())
-     * ) as IMainPresenter
-     */
-    override fun createPresenter(): I${mPageName}Presenter? {
-        return ${mPageName}Presenter()
     }
 
     override fun initView() {

@@ -19,20 +19,11 @@ import ${mRootPackageName}.mvp.view.I${mPageName}View
 
 class ${mPageName}Activity : BaseMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter>(), I${mPageName}View {
 
+    override var mPresenter: I${mPageName}Presenter = ${mPageName}Presenter()
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.${mActivityLayoutName})
-    }
-    
-    /**
-     * return Proxy.newProxyInstance(
-     *      MainPresenter::class.java.classLoader,
-     *      arrayOf(IMainPresenter::class.java),
-     *      LoadingPresenterHandler(MainPresenter())
-     * ) as IMainPresenter
-     */
-    override fun createPresenter(): I${mPageName}Presenter? {
-        return ${mPageName}Presenter()
     }
 
     override fun initView() {

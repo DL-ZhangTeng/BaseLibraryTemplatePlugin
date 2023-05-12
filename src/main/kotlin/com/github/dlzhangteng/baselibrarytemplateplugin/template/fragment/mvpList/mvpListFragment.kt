@@ -29,6 +29,8 @@ import ${mRootPackageName}.adapter.${mAdapterClass}
 
 class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
     
+    override var mPresenter: I${mPageName}FragmentPresenter = ${mPageName}FragmentPresenter()
+    
     companion object {
         fun newInstance() = ${mPageName}Fragment()
     }
@@ -39,13 +41,6 @@ class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${m
         savedInstanceState: Bundle?
     ): View? {
         return LayoutInflater.from(context).inflate(R.layout.${mFragmentLayoutName}, container, false)
-    }
-
-    /**
-    *return Proxy.newProxyInstance(${mPageName}FragmentPresenter::class.java.classLoader, arrayOf(I${mPageName}FragmentPresenter::class.java), LoadingPresenterHandler(${mPageName}FragmentPresenter())) as I${mPageName}FragmentPresenter
-    */
-	override fun createPresenter():I${mPageName}FragmentPresenter? {
-        return ${mPageName}FragmentPresenter()
     }
 
 	override fun initView(view: View, savedInstanceState: Bundle?) {

@@ -13,8 +13,8 @@ import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
 
 class ${mPageName}Presenter : BasePresenter<I${mPageName}View, I${mPageName}Model>(), I${mPageName}Presenter {
-    init {
-        this.mModel = ${mPageName}Model()
-    }
+
+    override var mModel: I${mPageName}Model = ${mPageName}Model()
+    
 }
 """

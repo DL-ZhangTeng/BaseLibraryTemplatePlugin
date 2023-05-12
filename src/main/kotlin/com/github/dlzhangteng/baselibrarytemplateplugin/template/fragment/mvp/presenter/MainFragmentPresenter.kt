@@ -13,8 +13,8 @@ import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresent
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 
 class ${mPageName}FragmentPresenter : BasePresenter<I${mPageName}FragmentView, I${mPageName}FragmentModel>(), I${mPageName}FragmentPresenter {
-    init {
-        this.mModel = ${mPageName}FragmentModel()
-    }
+
+    override var mModel: I${mPageName}Model = ${mPageName}Model()
+    
 }
 """
