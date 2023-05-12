@@ -2,6 +2,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.di.mvpFragmentModule
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.model.imodel.mvpIFragmentModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.model.mvpFragmentModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter.ipresenter.mvpIFragmentPresenter
@@ -17,6 +19,7 @@ fun RecipeExecutor.mvpFragmentRecipe(
     mFragmentLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mFragmentPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
@@ -26,12 +29,18 @@ fun RecipeExecutor.mvpFragmentRecipe(
         if (packageNameStr.isNotEmpty()) moduleTemplateData.projectTemplateData.applicationPackage.toString()
         else mFragmentPackageName
 
-    val listActivity = mvpFragment(rootPath, packageNameStr, mPageName, mFragmentLayoutName)
+    val listActivity = mvpFragment(
+        rootPath,
+        packageNameStr,
+        mPageName,
+        mFragmentLayoutName,
+        mDependencyInjectionEnum
+    )
     val mvpIView = mvpFragmentView(rootPath, mPageName)
     val mvpIModel = mvpIFragmentModel(rootPath, mPageName)
-    val mvpModel = mvpFragmentModel(rootPath, mPageName)
+    val mvpModel = mvpFragmentModel(rootPath, mPageName, mDependencyInjectionEnum)
     val mvpIPresenter = mvpIFragmentPresenter(rootPath, mPageName)
-    val mvpPresenter = mvpFragmentPresenter(rootPath, mPageName)
+    val mvpPresenter = mvpFragmentPresenter(rootPath, mPageName, mDependencyInjectionEnum)
     // 保存Activity
     save(
         listActivity,
@@ -99,4 +108,19 @@ fun RecipeExecutor.mvpFragmentRecipe(
         ).apply { mkdirs() }
             .resolve("${mPageName}FragmentPresenter.kt")
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvpModule = mvpFragmentModule(rootPath, mPageName, mDependencyInjectionEnum)
+
+        save(
+            mvpModule,
+            File(
+                moduleTemplateData.rootDir.absolutePath
+                        + "/src/main/java/"
+                        + rootPath.replace(".", "/")
+                        + "/mvp/di/"
+            ).apply { mkdirs() }
+                .resolve("${mPageName}Module.kt")
+        )
+    }
 }

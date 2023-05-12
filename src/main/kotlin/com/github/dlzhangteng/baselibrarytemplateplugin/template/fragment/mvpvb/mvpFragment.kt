@@ -1,10 +1,13 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpvb
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvpVbFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
     mPageName: String,
-    mFragmentLayoutName: String
+    mFragmentLayoutName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -20,10 +23,27 @@ import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.presenter.${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    import dagger.hilt.android.AndroidEntryPoint
+    import javax.inject.Inject
 
+    @AndroidEntryPoint
+""" else """
+    
+"""
+}
 class ${mPageName}Fragment : BaseMvpFragment<Fragment${mPageName}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
     
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    @Inject
+    override lateinit var mPresenter: I${mPageName}FragmentPresenter
+"""
+    else """
     override var mPresenter: I${mPageName}FragmentPresenter = ${mPageName}FragmentPresenter()
+"""
+}
     
     companion object {
         fun newInstance() = ${mPageName}Fragment()

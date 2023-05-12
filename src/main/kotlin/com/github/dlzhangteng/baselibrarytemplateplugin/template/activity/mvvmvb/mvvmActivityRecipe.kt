@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmv
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
@@ -13,6 +14,7 @@ fun RecipeExecutor.mvvmVbActivityRecipe(
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

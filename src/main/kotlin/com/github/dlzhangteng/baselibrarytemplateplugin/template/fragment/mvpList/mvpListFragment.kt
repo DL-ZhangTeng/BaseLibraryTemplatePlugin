@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvpListFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
@@ -7,6 +9,7 @@ fun mvpListFragment(
     mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -26,10 +29,27 @@ import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresent
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    import dagger.hilt.android.AndroidEntryPoint
+    import javax.inject.Inject
 
+    @AndroidEntryPoint
+""" else """
+    
+"""
+}
 class ${mPageName}Fragment : BaseListMvpFragment<I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
     
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    @Inject
+    override lateinit var mPresenter: I${mPageName}FragmentPresenter
+"""
+    else """
     override var mPresenter: I${mPageName}FragmentPresenter = ${mPageName}FragmentPresenter()
+"""
+}
     
     companion object {
         fun newInstance() = ${mPageName}Fragment()

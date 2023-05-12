@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmv
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb.mvvmVbActivityRepository
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb.mvvmVbActivityViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
@@ -21,6 +22,7 @@ fun RecipeExecutor.mvvmVbListActivityRecipe(
     mBeanClass: String,
     mAdapterClass: String,
     mActivityPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

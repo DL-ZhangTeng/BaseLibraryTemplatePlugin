@@ -16,6 +16,7 @@ import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.android.tools.idea.wizard.template.stringParameter
 import com.android.tools.idea.wizard.template.template
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.ArchitectureEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.MvpBindingEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.MvvmBindingEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mviList.mviListFragmentRecipe
@@ -110,6 +111,13 @@ val listFragmentTemplate
             help = "默认不使用Binding,如果使用页面绑定或者数据绑定请选择VIEW_BINDING或DATA_BINDING"
         }
 
+        val mDependencyInjectionEnum = enumParameter<DependencyInjectionEnum> {
+            name = "Select Dependency Injection"
+            default = DependencyInjectionEnum.NONE
+            visible = { mArchitectureEnum.value != ArchitectureEnum.NONE }
+            help = "默认不使用依赖注入,如果使用依赖注入请选择HILT（暂不支持DAGGER2）"
+        }
+
         thumb { File("template_list_fragment.png") }
 
         widgets(
@@ -121,7 +129,8 @@ val listFragmentTemplate
             PackageNameWidget(mFragmentPackageName),
             EnumWidget(mArchitectureEnum),
             EnumWidget(mMvpBindingEnum),
-            EnumWidget(mMvvmBindingEnum)
+            EnumWidget(mMvvmBindingEnum),
+            EnumWidget(mDependencyInjectionEnum),
         )
 
         recipe = { data: TemplateData ->
@@ -136,6 +145,7 @@ val listFragmentTemplate
                             mBeanName.value,
                             mAdapterName.value,
                             mFragmentPackageName.value,
+                            mDependencyInjectionEnum.value,
                         )
                     }
 
@@ -150,6 +160,7 @@ val listFragmentTemplate
                                     mBeanName.value,
                                     mAdapterName.value,
                                     mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -162,6 +173,7 @@ val listFragmentTemplate
                                     mBeanName.value,
                                     mAdapterName.value,
                                     mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }
@@ -177,7 +189,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -189,7 +202,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -201,7 +215,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }
@@ -217,7 +232,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -229,7 +245,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -241,7 +258,8 @@ val listFragmentTemplate
                                     mIsGenerateFragmentLayout.value,
                                     mBeanName.value,
                                     mAdapterName.value,
-                                    mFragmentPackageName.value
+                                    mFragmentPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }

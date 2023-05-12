@@ -16,6 +16,7 @@ import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.android.tools.idea.wizard.template.stringParameter
 import com.android.tools.idea.wizard.template.template
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.ArchitectureEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.MvpBindingEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.MvvmBindingEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvi.mviActivityRecipe
@@ -96,6 +97,13 @@ val baseActivityTemplate
             help = "默认不使用Binding,如果使用页面绑定或者数据绑定请选择VIEW_BINDING或DATA_BINDING"
         }
 
+        val mDependencyInjectionEnum = enumParameter<DependencyInjectionEnum> {
+            name = "Select Dependency Injection"
+            default = DependencyInjectionEnum.NONE
+            visible = { mArchitectureEnum.value != ArchitectureEnum.NONE }
+            help = "默认不使用依赖注入,如果使用依赖注入请选择HILT（暂不支持DAGGER2）"
+        }
+
         thumb { File("template_empty_activity.png") }
 
         widgets(
@@ -105,7 +113,8 @@ val baseActivityTemplate
             PackageNameWidget(mActivityPackageName),
             EnumWidget(mArchitectureEnum),
             EnumWidget(mMvpBindingEnum),
-            EnumWidget(mMvvmBindingEnum)
+            EnumWidget(mMvvmBindingEnum),
+            EnumWidget(mDependencyInjectionEnum),
         )
 
         recipe = { data: TemplateData ->
@@ -117,7 +126,8 @@ val baseActivityTemplate
                             mPageName.value,
                             mActivityLayoutName.value,
                             mIsGenerateActivityLayout.value,
-                            mActivityPackageName.value
+                            mActivityPackageName.value,
+                            mDependencyInjectionEnum.value,
                         )
                     }
 
@@ -130,6 +140,7 @@ val baseActivityTemplate
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
                                     mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -140,6 +151,7 @@ val baseActivityTemplate
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
                                     mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }
@@ -153,7 +165,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -163,7 +176,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -173,7 +187,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }
@@ -187,7 +202,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -197,7 +213,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
 
@@ -207,7 +224,8 @@ val baseActivityTemplate
                                     mPageName.value,
                                     mActivityLayoutName.value,
                                     mIsGenerateActivityLayout.value,
-                                    mActivityPackageName.value
+                                    mActivityPackageName.value,
+                                    mDependencyInjectionEnum.value,
                                 )
                             }
                         }

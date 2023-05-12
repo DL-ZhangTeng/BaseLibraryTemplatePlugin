@@ -2,6 +2,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.di.mvpModule
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.imodel.mvpIModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.mvpModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
@@ -18,6 +20,7 @@ fun RecipeExecutor.mvpActivityRecipe(
     mActivityLayoutName: String,
     mIsGenerateActivityLayout: Boolean,
     mActivityPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
@@ -31,13 +34,15 @@ fun RecipeExecutor.mvpActivityRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mActivityLayoutName,
+        mDependencyInjectionEnum
     )
     val mvpIView = mvpView(rootPath, mPageName)
     val mvpIModel = mvpIModel(rootPath, mPageName)
-    val mvpModel = mvpModel(rootPath, mPageName)
+    val mvpModel = mvpModel(rootPath, mPageName, mDependencyInjectionEnum)
     val mvpIPresenter = mvpIPresenter(rootPath, mPageName)
-    val mvpPresenter = mvpPresenter(rootPath, mPageName)
+    val mvpPresenter = mvpPresenter(rootPath, mPageName, mDependencyInjectionEnum)
+
     // 保存Activity
     save(
         listActivity,
@@ -111,4 +116,19 @@ fun RecipeExecutor.mvpActivityRecipe(
         moduleTemplateData,
         "${packageNameStr}.${mPageName}Activity".substring(1)
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvpModule = mvpModule(rootPath, mPageName, mDependencyInjectionEnum)
+
+        save(
+            mvpModule,
+            File(
+                moduleTemplateData.rootDir.absolutePath
+                        + "/src/main/java/"
+                        + rootPath.replace(".", "/")
+                        + "/mvp/di/"
+            ).apply { mkdirs() }
+                .resolve("${mPageName}Module.kt")
+        )
+    }
 }

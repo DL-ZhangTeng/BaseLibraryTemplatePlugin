@@ -2,6 +2,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpLi
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.di.mvpModule
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.imodel.mvpIModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.model.mvpModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvp.presenter.ipresenter.mvpIPresenter
@@ -24,6 +26,7 @@ fun RecipeExecutor.mvpListActivityRecipe(
     mBeanClass: String,
     mAdapterClass: String,
     mActivityPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""
@@ -40,13 +43,14 @@ fun RecipeExecutor.mvpListActivityRecipe(
             mPageName,
             mActivityLayoutName,
             mBeanClass,
-            mAdapterClass
+            mAdapterClass,
+            mDependencyInjectionEnum
         )
     val mvpIView = mvpView(rootPath, mPageName)
     val mvpIModel = mvpIModel(rootPath, mPageName)
-    val mvpModel = mvpModel(rootPath, mPageName)
+    val mvpModel = mvpModel(rootPath, mPageName, mDependencyInjectionEnum)
     val mvpIPresenter = mvpIPresenter(rootPath, mPageName)
-    val mvpPresenter = mvpPresenter(rootPath, mPageName)
+    val mvpPresenter = mvpPresenter(rootPath, mPageName, mDependencyInjectionEnum)
     val listBean = baseBean(rootPath, mBeanClass)
     val listAdapter =
         baseAdapter(rootPath, "item${getLayoutName(mPageName)}", mBeanClass, mAdapterClass)
@@ -149,4 +153,19 @@ fun RecipeExecutor.mvpListActivityRecipe(
         moduleTemplateData,
         "${packageNameStr}.${mPageName}Activity".substring(1)
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvpModule = mvpModule(rootPath, mPageName, mDependencyInjectionEnum)
+
+        save(
+            mvpModule,
+            File(
+                moduleTemplateData.rootDir.absolutePath
+                        + "/src/main/java/"
+                        + rootPath.replace(".", "/")
+                        + "/mvp/di/"
+            ).apply { mkdirs() }
+                .resolve("${mPageName}Module.kt")
+        )
+    }
 }

@@ -11,3 +11,7 @@ enum class MvpBindingEnum {
 enum class MvvmBindingEnum {
     NONE, VIEW_BINDING, DATA_BINDING
 }
+
+enum class DependencyInjectionEnum {
+    NONE, HILT
+}

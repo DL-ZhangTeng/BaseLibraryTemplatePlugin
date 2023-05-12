@@ -1,8 +1,11 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvp.presenter
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvpFragmentPresenter(
     mRootPackageName: String?,
-    mPageName: String
+    mPageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}.mvp.presenter
 
@@ -11,8 +14,15 @@ import ${mRootPackageName}.mvp.model.${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel
 import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}FragmentPresenter
 import ${mRootPackageName}.mvp.view.I${mPageName}FragmentView
-
-class ${mPageName}FragmentPresenter : BasePresenter<I${mPageName}FragmentView, I${mPageName}FragmentModel>(), I${mPageName}FragmentPresenter {
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    import javax.inject.Inject
+    
+""" else """
+    
+"""
+}
+class ${mPageName}FragmentPresenter ${if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) "@Inject constructor() " else ""}: BasePresenter<I${mPageName}FragmentView, I${mPageName}FragmentModel>(), I${mPageName}FragmentPresenter {
 
     override var mModel: I${mPageName}FragmentModel = ${mPageName}FragmentModel()
     

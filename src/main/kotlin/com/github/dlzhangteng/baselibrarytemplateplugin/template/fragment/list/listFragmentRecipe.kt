@@ -2,6 +2,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.list
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseListXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseXml
@@ -18,6 +19,7 @@ fun RecipeExecutor.listFragmentRecipe(
     mBeanClass: String,
     mAdapterClass: String,
     mFragmentPackageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) {
     val packageNameStr =
         if (moduleTemplateData.projectTemplateData.applicationPackage == null) ""

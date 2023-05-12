@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvpListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
@@ -7,6 +9,7 @@ fun mvpListActivity(
     mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -23,10 +26,27 @@ import ${mRootPackageName}.mvp.presenter.ipresenter.I${mPageName}Presenter
 import ${mRootPackageName}.mvp.view.I${mPageName}View
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    import dagger.hilt.android.AndroidEntryPoint
+    import javax.inject.Inject
 
+    @AndroidEntryPoint
+""" else """
+    
+"""
+}
 class ${mPageName}Activity : BaseListMvpActivity<I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
 
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    @Inject
+    override lateinit var mPresenter: I${mPageName}Presenter
+"""
+    else """
     override var mPresenter: I${mPageName}Presenter = ${mPageName}Presenter()
+"""
+}
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
