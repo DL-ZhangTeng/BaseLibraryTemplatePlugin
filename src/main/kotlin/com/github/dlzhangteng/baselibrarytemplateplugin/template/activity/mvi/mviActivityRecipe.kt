@@ -32,11 +32,13 @@ fun RecipeExecutor.mviActivityRecipe(
     )
     val mviActivityViewModel = mviActivityViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val mviActivityRepository = mviActivityRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     // 保存Activity
     save(
@@ -76,4 +78,19 @@ fun RecipeExecutor.mviActivityRecipe(
         moduleTemplateData,
         "${packageNameStr}.${mPageName}Activity".substring(1)
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mviAppModule = mviAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvi/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mviAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

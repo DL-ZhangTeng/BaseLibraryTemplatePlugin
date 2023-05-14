@@ -3,6 +3,9 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvivb
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvi.mviAppModule
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
@@ -26,15 +29,18 @@ fun RecipeExecutor.mviVbFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mFragmentLayoutName
+        mFragmentLayoutName,
+        mDependencyInjectionEnum
     )
-    val mviFragmentViewModel = mviVbFragmentViewModel(
+    val mviFragmentViewModel = mviFragmentViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
-    val mviFragmentRepository = mviVbFragmentRepository(
+    val mviFragmentRepository = mviFragmentRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     // 保存Activity
     save(
@@ -68,4 +74,19 @@ fun RecipeExecutor.mviVbFragmentRecipe(
         ).apply { mkdirs() }
             .resolve("${mPageName}FragmentRepository.kt")
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mviAppModule = mviAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvi/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mviAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

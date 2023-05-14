@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mviList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mviListFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
@@ -7,6 +9,7 @@ fun mviListFragment(
     mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -23,7 +26,15 @@ import ${mRootPackageName}.R
 import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Fragment : BaseListMviFragment<${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {

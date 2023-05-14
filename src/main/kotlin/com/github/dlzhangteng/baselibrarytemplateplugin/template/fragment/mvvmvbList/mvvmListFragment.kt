@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvbList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvvmVbListFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
@@ -7,6 +9,7 @@ fun mvvmVbListFragment(
     mFragmentLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -24,7 +27,15 @@ import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Fragment : BaseListMvvmFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {

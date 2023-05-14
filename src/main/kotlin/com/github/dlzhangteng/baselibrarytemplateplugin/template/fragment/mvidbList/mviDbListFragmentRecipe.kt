@@ -3,8 +3,9 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb.mviDbFragmentRepository
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb.mviDbFragmentViewModel
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvi.mviAppModule
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mviDbListFragmentXml
@@ -36,15 +37,18 @@ fun RecipeExecutor.mviDbListFragmentRecipe(
         mPageName,
         mFragmentLayoutName,
         mBeanClass,
-        mAdapterClass
+        mAdapterClass,
+        mDependencyInjectionEnum
     )
-    val mviDbFragmentViewModel = mviDbFragmentViewModel(
+    val mviDbFragmentViewModel = mviFragmentViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
-    val mviDbFragmentRepository = mviDbFragmentRepository(
+    val mviDbFragmentRepository = mviFragmentRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val listBean = bindingBean(rootPath, mBeanClass)
     val listAdapter =
@@ -122,4 +126,19 @@ fun RecipeExecutor.mviDbListFragmentRecipe(
             }.xml"
         )
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mviAppModule = mviAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvi/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mviAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

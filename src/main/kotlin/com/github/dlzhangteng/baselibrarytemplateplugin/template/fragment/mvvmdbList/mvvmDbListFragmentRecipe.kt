@@ -3,8 +3,9 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmd
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentRepository
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmdb.mvvmDbFragmentViewModel
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmAppModule
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.mvvmFragmentRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm.mvvmFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.mvvmDbListFragmentXml
@@ -36,15 +37,18 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
         mPageName,
         mFragmentLayoutName,
         mBeanClass,
-        mAdapterClass
+        mAdapterClass,
+        mDependencyInjectionEnum
     )
-    val mvvmDbFragmentViewModel = mvvmDbFragmentViewModel(
+    val mvvmDbFragmentViewModel = mvvmFragmentViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
-    val mvvmDbFragmentRepository = mvvmDbFragmentRepository(
+    val mvvmDbFragmentRepository = mvvmFragmentRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val listBean = bindingBean(rootPath, mBeanClass)
     val listAdapter =
@@ -122,4 +126,19 @@ fun RecipeExecutor.mvvmDbListFragmentRecipe(
             }.xml"
         )
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvvmAppModule = mvvmAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvvm/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mvvmAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

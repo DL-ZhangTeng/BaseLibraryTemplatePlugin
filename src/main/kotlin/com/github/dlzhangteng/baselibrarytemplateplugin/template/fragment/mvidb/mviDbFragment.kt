@@ -1,10 +1,13 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvidb
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mviDbFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
     mPageName: String,
-    mFragmentLayoutName: String
+    mFragmentLayoutName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -16,7 +19,15 @@ import com.zhangteng.mvvm.mvi.db.BaseMviFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Fragment : BaseMviFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel>() {
 
     companion object {

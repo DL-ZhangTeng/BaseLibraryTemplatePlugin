@@ -1,10 +1,13 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvvmFragment(
     mRootPackageName: String?,
     mFragmentPackageName: String,
     mPageName: String,
-    mFragmentLayoutName: String
+    mFragmentLayoutName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}${mFragmentPackageName.ifEmpty { "" }}
 
@@ -15,7 +18,15 @@ import android.view.ViewGroup
 import com.zhangteng.mvvm.mvvm.BaseMvvmFragment
 import ${mRootPackageName}.R
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Fragment : BaseMvvmFragment<${mPageName}FragmentViewModel>() {
 
     companion object {

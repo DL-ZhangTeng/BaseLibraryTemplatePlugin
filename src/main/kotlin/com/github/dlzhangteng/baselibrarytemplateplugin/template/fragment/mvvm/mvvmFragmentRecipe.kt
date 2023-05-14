@@ -3,6 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvm
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmAppModule
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
 
@@ -26,15 +27,18 @@ fun RecipeExecutor.mvvmFragmentRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mFragmentLayoutName
+        mFragmentLayoutName,
+        mDependencyInjectionEnum
     )
     val mvvmFragmentViewModel = mvvmFragmentViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val mvvmFragmentRepository = mvvmFragmentRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     // 保存Activity
     save(
@@ -68,4 +72,19 @@ fun RecipeExecutor.mvvmFragmentRecipe(
         ).apply { mkdirs() }
             .resolve("${mPageName}FragmentRepository.kt")
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvvmAppModule = mvvmAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvvm/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mvvmAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

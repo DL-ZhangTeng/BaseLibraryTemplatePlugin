@@ -3,6 +3,7 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mviLi
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvi.mviAppModule
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentRepository
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvi.mviFragmentViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
@@ -36,15 +37,18 @@ fun RecipeExecutor.mviListFragmentRecipe(
         mPageName,
         mFragmentLayoutName,
         mBeanClass,
-        mAdapterClass
+        mAdapterClass,
+        mDependencyInjectionEnum
     )
     val mviFragmentViewModel = mviFragmentViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val mviFragmentRepository = mviFragmentRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val listBean = baseBean(rootPath, mBeanClass)
     val listAdapter =
@@ -122,4 +126,19 @@ fun RecipeExecutor.mviListFragmentRecipe(
             }.xml"
         )
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mviAppModule = mviAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvi/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mviAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }

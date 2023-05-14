@@ -78,4 +78,19 @@ fun RecipeExecutor.mvvmActivityRecipe(
         moduleTemplateData,
         "${packageNameStr}.${mPageName}Activity".substring(1)
     )
+
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) {
+        val mvvmAppModule = mvvmAppModule(rootPath)
+        val path = moduleTemplateData.rootDir.absolutePath + "/src/main/java/" +
+                rootPath.replace(".", "/") +
+                "/mvvm/di/"
+        if (!File(path + "AppModule.kt").exists()) {
+            save(
+                mvvmAppModule,
+                File(path)
+                    .apply { mkdirs() }
+                    .resolve("AppModule.kt")
+            )
+        }
+    }
 }
