@@ -16,8 +16,7 @@ ${
         """import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
-""" else """
+@HiltViewModel""" else """
     
 """
 }
@@ -26,10 +25,12 @@ class ${mPageName}ViewModel ${if (mDependencyInjectionEnum == DependencyInjectio
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
     @Inject
-    override lateinit var mRepository: ${mPageName}Repository
+    lateinit var mRepository: ${mPageName}Repository
 """
     else """
-    override var mRepository: ${mPageName}Repository = ${mPageName}Repository()
+    val mRepository by lazy {
+        ${mPageName}Repository()
+    }
 """
 }
 

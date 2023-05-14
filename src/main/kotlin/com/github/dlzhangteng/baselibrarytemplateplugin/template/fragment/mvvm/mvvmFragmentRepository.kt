@@ -29,11 +29,11 @@ class ${mPageName}FragmentRepository ${if (mDependencyInjectionEnum == Dependenc
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
     @Inject
-    override lateinit var mService: Api
+    lateinit var mService: Api
 """
     else """
-    override var mService by lazy {
-        HttpUtils.getInstance().ConfigGlobalHttpUtils().createService(Api::class.java)
+    val mService by lazy {
+        HttpUtils.instance.ConfigGlobalHttpUtils().createService(Api::class.java)
     }
 """
 }

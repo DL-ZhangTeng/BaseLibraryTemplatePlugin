@@ -26,10 +26,12 @@ class ${mPageName}FragmentViewModel ${if (mDependencyInjectionEnum == Dependency
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
     @Inject
-    override lateinit var mRepository: ${mPageName}FragmentRepository
+    lateinit var mRepository: ${mPageName}FragmentRepository
 """
     else """
-    override var mRepository: ${mPageName}Repository = ${mPageName}FragmentRepository()
+    val mRepository by lazy {
+        ${mPageName}FragmentRepository()
+    }
 """
 }
 
