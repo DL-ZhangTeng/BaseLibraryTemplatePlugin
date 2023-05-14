@@ -1,10 +1,13 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmvb
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvvmVbActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
     mPageName: String,
-    mActivityLayoutName: String
+    mActivityLayoutName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -13,8 +16,15 @@ import com.zhangteng.mvvm.mvvm.vb.BaseMvvmActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Activity : BaseMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

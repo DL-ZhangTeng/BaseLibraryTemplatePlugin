@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvvmDbListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
@@ -7,6 +9,7 @@ fun mvvmDbListActivity(
     mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -21,7 +24,15 @@ import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.databinding.Activity${mPageName}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Activity : BaseListMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

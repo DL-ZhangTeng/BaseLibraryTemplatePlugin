@@ -3,6 +3,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmv
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.basePageXml
 import java.io.File
@@ -27,15 +29,18 @@ fun RecipeExecutor.mvvmVbActivityRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mActivityLayoutName,
+        mDependencyInjectionEnum
     )
-    val mvvmActivityViewModel = mvvmVbActivityViewModel(
+    val mvvmActivityViewModel = mvvmActivityViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
-    val mvvmActivityRepository = mvvmVbActivityRepository(
+    val mvvmActivityRepository = mvvmActivityRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     // 保存Activity
     save(

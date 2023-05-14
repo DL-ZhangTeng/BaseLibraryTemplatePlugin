@@ -3,8 +3,8 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmd
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityRepository
-import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb.mvvmDbActivityViewModel
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityRepository
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm.mvvmActivityViewModel
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.addActivityToManifest
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.getLayoutName
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.layout.baseDbXml
@@ -37,15 +37,18 @@ fun RecipeExecutor.mvvmDbListActivityRecipe(
         mPageName,
         mActivityLayoutName,
         mBeanClass,
-        mAdapterClass
+        mAdapterClass,
+        mDependencyInjectionEnum
     )
-    val mvvmDbActivityViewModel = mvvmDbActivityViewModel(
+    val mvvmDbActivityViewModel = mvvmActivityViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
-    val mvvmActivityRepository = mvvmDbActivityRepository(
+    val mvvmActivityRepository = mvvmActivityRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val listBean = bindingBean(rootPath, mBeanClass)
     val listAdapter =

@@ -37,15 +37,18 @@ fun RecipeExecutor.mviListActivityRecipe(
         mPageName,
         mActivityLayoutName,
         mBeanClass,
-        mAdapterClass
+        mAdapterClass,
+        mDependencyInjectionEnum
     )
     val mviActivityViewModel = mviActivityViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val mviActivityRepository = mviActivityRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val listBean = baseBean(rootPath, mBeanClass)
     val listAdapter =

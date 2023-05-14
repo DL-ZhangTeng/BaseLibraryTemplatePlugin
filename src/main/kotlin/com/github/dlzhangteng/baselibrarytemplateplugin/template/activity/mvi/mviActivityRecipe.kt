@@ -27,7 +27,8 @@ fun RecipeExecutor.mviActivityRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mActivityLayoutName,
+        mDependencyInjectionEnum
     )
     val mviActivityViewModel = mviActivityViewModel(
         rootPath,

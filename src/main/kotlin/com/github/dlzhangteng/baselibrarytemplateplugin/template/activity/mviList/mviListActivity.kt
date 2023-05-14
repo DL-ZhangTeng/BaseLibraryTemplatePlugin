@@ -1,5 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mviList
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mviListActivity(
     mRootPackageName: String?,
     mActivityPackageName: String,
@@ -7,6 +9,7 @@ fun mviListActivity(
     mActivityLayoutName: String,
     mBeanClass: String,
     mAdapterClass: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum,
 ) = """
 package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 
@@ -20,8 +23,15 @@ import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
 import ${mRootPackageName}.mvi.vm.${mPageName}ViewModel
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint""" else
+        """
+    
+"""
+}
 class ${mPageName}Activity : BaseListMviActivity<${mPageName}ViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

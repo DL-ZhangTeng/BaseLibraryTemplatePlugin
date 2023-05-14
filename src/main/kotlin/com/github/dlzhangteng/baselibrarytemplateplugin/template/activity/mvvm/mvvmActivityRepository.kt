@@ -1,17 +1,42 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvm
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+
 fun mvvmActivityRepository(
     mRootPackageName: String?,
-    mPageName: String
+    mPageName: String,
+    mDependencyInjectionEnum: DependencyInjectionEnum
 ) = """
 package ${mRootPackageName}.mvvm.repository
 
-import com.zhangteng.mvvm.base.BaseNetRepository
+import com.zhangteng.mvvm.base.BaseNetRepository${
+    if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
+        """
+import com.zhangteng.httputils.http.HttpUtils"""
+    else """"""
+}
+import ${mRootPackageName}.http.Api
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
+        """import javax.inject.Inject
+    
+""" else """
+    
+"""
+}
+class ${mPageName}Repository ${if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) "@Inject constructor() " else ""}: BaseNetRepository() {
 
-class ${mPageName}Repository : BaseNetRepository() {
-
-    private val mService by lazy {
-        //HttpUtils.getInstance().ConfigGlobalHttpUtils().createService(Api::class.java)
+${
+    if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
+    @Inject
+    override lateinit var mService: Api
+"""
+    else """
+    override var mService by lazy {
+        HttpUtils.getInstance().ConfigGlobalHttpUtils().createService(Api::class.java)
     }
+"""
+}
+
 }
 """

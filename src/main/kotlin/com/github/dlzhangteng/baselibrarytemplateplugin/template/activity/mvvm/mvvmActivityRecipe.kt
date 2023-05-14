@@ -27,15 +27,18 @@ fun RecipeExecutor.mvvmActivityRecipe(
         rootPath,
         packageNameStr,
         mPageName,
-        mActivityLayoutName
+        mActivityLayoutName,
+        mDependencyInjectionEnum
     )
     val mvvmActivityViewModel = mvvmActivityViewModel(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     val mvvmActivityRepository = mvvmActivityRepository(
         rootPath,
-        mPageName
+        mPageName,
+        mDependencyInjectionEnum
     )
     // 保存Activity
     save(
