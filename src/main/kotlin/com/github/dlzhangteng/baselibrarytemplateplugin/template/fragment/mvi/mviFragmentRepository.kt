@@ -18,9 +18,11 @@ import com.zhangteng.httputils.http.HttpUtils"""
 import ${mRootPackageName}.http.Api
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
-        """import javax.inject.Inject
-    
-""" else """
+        """import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
+
+@ViewModelScoped""" else
+        """
     
 """
 }
