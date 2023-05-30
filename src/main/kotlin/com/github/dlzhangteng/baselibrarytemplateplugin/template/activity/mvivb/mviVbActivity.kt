@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvivb
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mviVbActivity(
     mRootPackageName: String?,
@@ -14,7 +15,7 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 import android.os.Bundle
 import com.zhangteng.mvvm.mvi.vb.BaseMviActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}ViewModel
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
@@ -25,7 +26,7 @@ ${
     
 """
 }
-class ${mPageName}Activity : BaseMviActivity<Activity${mPageName}Binding, ${mPageName}ViewModel>() {
+class ${mPageName}Activity : BaseMviActivity<${getPageName(mActivityLayoutName)}Binding, ${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdb
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvvmDbActivity(
     mRootPackageName: String?,
@@ -14,7 +15,7 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 import android.os.Bundle
 import com.zhangteng.mvvm.mvvm.db.BaseMvvmActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
@@ -25,7 +26,7 @@ ${
     
 """
 }
-class ${mPageName}Activity : BaseMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel>() {
+class ${mPageName}Activity : BaseMvvmActivity<${getPageName(mActivityLayoutName)}Binding, ${mPageName}ViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

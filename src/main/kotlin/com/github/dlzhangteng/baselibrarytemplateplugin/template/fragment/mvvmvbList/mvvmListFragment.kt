@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvvmvbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvvmVbListFragment(
     mRootPackageName: String?,
@@ -23,7 +24,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvvm.mvvm.vb.BaseListMvvmFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mFragmentLayoutName)}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}FragmentViewModel
 import ${mRootPackageName}.bean.${mBeanClass}
 import ${mRootPackageName}.adapter.${mAdapterClass}
@@ -36,7 +37,7 @@ ${
     
 """
 }
-class ${mPageName}Fragment : BaseListMvvmFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
+class ${mPageName}Fragment : BaseListMvvmFragment<${getPageName(mFragmentLayoutName)}Binding, ${mPageName}FragmentViewModel, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

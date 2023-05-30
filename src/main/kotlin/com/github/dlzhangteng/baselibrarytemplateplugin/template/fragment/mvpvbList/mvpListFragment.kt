@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpvbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvpVbListFragment(
     mRootPackageName: String?,
@@ -23,7 +24,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvp.mvp.vb.BaseListMvpFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mFragmentLayoutName)}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel${
     if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
         """
@@ -44,7 +45,7 @@ import javax.inject.Inject
     
 """
 }
-class ${mPageName}Fragment : BaseListMvpFragment<Fragment${mPageName}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
+class ${mPageName}Fragment : BaseListMvpFragment<${getPageName(mFragmentLayoutName)}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>() , I${mPageName}FragmentView {
     
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """

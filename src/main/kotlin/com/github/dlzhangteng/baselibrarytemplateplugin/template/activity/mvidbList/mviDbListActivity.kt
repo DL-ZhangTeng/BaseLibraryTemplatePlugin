@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvidbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mviDbListActivity(
     mRootPackageName: String?,
@@ -22,7 +23,7 @@ import com.zhangteng.mvvm.mvi.db.BaseListMviActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}ViewModel
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
@@ -33,7 +34,7 @@ ${
     
 """
 }
-class ${mPageName}Activity : BaseListMviActivity<Activity${mPageName}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
+class ${mPageName}Activity : BaseListMviActivity<${getPageName(mActivityLayoutName)}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

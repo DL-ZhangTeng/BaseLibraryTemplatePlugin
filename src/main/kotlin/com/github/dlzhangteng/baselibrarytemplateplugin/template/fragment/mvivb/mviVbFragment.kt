@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvivb
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mviVbFragment(
     mRootPackageName: String?,
@@ -17,7 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.zhangteng.mvvm.mvi.vb.BaseMviFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mFragmentLayoutName)}Binding
 import ${mRootPackageName}.mvi.vm.${mPageName}FragmentViewModel
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
@@ -28,7 +29,7 @@ ${
     
 """
 }
-class ${mPageName}Fragment : BaseMviFragment<Fragment${mPageName}Binding, ${mPageName}FragmentViewModel>() {
+class ${mPageName}Fragment : BaseMviFragment<${getPageName(mFragmentLayoutName)}Binding, ${mPageName}FragmentViewModel>() {
 
     companion object {
         fun newInstance() = ${mPageName}Fragment()

@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvvmdbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvvmDbListActivity(
     mRootPackageName: String?,
@@ -22,7 +23,7 @@ import com.zhangteng.mvvm.mvvm.db.BaseListMvvmActivity
 import ${mRootPackageName}.R
 import ${mRootPackageName}.adapter.${mPageName}Adapter
 import ${mRootPackageName}.bean.${mPageName}Bean
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvvm.vm.${mPageName}ViewModel
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT)
@@ -33,7 +34,7 @@ ${
     
 """
 }
-class ${mPageName}Activity : BaseListMvvmActivity<Activity${mPageName}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
+class ${mPageName}Activity : BaseListMvvmActivity<${getPageName(mActivityLayoutName)}Binding, ${mPageName}ViewModel, ${mBeanClass}, BindingAdapter.BindingViewHolder<${mBeanClass}>, ${mAdapterClass}>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

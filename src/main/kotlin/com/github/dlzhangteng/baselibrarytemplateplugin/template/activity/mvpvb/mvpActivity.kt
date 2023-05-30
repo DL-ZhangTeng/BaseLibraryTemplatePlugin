@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvb
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvpVbActivity(
     mRootPackageName: String?,
@@ -14,7 +15,7 @@ package ${mRootPackageName}${mActivityPackageName.ifEmpty { "" }}
 import android.os.Bundle
 import com.zhangteng.mvp.mvp.vb.BaseMvpActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model${
     if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
         """
@@ -33,7 +34,7 @@ import javax.inject.Inject
     
 """
 }
-class ${mPageName}Activity : BaseMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter>(), I${mPageName}View {
+class ${mPageName}Activity : BaseMvpActivity<${getPageName(mActivityLayoutName)}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter>(), I${mPageName}View {
 
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """

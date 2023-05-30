@@ -3,17 +3,28 @@ package com.github.dlzhangteng.baselibrarytemplateplugin.template
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import java.util.Locale
 
 /**
  * 获取layoutName
  */
 fun getLayoutName(pageName: String): String {
     val stringBuilder: StringBuilder = StringBuilder()
-    val activityChildNames: ArrayList<String> = splitByUpperCase(
-        pageName
-    )
+    val activityChildNames: ArrayList<String> = splitByUpperCase(pageName)
     activityChildNames.forEach {
-        stringBuilder.append("_").append(it.toLowerCase())
+        stringBuilder.append("_").append(it.lowercase(Locale.getDefault()))
+    }
+    return stringBuilder.toString()
+}
+
+/**
+ * 获取pageName
+ */
+fun getPageName(layoutName: String): String {
+    val stringBuilder: StringBuilder = StringBuilder()
+    val activityChildNames: List<String> = splitByCrossing(layoutName)
+    activityChildNames.forEach {
+        stringBuilder.append(upCaseKeyFirstChar(it.lowercase(Locale.getDefault())))
     }
     return stringBuilder.toString()
 }
@@ -33,6 +44,27 @@ fun splitByUpperCase(str: String): ArrayList<String> {
     }
     rs.add(str.substring(index, len))
     return rs
+}
+
+/**
+ * 根据横线拆分数组
+ */
+fun splitByCrossing(str: String): List<String> {
+    return str.split("_")
+}
+
+/**
+ * 首字母转大写
+ */
+fun upCaseKeyFirstChar(key: String): String {
+    return if (Character.isUpperCase(key[0])) {
+        key
+    } else {
+        StringBuilder()
+            .append(Character.toUpperCase(key[0]))
+            .append(key.substring(1))
+            .toString()
+    }
 }
 
 /**

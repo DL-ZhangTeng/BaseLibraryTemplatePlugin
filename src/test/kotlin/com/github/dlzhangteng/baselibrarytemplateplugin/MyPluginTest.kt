@@ -1,10 +1,13 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin
 
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.splitByCrossing
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
+import org.junit.Test
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class MyPluginTest : BasePlatformTestCase() {
@@ -27,5 +30,10 @@ class MyPluginTest : BasePlatformTestCase() {
 
     fun testRename() {
         myFixture.testRename("foo.xml", "foo_after.xml", "a2")
+    }
+
+    @Test
+    fun testGetPageName() {
+       println(getPageName("activity_select_contract_mvvm"))
     }
 }

@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.activity.mvpvbList
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvpVbListActivity(
     mRootPackageName: String?,
@@ -20,7 +21,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhangteng.base.base.BaseAdapter
 import com.zhangteng.mvp.mvp.vb.BaseListMvpActivity
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Activity${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mActivityLayoutName)}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}Model${
     if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
         """
@@ -41,7 +42,7 @@ import javax.inject.Inject
     
 """
 }
-class ${mPageName}Activity : BaseListMvpActivity<Activity${mPageName}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
+class ${mPageName}Activity : BaseListMvpActivity<${getPageName(mActivityLayoutName)}Binding, I${mPageName}View, I${mPageName}Model, I${mPageName}Presenter, ${mBeanClass}, BaseAdapter.DefaultViewHolder, ${mAdapterClass}>(), I${mPageName}View {
 
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """

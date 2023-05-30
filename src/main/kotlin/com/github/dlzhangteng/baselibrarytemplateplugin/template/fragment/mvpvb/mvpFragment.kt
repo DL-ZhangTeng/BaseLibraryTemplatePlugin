@@ -1,6 +1,7 @@
 package com.github.dlzhangteng.baselibrarytemplateplugin.template.fragment.mvpvb
 
 import com.github.dlzhangteng.baselibrarytemplateplugin.template.DependencyInjectionEnum
+import com.github.dlzhangteng.baselibrarytemplateplugin.template.getPageName
 
 fun mvpVbFragment(
     mRootPackageName: String?,
@@ -17,7 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.zhangteng.mvp.mvp.vb.BaseMvpFragment
 import ${mRootPackageName}.R
-import ${mRootPackageName}.databinding.Fragment${mPageName}Binding
+import ${mRootPackageName}.databinding.${getPageName(mFragmentLayoutName)}Binding
 import ${mRootPackageName}.mvp.model.imodel.I${mPageName}FragmentModel${
     if (mDependencyInjectionEnum != DependencyInjectionEnum.HILT)
         """
@@ -36,7 +37,7 @@ import javax.inject.Inject
     
 """
 }
-class ${mPageName}Fragment : BaseMvpFragment<Fragment${mPageName}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
+class ${mPageName}Fragment : BaseMvpFragment<${getPageName(mFragmentLayoutName)}Binding, I${mPageName}FragmentView, I${mPageName}FragmentModel, I${mPageName}FragmentPresenter>() , I${mPageName}FragmentView {
     
 ${
     if (mDependencyInjectionEnum == DependencyInjectionEnum.HILT) """
